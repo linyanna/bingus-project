@@ -1,3 +1,25 @@
+# quick setup guide
+
+check if u have node.js and npm installed
+```
+node -v
+npm -v
+```
+
+if u dont then download it
+
+then clone the repo 
+and open it then run these commands
+
+```
+npm install
+npm run dev
+```
+
+it should open in ur browser it it doesnt hit o + enter
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
