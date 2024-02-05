@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createClient } from "@supabase/supabase-js";
+import React from 'react';
+import LandingPage from './Components/LandingPage';
 
 // Supabase setup referenced from: https://supabase.com/docs/guides/getting-started/quickstarts/reactjs
 
@@ -39,4 +41,7 @@ function App() {
   );
 }
 
-export default App
+
+
+
+export default App;
