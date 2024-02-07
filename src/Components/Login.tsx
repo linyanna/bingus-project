@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import "../styles/Login.css";
 
-const Login: React.FC = () => {
+const LogIn: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  const handleLogIn = () => {
     // TODO login logic
   };
 
   return (
     <div className="login-container">
       <h2>Log in</h2>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogIn}>
         <div className="input-group">
           <label htmlFor="username">Username: </label>
           <input
@@ -38,4 +38,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default LogIn;
