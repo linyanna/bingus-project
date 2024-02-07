@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/Login.css";
+import "../styles/login.css";
 
 const SignUp: React.FC = () => {
   const [name, setName] = useState("");

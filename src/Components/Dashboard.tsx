@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import "../styles/Login.css";
+import "../styles/dashboard.css";
 
 const Dashboard: React.FC = () => {
 
