@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import LandingPage from './Components/LandingPage.tsx';
-import LogIn from './Components/LogIn.tsx';
+import LogIn from './Components/Login.tsx';
 import SignUp from './Components/SignUp.tsx';
 import Navbar from './Components/Navbar.tsx';
 import Dashboard from './Components/Dashboard.tsx';
