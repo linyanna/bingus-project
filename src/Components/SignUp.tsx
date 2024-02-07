@@ -19,18 +19,18 @@ const SignUp: React.FC = () => {
           <label htmlFor="name">Name: </label>
           <input
             type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="input-group">
           <label htmlFor="name">Email: </label>
           <input
             type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="input-group">
