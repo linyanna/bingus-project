@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/*";
+import "../styles/landingpage.css";
 import { useNavigate } from 'react-router-dom';
 
 const LandingPage: React.FC = () => {
