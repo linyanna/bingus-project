@@ -1,9 +1,22 @@
 import React from 'react';
+import "../styles/LandingPage.css";
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage: React.FC = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission logic here
+
+    // TODO: Check if the user is logged in
+    const isLoggedIn = true; // Replace with something real
+
+
+    if (isLoggedIn) {
+      navigate('/dashboard'); 
+    } else {
+      navigate('/login'); 
+    }
   };
 
   return (
