@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createClient } from "@supabase/supabase-js";
 import SqlEditor from './components/SqlEditor/SqlEditor';
+import './App.css'
 
 // Supabase setup referenced from: https://supabase.com/docs/guides/getting-started/quickstarts/reactjs
 
@@ -33,6 +34,7 @@ export default function App() {
 
   return (
     <>
+      <h1>Database Countries Demo</h1>
       <ul>
         {countries.map((country) => (
           <li key={country.name}>{country.name}</li>

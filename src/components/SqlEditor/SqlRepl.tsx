@@ -27,11 +27,12 @@ function SqlRepl({ db }: { db: Database }) {
 
   return (
     <div>
-      <h1>React SQL interpreter</h1>
+      <h1>React SQL Interpreter Demo</h1>
 
       <textarea
         onChange={(e) => exec(e.target.value)}
-        placeholder="Enter some SQL. No inspiration ? Try “select sqlite_version()”"
+        placeholder="Enter some SQL. No inspiration ? Try “select sqlite_version().”"
+        cols={80} rows={10}
       ></textarea>
 
       <pre className="error">{(error || "").toString()}</pre>
