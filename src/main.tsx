@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import LandingPage from './Components/LandingPage.tsx';
-import LogIn from './Components/Login.tsx';
-import SignUp from './Components/SignUp.tsx';
 import Navbar from './Components/Navbar.tsx';
 import Dashboard from './Components/Dashboard.tsx';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
@@ -21,8 +19,6 @@ const App: React.FC = () => {
       {isNavbarVisible && <Navbar />} {}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard/>} />
       </Routes>
     </div>
