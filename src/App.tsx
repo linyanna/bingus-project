@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { createClient } from "@supabase/supabase-js";
+import { createClient, Session } from "@supabase/supabase-js";
 import SqlEditor from './components/SqlEditor/SqlEditor';
 import './App.css'
 
-// Supabase setup referenced from: https://supabase.com/docs/guides/getting-started/quickstarts/reactjs
+import Signup from './Signup';
+import Countries from './Countries';
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 const key = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
@@ -15,33 +16,30 @@ if (!url || !key) {
 const supabase = createClient(url, key);
 
 export default function App() {
-  interface Country {
-    name: string;
-  }
-  
-  const [countries, setCountries] = useState<Country[]>([]);
+  const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
-    getCountries();
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
-  async function getCountries() {
-    const { data } = await supabase.from("countries").select();
-    if (data) {
-      setCountries(data);
-    }
+  if (session === null) {
+    return <Signup supabaseClient={supabase} />;
+  } else {
+    return (
+      <>
+        <Countries supabase={supabase} />
+        <SqlEditor></SqlEditor>
+      </>
+    );
   }
-
-  return (
-    <>
-      <h1>Database Countries Demo</h1>
-      <ul>
-        {countries.map((country) => (
-          <li key={country.name}>{country.name}</li>
-        ))}
-      </ul>
-      <SqlEditor></SqlEditor>
-    </>
-  );
 }
-
