@@ -1,10 +1,10 @@
 import './index.css';
 import { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import { Auth } from '@supabase/auth-ui-react';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { Session } from '@supabase/supabase-js';
 
+import Signup from './Signup';
+import Countries from './Countries';
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 const key = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
@@ -32,32 +32,9 @@ export default function App() {
     return () => subscription.unsubscribe();
   }, []);
 
-  if (!session) {
-    return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
+  if (session === null) {
+    return <Signup supabaseClient={supabase} />;
   } else {
-    interface Country {
-      name: string;
-    }
-  
-    const [countries, setCountries] = useState<Country[]>([]);
-  
-    useEffect(() => {
-      getCountries();
-    }, []);
-  
-    async function getCountries() {
-      const { data } = await supabase.from("countries").select();
-      if (data) {
-        setCountries(data);
-      }
-    }
-
-    return (
-      <ul>
-        {countries.map((country) => (
-          <li key={country.name}>{country.name}</li>
-        ))}
-      </ul>
-    );
+    return <Countries supabase={supabase} />;
   }
 }
