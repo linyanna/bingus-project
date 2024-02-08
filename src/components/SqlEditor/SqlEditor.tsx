@@ -18,8 +18,12 @@ function SqlEditor() {
       // without any configuration, initSqlJs will fetch the wasm files directly from the same path as the js
       // see ../craco.config.js
       try {
-        const SQL = await initSqlJs({ locateFile: () => sqlWasm });
-        setDb(new SQL.Database());
+        const sqlPromise = await initSqlJs({ locateFile: () => sqlWasm });
+        // Using a dummy database from: https://www.sqlitetutorial.net/sqlite-sample-database/
+        // ex table names include playlists, artists, customers
+        const dataPromise = fetch("https://lynhjymnmasejyhzbhwv.supabase.co/storage/v1/object/public/chinook_db/chinook.db?t=2024-02-08T08%3A17%3A41.783Z").then(res => res.arrayBuffer());
+        const [SQL, buf] = await Promise.all([sqlPromise, dataPromise])
+        setDb(new SQL.Database(new Uint8Array(buf)));
       } catch (err) {
         setError(err as string);
       }
