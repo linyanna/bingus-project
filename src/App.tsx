@@ -1,7 +1,7 @@
-import './index.css';
-import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
-import { Session } from '@supabase/supabase-js';
+import { useEffect, useState } from 'react'
+import { createClient, Session } from "@supabase/supabase-js";
+import SqlEditor from './components/SqlEditor/SqlEditor';
+import './App.css'
 
 import Signup from './Signup';
 import Countries from './Countries';
@@ -35,7 +35,12 @@ export default function App() {
   if (session === null) {
     return <Signup supabaseClient={supabase} />;
   } else {
-    return <Countries supabase={supabase} />;
+    return (
+      <>
+        <Countries supabase={supabase} />
+        <SqlEditor></SqlEditor>
+      </>
+    );
   }
 }
   async function getCountries() {

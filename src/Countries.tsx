@@ -23,11 +23,14 @@ const Countries = ({ supabase }: Props) => {
   }
 
   return (
-    <ul>
-      {countries.map((country) => (
-        <li key={country.name}>{country.name}</li>
-      ))}
-    </ul>
+    <>
+    <h1>Countries Data Demo</h1>
+      <ul>
+        {countries.map((country) => (
+          <li key={country.name}>{country.name}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 
