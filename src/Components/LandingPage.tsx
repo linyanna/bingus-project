@@ -28,8 +28,6 @@ const LandingPage: React.FC = () => {
         </form>
         <div className="auth-links">
           <a href="/signup">Sign Up</a>
-          <span> or </span>
-          <a href="/login">Log In</a>
         </div>
       </div>
     </div>
