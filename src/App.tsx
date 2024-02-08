@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { createClient, Session } from "@supabase/supabase-js";
-import SqlEditor from './components/SqlEditor/SqlEditor';
+import SqlEditor from './Components/SqlEditor/SqlEditor';
 import './App.css'
 
-import Signup from './components/Signup';
+import Signup from './Components/Signup';
 import Countries from './Countries';
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
