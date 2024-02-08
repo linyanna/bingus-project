@@ -3,7 +3,7 @@ import { createClient, Session } from "@supabase/supabase-js";
 import SqlEditor from './components/SqlEditor/SqlEditor';
 import './App.css'
 
-import Signup from './Signup';
+import Signup from './components/Signup';
 import Countries from './Countries';
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
@@ -43,23 +43,3 @@ export default function App() {
     );
   }
 }
-  async function getCountries() {
-    const { data } = await supabase.from("countries").select();
-    if (data) {
-      setCountries(data);
-    }
-  }
-
-  return (
-    <ul>
-      {countries.map((country) => (
-        <li key={country.name}>{country.name}</li>
-      ))}
-    </ul>
-  );
-}
-
-
-
-
-export default App;

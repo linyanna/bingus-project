@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
-import LandingPage from './Components/LandingPage.tsx';
-import Navbar from './Components/Navbar.tsx';
-import Dashboard from './Components/Dashboard.tsx';
-import Signup from './Components/Signup.tsx';
+import LandingPage from './components/LandingPage.tsx';
+import Navbar from './components/Navbar.tsx';
+import Dashboard from './components/Dashboard.tsx';
+import Signup from './components/Signup.tsx';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js';
 
