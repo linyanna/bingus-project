@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createClient, Session } from "@supabase/supabase-js";
-import SqlEditor from './Components/SqlEditor/SqlEditor';
+import SqlEditor from './Components/SqlEditor';
 import './App.css'
 
 import Signup from './Components/Signup';
