@@ -1,21 +1,27 @@
-import { useEffect, useState } from 'react'
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { createClient, Session } from "@supabase/supabase-js";
-import SqlEditor from './components/SqlEditor';
-import './App.css'
 
-import Signup from './components/Signup';
-import Countries from './Countries';
+import LandingPage from "./components/LandingPage";
+import Navbar from "./components/Navbar";
+import Dashboard from "./components/Dashboard";
+import Signup from "./components/Signup";
+import SqlEditor from "./components/SqlEditor";
+import "./App.css";
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 const key = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!url || !key) {
-  throw new Error('Environment variables PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_ANON_KEY are required');
+  throw new Error(
+    "Environment variables PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_ANON_KEY are required"
+  );
 }
 
 const supabase = createClient(url, key);
 
-export default function App() {
+function App() {
+  const location = useLocation();
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
@@ -32,14 +38,25 @@ export default function App() {
     return () => subscription.unsubscribe();
   }, []);
 
-  if (session === null) {
-    return <Signup supabaseClient={supabase} />;
-  } else {
-    return (
-      <>
-        <Countries supabase={supabase} />
-        <SqlEditor></SqlEditor>
-      </>
-    );
-  }
+  const navbarPaths = ["/dashboard"];
+  const isNavbarVisible = navbarPaths.includes(location.pathname);
+
+  return (
+    <div className="app">
+      {isNavbarVisible && <Navbar />} {}
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/signup"
+          element={
+            session ? <SqlEditor /> : <Signup supabaseClient={supabase} />
+          }
+        />
+        <Route path="*">"404 Not Found"</Route>
+      </Routes>
+    </div>
+  );
 }
+
+export default App;

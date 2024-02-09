@@ -1,6 +1,6 @@
-import React from 'react';
-import "../styles/LandingPage.css";
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import "../styles/landingPage.css";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -11,11 +11,10 @@ const LandingPage: React.FC = () => {
     // TODO: Check if the user is logged in
     const isLoggedIn = true; // Replace with something real
 
-
     if (isLoggedIn) {
-      navigate('/dashboard'); 
+      navigate("/dashboard");
     } else {
-      navigate('/login'); 
+      navigate("/login");
     }
   };
 
