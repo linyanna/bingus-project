@@ -34,7 +34,7 @@ const LandingPage: React.FC = () => {
           <button className="button"> Play</button>
         </form>
         <form onSubmit={handleSubmitSignup}>
-          <button className="button"> Sign Up</button>
+          <button className="signupbutton"> Sign Up</button>
         </form>
       </div>
     </div>
