@@ -9,7 +9,12 @@ interface Props {
 const Signup = ({ supabaseClient }: Props) => {
   return (
     <div className="signup">
-      <Auth supabaseClient={supabaseClient} appearance={{ theme: ThemeSupa }} />
+      <Auth 
+      supabaseClient={supabaseClient} 
+      appearance={{ theme: ThemeSupa }} 
+      providers={['google', 'github']}
+      view="sign_up"
+      />
     </div>
   );
 };

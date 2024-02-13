@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { createClient, Session } from "@supabase/supabase-js";
 
@@ -6,7 +6,7 @@ import LandingPage from "./components/LandingPage";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Signup from "./components/Signup";
-import SqlEditor from "./components/SqlEditor";
+//import SqlEditor from "./components/SqlEditor";
 import "./App.css";
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
@@ -35,6 +35,7 @@ function App() {
       setSession(session);
     });
 
+
     return () => subscription.unsubscribe();
   }, []);
 
@@ -49,9 +50,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route
           path="/signup"
-          element={
-            session ? <SqlEditor /> : <Signup supabaseClient={supabase} />
-          }
+          element={session ? <Navigate to="/dashboard" /> : <Signup supabaseClient={supabase} />}
         />
         <Route path="*">"404 Not Found"</Route>
       </Routes>
