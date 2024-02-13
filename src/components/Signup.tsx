@@ -13,6 +13,7 @@ const Signup = ({ supabaseClient }: Props) => {
       supabaseClient={supabaseClient} 
       appearance={{ theme: ThemeSupa }} 
       providers={['google', 'github']}
+      view="sign_up"
       />
     </div>
   );
