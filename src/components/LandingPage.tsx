@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitPlay = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // TODO: Check if the user is logged in
@@ -14,20 +14,28 @@ const LandingPage: React.FC = () => {
     if (isLoggedIn) {
       navigate("/dashboard");
     } else {
-      navigate("/login");
+      navigate("/signup");
     }
   };
+
+  const handleSubmitSignup = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate("/signup");
+  };
+
+
+
 
   return (
     <div className="landing-page">
       <div className="landing-page-content">
         <h1>Bingus the SQL Sleuth</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitPlay}>
           <button className="button"> Play</button>
         </form>
-        <div className="auth-links">
-          <a href="/signup">Sign Up</a>
-        </div>
+        <form onSubmit={handleSubmitSignup}>
+          <button className="button"> Sign Up</button>
+        </form>
       </div>
     </div>
   );
