@@ -5,6 +5,7 @@ import LandingPage from "./components/LandingPage";
 import Navbar, { Tab } from "./components/Navbar"; // Importing Tab enum from Navbar.tsx
 import Dashboard from "./components/Dashboard";
 import Signup from "./components/Signup";
+import Login from "./components/Login";
 import "./App.css";
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
@@ -50,10 +51,17 @@ function App() {
       {isNavbarVisible && <Navbar setActiveTab={handleSetActiveTab} />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/dashboard" element={<Dashboard activeTab={activeTab} />} />
+        <Route
+          path="/dashboard"
+          element={session ? <Dashboard activeTab={activeTab} /> : <Navigate to="/login" />}
+        />
         <Route
           path="/signup"
           element={session ? <Navigate to="/dashboard" /> : <Signup supabaseClient={supabase} />}
+        />
+        <Route
+          path="/login"
+          element={session ? <Navigate to="/dashboard" /> : <Login supabaseClient={supabase} />}
         />
         <Route path="*">"404 Not Found"</Route>
       </Routes>

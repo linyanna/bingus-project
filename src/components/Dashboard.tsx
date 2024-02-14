@@ -4,7 +4,7 @@ import SqlEditor from "./SqlEditor";
 import { Tab } from "./Navbar"; 
 
 interface DashboardProps {
-  activeTab: Tab; // Pass the active tab as a prop
+  activeTab: Tab; // pass the active tab as a prop
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ activeTab }) => {
