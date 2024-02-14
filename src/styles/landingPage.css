@@ -1,0 +1,26 @@
+.landing-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px;
+    Text-align: center;
+  }
+
+  .auth-links {
+    margin-top: 10px;
+  }
+  
+  .auth-links a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .auth-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .signupbutton{
+    background: none;
+    border: none;
+  }

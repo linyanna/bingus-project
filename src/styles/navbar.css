@@ -1,0 +1,34 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .tab {
+    text-decoration: none;
+    color: #fff;
+    padding: 15px 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border: 1px solid #ccc;
+    margin-right: 20px;
+    width: 200px;
+    text-align: center;
+    box-shadow: -5px -5px 5px rgba(0, 0, 0, 1); /* Adjusted shadow position */
+  }
+  
+  
+  .tab:hover {
+    background-color: #555;
+    color: #ddd;
+  }
+  
