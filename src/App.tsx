@@ -40,7 +40,7 @@ function App() {
   const navbarPaths = ["/dashboard"];
   const isNavbarVisible = navbarPaths.includes(location.pathname);
 
-  // Function to handle setting the active tab
+  //handle setting the active tab
   const handleSetActiveTab = (tab: Tab) => {
     setActiveTab(tab);
   };

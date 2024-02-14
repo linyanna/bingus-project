@@ -1,5 +1,5 @@
 import React from "react";
-//import Profile from "./Profile";
+import Profile from "./Profile";
 import SqlEditor from "./SqlEditor";
 import { Tab } from "./Navbar"; 
 
@@ -12,7 +12,7 @@ const Dashboard: React.FC<DashboardProps> = ({ activeTab }) => {
     <div>
    
       {activeTab === Tab.SQL && <SqlEditor />}
-      {/* Add more components for other tabs */}
+      {activeTab === Tab.PROFILE && <Profile />}
     </div>
   );
 };
