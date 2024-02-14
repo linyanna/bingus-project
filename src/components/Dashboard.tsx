@@ -1,7 +1,20 @@
-import "../styles/dashboard.css";
+import React from "react";
+import Profile from "./Profile";
+import SqlEditor from "./SqlEditor";
+import { Tab } from "./Navbar"; 
 
-const Dashboard: React.FC = () => {
-  return <div></div>;
+interface DashboardProps {
+  activeTab: Tab; // pass the active tab as a prop
+}
+
+const Dashboard: React.FC<DashboardProps> = ({ activeTab }) => {
+  return (
+    <div>
+   
+      {activeTab === Tab.SQL && <SqlEditor />}
+      {activeTab === Tab.PROFILE && <Profile />}
+    </div>
+  );
 };
 
 export default Dashboard;
