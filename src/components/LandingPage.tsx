@@ -7,24 +7,13 @@ const LandingPage: React.FC = () => {
 
   const handleSubmitPlay = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // TODO: Check if the user is logged in
-    const isLoggedIn = true; // Replace with something real
-
-    if (isLoggedIn) {
       navigate("/dashboard");
-    } else {
-      navigate("/signup");
-    }
   };
 
   const handleSubmitSignup = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate("/signup");
   };
-
-
-
 
   return (
     <div className="landing-page">
