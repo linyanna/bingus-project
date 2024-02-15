@@ -27,11 +27,11 @@ function SqlRepl({ db }: { db: Database }) {
 
   return (
     <div>
-      <h1>React SQL Interpreter Demo</h1>
+      <h1>Bingus Mystery</h1>
 
       <textarea
         onChange={(e) => exec(e.target.value)}
-        placeholder="Enter some SQL. No inspiration ? Try “select sqlite_version().”"
+        placeholder="Enter some SQL. Not sure? Try “select * from clues.”"
         cols={80} rows={10}
       ></textarea>
 
