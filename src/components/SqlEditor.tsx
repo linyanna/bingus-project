@@ -23,7 +23,7 @@ function SqlEditor() {
         // Using a dummy database from: https://www.sqlitetutorial.net/sqlite-sample-database/
         // ex table names include playlists, artists, customers
         const dataPromise = fetch(
-          "https://lynhjymnmasejyhzbhwv.supabase.co/storage/v1/object/public/chinook_db/chinook.db?t=2024-02-08T08%3A17%3A41.783Z"
+          "https://lynhjymnmasejyhzbhwv.supabase.co/storage/v1/object/public/game_data/game_data.db"
         ).then((res) => res.arrayBuffer());
         const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
         setDb(new SQL.Database(new Uint8Array(buf)));
