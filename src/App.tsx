@@ -6,6 +6,7 @@ import Navbar, { Tab } from "./components/Navbar"; // Importing Tab enum from Na
 import Dashboard from "./components/Dashboard";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+//import TextBox from "./components/textbox";
 import "./App.css";
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
