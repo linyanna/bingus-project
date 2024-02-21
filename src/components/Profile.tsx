@@ -32,7 +32,10 @@ const Profile: React.FC = () => {
       if (!authToken) {
         throw new Error("Authentication token not found in local storage");
       }
-      const user = JSON.parse(authToken).user;      const playerId = user.id;
+      const user = JSON.parse(authToken).user;      
+      const playerId = user.id;
+      console.log(playerId);
+      console.log(userLocalDatabase);
 
       if (!userLocalDatabase) {
         throw new Error("userLocalDatabase is not available in local storage");
@@ -40,9 +43,13 @@ const Profile: React.FC = () => {
 
       // Update player_data table in Supabase
       const { data, error } = await supabase
-        .from("player_data")
+        .from("players")
         .update({ player_database: userLocalDatabase })
         .eq("player_id", playerId);
+
+
+      console.log(data);
+      console.log(error);
 
       if (error) {
         throw error;
