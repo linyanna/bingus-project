@@ -20,10 +20,9 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border: 1px solid #ccc;
-    margin-right: 20px;
+    margin-right: 0px;
     width: 200px;
     text-align: center;
-    box-shadow: -5px -5px 5px rgba(0, 0, 0, 1); /* Adjusted shadow position */
   }
   
   
