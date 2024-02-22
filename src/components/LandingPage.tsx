@@ -8,7 +8,7 @@ const LandingPage: React.FC = () => {
 
   const handleSubmitPlay = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-      navigate("/dashboard");
+    navigate("/dashboard");
   };
 
   const handleSubmitSignup = (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,40 +23,41 @@ const LandingPage: React.FC = () => {
 
   return (
     <FileContainer>
-        <div className="tab-container">
-          <div className="tab">Welcome!</div>
-        </div>
-    <div className="left" style={{ display: "flex" }}>
-      <div style={{ flex: 1 }}>
-        {/* replace with bingus pic */}
-  
+      <div className="tab-container">
+        <div className="tab">Welcome!</div>
       </div>
-      <div className="right" style={{ flex: 1 }}>
-      <div className="landing-page">
-          <div className="landing-page-content">
-            <h1>Bingus</h1>
-            <h2>The SQL Sleuth</h2> 
-            <form onSubmit={handleSubmitPlay}>
-              <button className="button"> Play</button>
-            </form>
-            <div className="buttons-container">
-  <form onSubmit={handleSubmitSignup}>
-    <button className="signupbutton">Sign Up</button>
-  </form>
 
-  <span className="button-text">OR</span> {/* Insert text between the buttons */}
+      <div className="Main" style={{ display: "flex" }}>
+        <div className="img-container">
+          <img src="../../Bingus_With_Hat.png" alt="Bingus Pic" />
+        </div>
 
-  <form onSubmit={handleSubmitLogin}>
-    <button className="signupbutton">Login</button>
-  </form>
-</div>
+        <div className="right" style={{ flex: 1 }}>
+          <div className="landing-page">
+            <div className="landing-page-content">
+              <h1>Bingus</h1>
+              <h2>The SQL Sleuth</h2> 
+              <form onSubmit={handleSubmitPlay}>
+                <button className="button">Play</button>
+              </form>
+
+              <div className="buttons-container">
+                <form onSubmit={handleSubmitSignup}>
+                  <button className="signupbutton">Sign Up</button>
+                </form>
+
+                <span className="button-text">OR</span> {/* Insert text between the buttons */}
+
+                <form onSubmit={handleSubmitLogin}>
+                  <button className="signupbutton">Login</button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-  
       </div>
-    </div>
     </FileContainer>
   );
-  };
+};
 
 export default LandingPage;
