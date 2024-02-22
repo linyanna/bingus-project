@@ -1,33 +1,27 @@
 .navbar {
+    position: absolute;
+    justify-content: flex-start; 
     display: flex;
-    justify-content: center;
-    background-color: #333;
+    top: 17.4%;
+    left: 18.9%;
     color: #fff;
-    padding: 10px 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
+    width: 62%;
     z-index: 1000;
-    border-bottom: 1px solid #ccc;
   }
   
   .tab {
-    text-decoration: none;
-    color: #fff;
-    padding: 15px 30px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border: 1px solid #ccc;
-    margin-right: 0px;
-    width: 200px;
-    text-align: center;
+    background-color: #ccc !important;
+    width: 100px; 
+    height: 20px; 
+    margin-left: 1px; 
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+    text-decoration: none; 
+    color: inherit !important;
   }
   
-  
-  .tab:hover {
-    background-color: #555;
-    color: #ddd;
-  }
+
+  .tab:last-child {
+    margin-left: 1px; 
+}
   
