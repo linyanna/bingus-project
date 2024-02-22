@@ -1,21 +1,14 @@
 import React from "react";
 import "../styles/landingPage.css";
 import { useNavigate } from "react-router-dom";
+import FileContainer from "./FileContainer";
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSubmitPlay = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // TODO: Check if the user is logged in
-    const isLoggedIn = true; // Replace with something real
-
-    if (isLoggedIn) {
       navigate("/dashboard");
-    } else {
-      navigate("/signup");
-    }
   };
 
   const handleSubmitSignup = (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,22 +16,47 @@ const LandingPage: React.FC = () => {
     navigate("/signup");
   };
 
-
-
+  const handleSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate("/dashboard");
+  };
 
   return (
-    <div className="landing-page">
-      <div className="landing-page-content">
-        <h1>Bingus the SQL Sleuth</h1>
-        <form onSubmit={handleSubmitPlay}>
-          <button className="button"> Play</button>
-        </form>
-        <form onSubmit={handleSubmitSignup}>
-          <button className="signupbutton"> Sign Up</button>
-        </form>
+    <FileContainer>
+        <div className="tab-container">
+          <div className="tab">Welcome!</div>
+        </div>
+    <div className="left" style={{ display: "flex" }}>
+      <div style={{ flex: 1 }}>
+        {/* replace with bingus pic */}
+  
+      </div>
+      <div className="right" style={{ flex: 1 }}>
+      <div className="landing-page">
+          <div className="landing-page-content">
+            <h1>Bingus</h1>
+            <h2>The SQL Sleuth</h2> 
+            <form onSubmit={handleSubmitPlay}>
+              <button className="button"> Play</button>
+            </form>
+            <div className="buttons-container">
+  <form onSubmit={handleSubmitSignup}>
+    <button className="signupbutton">Sign Up</button>
+  </form>
+
+  <span className="button-text">OR</span> {/* Insert text between the buttons */}
+
+  <form onSubmit={handleSubmitLogin}>
+    <button className="signupbutton">Login</button>
+  </form>
+</div>
+          </div>
+        </div>
+  
       </div>
     </div>
+    </FileContainer>
   );
-};
+  };
 
 export default LandingPage;
