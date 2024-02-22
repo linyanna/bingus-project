@@ -1,11 +1,29 @@
 .landing-page {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 5px;
-    Text-align: center;
+  display: flex;
+  justify-content: center;
+  color: #7C7C7C;
+  font-size: 30px;
   }
+
+h1 {
+    margin-bottom: 5px; 
+}
+
+h2 {
+    margin-top: 5px; 
+}
+
+.button{
+  background-color: #FFFFFF; 
+  color: #4A5563; 
+  padding: 15px 30px; 
+  border: none; 
+  border-radius: 10px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  margin-left: 50px;
+  width: 200px; 
+}
 
   .auth-links {
     margin-top: 10px;
@@ -23,4 +41,22 @@
   .signupbutton{
     background: none;
     border: none;
+    color: gray;
+    margin-top: 10px; 
+    font-size: 20px;
+    text-decoration: underline;
+    margin-left: 20px;
   }
+
+  .buttons-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .button-text {
+    font-size: 16px; /* Adjust font size as needed */
+    margin: 0 10px; /* Adjust margin as needed */
+  }
+  
+
+  
