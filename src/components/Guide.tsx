@@ -1,5 +1,4 @@
-import React from "react";
-import Collapsible from "./Collapsible";
+import Collapsible from "./Collapsible/Collapsible";
 
 function Guide() {
     return (
