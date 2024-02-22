@@ -4,22 +4,25 @@
     display: flex;
     top: 17.4%;
     left: 18.9%;
-    color: #fff;
+    color: #7C7C7C;
     width: 62%;
     z-index: 1000;
   }
   
   .tab {
-    background-color: #ccc !important;
+    background-color: #CACACB ;
     width: 100px; 
     height: 20px; 
     margin-left: 1px; 
     border-top-left-radius: 10px; 
     border-top-right-radius: 10px; 
     text-decoration: none; 
-    color: inherit !important;
+    color: inherit;
   }
   
+.tab-hover{
+  color: #7C7C7C !important;
+}
 
   .tab:last-child {
     margin-left: 1px; 
