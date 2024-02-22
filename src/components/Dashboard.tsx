@@ -17,13 +17,7 @@ const Dashboard: React.FC<DashboardProps> = ({ activeTab }) => {
       {activeTab === Tab.BRIEF && <Brief />}
       {activeTab === Tab.SQL && <SqlEditor />}
       {activeTab === Tab.RESULTS && <Results />}
-      {activeTab === Tab.GUIDE && 
-        <Guide 
-          open
-          title="What is SQL?"
-          children={"Structured Query Language"}
-        />
-      }
+      {activeTab === Tab.GUIDE && <Guide />}
       {activeTab === Tab.PROFILE && <Profile />}
 
 
