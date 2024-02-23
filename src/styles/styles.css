@@ -6,8 +6,8 @@
     transform: translate(-50%, -50%);
     background-color: #D8D7D7; 
     border-top-right-radius: 20px; 
-    width: 75%; 
-    height: 75%; 
+    width: 175vh; 
+    height: 75vh; 
 }
 
 .tab-container {

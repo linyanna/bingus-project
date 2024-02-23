@@ -1,15 +1,23 @@
 .navbar {
-    justify-content: flex-start; 
-    display: flex;
-    color: #7C7C7C;
-    width: 75%;
-    z-index: 1000;
-    margin-left: 0;          
-    position: absolute;
-    top: 14.7%;
-    left: 49.95%;
-    transform: translate(-50%, -50%);            
-  }
+  display: flex;
+  justify-content: flex-start; 
+  color: #7C7C7C;
+  width: 175vh;
+  z-index: 1000;
+  margin-left: auto;
+  margin-right: auto; /* Center the navbar horizontally */
+  position: relative; /* Keep the position as relative */
+}
+
+.filecontainer {
+  position: relative; /* Keep the position as relative */
+  top: 70%; /* Adjust as needed */
+  background-color: #D8D7D7; 
+  border-top-right-radius: 20px; 
+  width: 175vh; 
+  height: 75vh; 
+  margin: 0 auto; /* Center the filecontainer horizontally */
+}
   
   .tab {
     background-color: #CACACB ;
