@@ -1,0 +1,13 @@
+.parent{
+    background-color: blueviolet;
+    height: 600px;
+    width: 1500px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+}
+
+.nav{
+    position: absolute;
+}

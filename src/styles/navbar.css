@@ -2,11 +2,11 @@
     position: absolute;
     justify-content: flex-start; 
     display: flex;
-    top: 17.4%;
-    left: 18.9%;
     color: #7C7C7C;
-    width: 62%;
+    width: 100%;
     z-index: 1000;
+    top: 87px;
+    left: 176.5px;
   }
   
   .tab {
