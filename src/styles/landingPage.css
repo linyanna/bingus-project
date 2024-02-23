@@ -2,26 +2,28 @@
   display: flex;
   justify-content: center;
   color: #7C7C7C;
-  font-size: 30px;
+  font-size: 45px;
   }
 
 h1 {
+  
     margin-bottom: 5px; 
 }
 
 h2 {
     margin-top: 5px; 
+    margin-bottom: 2vh;
 }
 
 .button{
   background-color: #FFFFFF; 
   color: #4A5563; 
-  padding: 15px 30px; 
+ 
   border: none; 
   border-radius: 10px; 
-  font-size: 16px; 
+  font-size: 24px; 
   cursor: pointer; 
-  margin-left: 50px;
+  margin-left: 30%;
   width: 200px; 
 }
 
@@ -45,17 +47,18 @@ h2 {
     margin-top: 10px; 
     font-size: 20px;
     text-decoration: underline;
-    margin-left: 20px;
+
   }
 
   .buttons-container {
     display: flex;
     align-items: center;
+    margin-left: 24%;
   }
   
   .button-text {
-    font-size: 16px; /* Adjust font size as needed */
-    margin: 0 10px; /* Adjust margin as needed */
+    font-size: 16px; 
+    margin: 0 10px; 
   }
 
   .img-container {

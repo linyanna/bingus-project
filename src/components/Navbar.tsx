@@ -23,8 +23,8 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveTab }) => {
     <div className="parent">
         <div className="navbar">
           <a href="#" className="tab" onClick={() => handleTabClick(Tab.BRIEF)}>Brief</a>
-          <a href="#" className="tab" onClick={() => handleTabClick(Tab.SQL)}>SQL</a>
-          <a href="#" className="tab" onClick={() => handleTabClick(Tab.RESULTS)}>Results</a>
+          <a href="#" className="tab" onClick={() => handleTabClick(Tab.SQL)}>Notebook</a>
+          <a href="#" className="tab" onClick={() => handleTabClick(Tab.RESULTS)}>Evidence</a>
           <a href="#" className="tab" onClick={() => handleTabClick(Tab.GUIDE)}>Guide</a>
           <a href="#" className="tab" onClick={() => handleTabClick(Tab.PROFILE)}>Profile</a>
       </div>
