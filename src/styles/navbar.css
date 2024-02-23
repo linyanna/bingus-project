@@ -1,23 +1,24 @@
 .navbar {
-    position: absolute;
     justify-content: flex-start; 
     display: flex;
     color: #7C7C7C;
-    width: 100%;
+    width: 75%;
     z-index: 1000;
-    top: 87px;
-    left: 176.5px;
+    margin-left: 0;          
+    position: absolute;
+    top: 14.7%;
+    left: 49.95%;
+    transform: translate(-50%, -50%);            
   }
   
   .tab {
     background-color: #CACACB ;
-    width: 100px; 
-    height: 20px; 
     margin-left: 1px; 
+    width: 200px !important;
+    height: 50px !important; 
     border-top-left-radius: 10px; 
     border-top-right-radius: 10px; 
-    text-decoration: none; 
-    color: inherit;
+    color: #7C7C7C;
   }
   
 .tab-hover{
@@ -27,4 +28,3 @@
   .tab:last-child {
     margin-left: 1px; 
 }
-  

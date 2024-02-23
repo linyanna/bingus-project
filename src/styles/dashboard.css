@@ -1,13 +1,16 @@
-.parent{
-    background-color: blueviolet;
-    height: 600px;
-    width: 1500px;
-    display: flex;
+.filecontainer{
+    position: absolute;
+    top: 55%;
+    left: 50%;
     justify-content: center;
-    margin: 0 auto;
-    position: relative;
+    transform: translate(-50%, -50%);
+    background-color: #D8D7D7; 
+    border-top-right-radius: 20px; 
+    width: 75%; 
+    height: 75%; 
 }
 
-.nav{
-    position: absolute;
+.content{
+    outline: none;
+    
 }
