@@ -1,0 +1,61 @@
+.overallContainer{
+  flex-direction: column;
+  position: fixed;
+  bottom: 150px;
+  align-items: left;
+  justify-content: left; 
+  left: 0;
+
+}
+.textContainer {
+  align-items: left;
+  justify-content: left; 
+  left: 0;
+
+
+
+    position: fixed;
+    bottom: 0px;
+    width: 90%;
+    
+    display: flex;
+  }
+  .Bingus {
+    margin-bottom: 50px; /*this is the margin between the text box and the buttons */
+    align-items: left; 
+    width: 150px; 
+    height: auto; /* aspect ratio */
+  }
+
+  .label {
+  
+  align-items: left;
+  justify-content: left; 
+  margin-left: 0;
+  padding-left: 0;
+
+  
+    background-color: #cda565; 
+    border: 1px solid #131313; 
+    margin-right: 20px;
+
+    border-radius: 20px;
+   
+    padding: 30px; 
+    box-sizing: border-box; 
+    width: 7000px; 
+    height: 200px;
+    font-family: Marker Felt;
+    font-size: 20px;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dialogue {
+    width: 200px;
+    height: 50px;
+    margin-top: 10px; /* buttons margin */
+  }
