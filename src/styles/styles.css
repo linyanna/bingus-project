@@ -2,12 +2,12 @@
     position: absolute;
     top: 55%;
     left: 50%;
+    justify-content: center;
     transform: translate(-50%, -50%);
     background-color: #D8D7D7; 
-    padding: 20px;
     border-top-right-radius: 20px; 
-    width: 60%; 
-    height: 60%; 
+    width: 175vh; 
+    height: 75vh; 
 }
 
 .tab-container {
@@ -23,7 +23,7 @@
 
 .tab {
     background-color: #CACACB;
-    width: 15% !important;
+    width: 200px !important;
     height: 50px !important; 
     margin-left: 10px; 
     border-top-left-radius: 10px; 
