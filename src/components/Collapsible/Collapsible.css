@@ -1,15 +1,15 @@
 .content {
-    border: 1px solid rgb(128, 123, 123);
-    padding: 0.5rem;
-    border-radius: 5px;
+    padding: 0.1rem
 }
 
 .content-parent {
     height: 0px;
     overflow: hidden;
-    transition: height ease 0.9s;
+    transition: height ease 0.3s;
+    color: rgb(0, 0, 0);
 }
 
 .content-show {
-    height: 200px;
+    height: 120px;
+    color: rgb(0, 0, 0);
 }
