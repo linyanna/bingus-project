@@ -38,6 +38,12 @@ function Guide() {
                 Here, the asterisk '*' represents all attributes in the table.
             </p>
         </Collapsible>
+        <hr />
+        <Collapsible label = "test 2">
+            <p>
+                testing git push stuff
+            </p>
+        </Collapsible>
     </div>
     );
 }
