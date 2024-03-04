@@ -1,23 +1,32 @@
 .navbar {
-    position: absolute;
-    justify-content: flex-start; 
-    display: flex;
-    top: 17.4%;
-    left: 18.9%;
-    color: #7C7C7C;
-    width: 62%;
-    z-index: 1000;
-  }
+  display: flex;
+  justify-content: flex-start; 
+  color: #7C7C7C;
+  width: 175vh;
+  z-index: 1000;
+  margin-left: auto;
+  margin-right: auto; /* Center the navbar horizontally */
+  position: relative; /* Keep the position as relative */
+}
+
+.filecontainer {
+  position: relative; /* Keep the position as relative */
+  top: 70%; /* Adjust as needed */
+  background-color: #D8D7D7; 
+  border-top-right-radius: 20px; 
+  width: 175vh; 
+  height: 75vh; 
+  margin: 0 auto; /* Center the filecontainer horizontally */
+}
   
   .tab {
     background-color: #CACACB ;
-    width: 100px; 
-    height: 20px; 
     margin-left: 1px; 
+    width: 200px !important;
+    height: 50px !important; 
     border-top-left-radius: 10px; 
     border-top-right-radius: 10px; 
-    text-decoration: none; 
-    color: inherit;
+    color: #7C7C7C;
   }
   
 .tab-hover{
@@ -27,4 +36,3 @@
   .tab:last-child {
     margin-left: 1px; 
 }
-  

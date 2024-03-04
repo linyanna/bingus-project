@@ -1,6 +1,7 @@
 import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
+import {  ThemeSupa } from "@supabase/auth-ui-shared";
 import "../styles/signup.css";
+import FileContainer from "./FileContainer";
 
 interface Props {
   supabaseClient: any;
@@ -8,14 +9,19 @@ interface Props {
 
 const Signup = ({ supabaseClient }: Props) => {
   return (
-    <div className="signup">
-      <Auth 
-      supabaseClient={supabaseClient} 
-      appearance={{ theme: ThemeSupa }} 
-      providers={['google', 'github']}
-      view="sign_up"
-      />
-    </div>
+    <FileContainer>
+      <div className="tab-container">
+        <div className="tab">Sign Up</div>
+      </div>
+      <div className="signup">
+        <Auth 
+        supabaseClient={supabaseClient} 
+        appearance={{ theme: ThemeSupa }} 
+        providers={['google', 'github']}
+        view="sign_up"
+        />
+      </div>
+    </FileContainer>
   );
 };
 
