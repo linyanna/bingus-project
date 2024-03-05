@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import "../styles/profile.css";
+import { Button } from "@/components/ui/button";
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 const key = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
@@ -27,11 +28,13 @@ const Profile: React.FC = () => {
   const handleSaveToSupabase = async () => {
     try {
       const userLocalDatabase = localStorage.getItem("userLocalDatabase");
-      const authToken = localStorage.getItem("sb-lynhjymnmasejyhzbhwv-auth-token");
+      const authToken = localStorage.getItem(
+        "sb-lynhjymnmasejyhzbhwv-auth-token"
+      );
       if (!authToken) {
         throw new Error("Authentication token not found in local storage");
       }
-      const user = JSON.parse(authToken).user;      
+      const user = JSON.parse(authToken).user;
       const playerId = user.id;
       console.log(playerId);
       console.log(userLocalDatabase);
@@ -45,7 +48,6 @@ const Profile: React.FC = () => {
         .from("players")
         .update({ player_database: userLocalDatabase })
         .eq("player_id", playerId);
-
 
       console.log(data);
       console.log(error);
@@ -63,8 +65,8 @@ const Profile: React.FC = () => {
   return (
     <div className="profile">
       <h2>Profile</h2>
-      <button onClick={handleSignOut}>Sign Out</button>
-      <button onClick={handleSaveToSupabase}>Save to Supabase</button>
+      <Button onClick={handleSignOut}>Sign Out</Button>
+      <Button onClick={handleSaveToSupabase}>Save to Supabase</Button>
     </div>
   );
 };

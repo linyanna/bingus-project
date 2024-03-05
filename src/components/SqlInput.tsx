@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ResultsTable from "./ResultsTable";
 import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 type Database = any;
 
@@ -53,9 +54,9 @@ function SqlInput({ db }: { db: Database }) {
           id="sql-input"></Textarea>
       </div>
       <div>
-        <button id="execute-sql" onClick={handleExec}>
+        <Button id="execute-sql" onClick={handleExec}>
           Execute
-        </button>
+        </Button>
       </div>
 
       <pre className="error">{(error || "").toString()}</pre>
