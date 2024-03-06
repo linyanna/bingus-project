@@ -1,6 +1,6 @@
-import React from "react";
 import { createClient } from "@supabase/supabase-js";
 import "../styles/profile.css";
+import { Button } from "@/components/ui/button";
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 const key = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
@@ -20,19 +20,55 @@ const Profile: React.FC = () => {
       if (error) {
         throw error;
       }
-     
     } catch (error) {
+      console.error("Sign out error:", error);
+    }
+  };
 
+  const handleSaveToSupabase = async () => {
+    try {
+      const userLocalDatabase = localStorage.getItem("userLocalDatabase");
+      const authToken = localStorage.getItem(
+        "sb-lynhjymnmasejyhzbhwv-auth-token"
+      );
+      if (!authToken) {
+        throw new Error("Authentication token not found in local storage");
+      }
+      const user = JSON.parse(authToken).user;
+      const playerId = user.id;
+      console.log(playerId);
+      console.log(userLocalDatabase);
+
+      if (!userLocalDatabase) {
+        throw new Error("userLocalDatabase is not available in local storage");
+      }
+
+      // Update player_data table in Supabase
+      const { data, error } = await supabase
+        .from("players")
+        .update({ player_database: userLocalDatabase })
+        .eq("player_id", playerId);
+
+      console.log(data);
+      console.log(error);
+
+      if (error) {
+        throw error;
+      }
+
+      console.log("Player data updated successfully:", data);
+    } catch (error) {
+      console.error("Error saving to Supabase:", error);
     }
   };
 
   return (
     <div className="profile">
       <h2>Profile</h2>
-      <button onClick={handleSignOut}>Sign Out</button>
+      <Button onClick={handleSignOut}>Sign Out</Button>
+      <Button onClick={handleSaveToSupabase}>Save to Supabase</Button>
     </div>
   );
 };
 
 export default Profile;
- 

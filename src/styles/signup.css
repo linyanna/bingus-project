@@ -1,4 +1,12 @@
 .signup {
+    margin-top: 6%;
     display: flex;
-    justify-content: center;
+    justify-content: center ;
+    background-color: #575757;
+    width: fit-content;
+    padding: 20px 50px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px; 
 }
