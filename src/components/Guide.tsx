@@ -1,19 +1,25 @@
-import Collapsible from "./Collapsible/Collapsible";
+import Collapsible from "./Collapsible";
 
 function Guide() {
     return (
     <div className="Guide">
-        <Collapsible label = "Introduction">
-            <h1>Prerequisite</h1>
+        <Collapsible label = "test">
             <p>
-                Helloooooooo you should prob know some SQL to play this game
+                Start editing to see some magic happen!
             </p>
         </Collapsible>
         <hr />
-        <Collapsible label = "Goals">
-            <h1>Goals</h1>
+        <Collapsible label = "test 2">
             <p>
-                This guide will teach you the basic commands of SQL to hopefully get you started!
+                Start editing to see some magic happen! Start editing to see some magic happen!
+                Start editing to see some magic happen! Start editing to see some magic happen!
+                Start editing to see some magic happen! Start editing to see some magic happen!
+            </p>
+        </Collapsible>
+        <hr />
+        <Collapsible label = "test 3">
+            <p>
+                Start editing to see some magic happen!
             </p>
         </Collapsible>
     </div>

@@ -6,6 +6,7 @@
     transform: translate(-50%, -50%);
     background-color: #D8D7D7; 
     border-top-right-radius: 20px; 
+    overflow-y: scroll;
     width: 175vh; 
     height: 75vh; 
 }
