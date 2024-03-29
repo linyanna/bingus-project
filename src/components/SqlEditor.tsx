@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { deserializeDatabaseFromLocalStorage, serializeDatabaseToLocalStorage } from "../utils/databaseUtils";
 // Sql.js config: https://github.com/sql-js/react-sqljs-demo/blob/master/src/App.js
 import initSqlJs from "sql.js";
 import sqlWasm from "../../node_modules/sql.js/dist/sql-wasm.wasm?url"; // Required to let webpack 4 know it needs to copy the wasm file to our assets
@@ -29,9 +30,7 @@ function SqlEditor() {
         console.log("Database is serialized");
         try {
           // Deserialize and use the existing database from local storage
-          const buf = new Uint8Array(JSON.parse(serializedDb));
-          const SQL = await initSqlJs({ locateFile: () => sqlWasm });
-          const sqlDb = new SQL.Database(buf);
+          const sqlDb = await deserializeDatabaseFromLocalStorage();
           setDb(sqlDb);
         } catch (error) {
           console.error("Error deserializing database:", error);
@@ -57,11 +56,10 @@ function SqlEditor() {
     fetchSqlData();
   }, []);
 
+  // Serialize and store the database in local storage whenever it changes
   useEffect(() => {
     if (db) {
-      // Serialize and store the database in local storage whenever it changes
-      const serializedDb = JSON.stringify(Array.from(db.export()));
-      localStorage.setItem("userLocalDatabase", serializedDb);
+      serializeDatabaseToLocalStorage(db);
     }
   }, [db]);
 
