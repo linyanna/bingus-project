@@ -16,7 +16,7 @@ interface DashboardProps {
 const Dashboard: React.FC<DashboardProps> = ({ activeTab }) => {
   return (
     <div className="filecontainer">
-      
+
         {activeTab === Tab.BRIEF && <Brief supabase={supabase} />}
         {activeTab === Tab.SQL && <SqlEditor />}
         {activeTab === Tab.RESULTS && <Results />}

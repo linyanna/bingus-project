@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/landingPage.css";
 import { useNavigate } from "react-router-dom";
 import FileContainer from "./FileContainer";
+import { Button } from "@/components/ui/button";
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const LandingPage: React.FC = () => {
   return (
     <FileContainer>
       <div className="tab-container">
-        <div className="tab">Welcome!</div>
+        <div className="tab font-bold text-gray-600">Welcome!</div>
       </div>
 
       <div className="Main" style={{ display: "flex" }}>
@@ -33,28 +34,26 @@ const LandingPage: React.FC = () => {
         </div>
 
         <div className="right" style={{ flex: 1 }}>
-          <div className="landing-page">
-            <div className="landing-page-content">
-              <h1>Bingus</h1>
-              <h2>The SQL Sleuth</h2> 
-              <form onSubmit={handleSubmitPlay}>
-                <button className="button">Play</button>
-              </form>
+              <h1 className="text-9xl font-extrabold text-center mb-6 mt-20 mt-24 text-gray-600">Bingus</h1>
+              <h2  className="text-7xl font-bold tracking-tight text-center mb-8 text-gray-600">The SQL Sleuth</h2>
+  
+                <form className="w-full flex justify-center" onSubmit={handleSubmitPlay}>
+                  <Button className="py-8 px-20 text-3xl mb-6 text-gray text-gray-600">Play</Button>
+                </form>
+      
 
-              <div className="buttons-container">
+              <div className="flex justify-center">
                 <form onSubmit={handleSubmitSignup}>
-                  <button className="signupbutton">Sign Up</button>
+                  <Button className="text-2xl text-gray-600" variant="link">Sign Up</Button>
                 </form>
-
-                <span className="button-text">OR</span> {/* Insert text between the buttons */}
-
+                <div className="text-gray-600 mt-2">OR</div>
                 <form onSubmit={handleSubmitLogin}>
-                  <button className="signupbutton">Login</button>
+                <Button className="text-2xl text-gray-600" variant="link">Log in</Button>
                 </form>
-              </div>
+            
             </div>
           </div>
-        </div>
+       
       </div>
     </FileContainer>
   );

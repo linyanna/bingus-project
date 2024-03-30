@@ -8,10 +8,7 @@ import { Tab } from "./Navbar";
 import Doge from '../Images/Doge.jpg';
 import Bingus from '../Images/Bingus.jpg';
 import Camp from '../Images/Camp.jpg';
-import SqlRepl from "./SqlRepl"; 
 import { useState, useEffect } from 'react';
-import { createClient } from "@supabase/supabase-js";
-import supabase from './Profile';
 import { SupabaseClient } from '@supabase/supabase-js';
 
 
