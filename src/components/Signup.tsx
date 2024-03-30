@@ -13,7 +13,7 @@ const Signup = ({ supabaseClient }: Props) => {
       <div className="tab-container">
         <div className="tab font-bold text-gray-600">Sign Up</div>
       </div>
-      <div className="signup">
+      <div className="signup mt-6">
         <Auth 
         supabaseClient={supabaseClient} 
         appearance={{ theme: ThemeSupa }} 
