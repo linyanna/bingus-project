@@ -49,7 +49,7 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className="app mt-20">
        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         {isNavbarVisible && <Navbar setActiveTab={handleSetActiveTab} />}
         <Routes>

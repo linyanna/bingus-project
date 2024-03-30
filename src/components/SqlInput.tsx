@@ -54,7 +54,7 @@ function SqlInput({ db }: { db: Database }) {
           id="sql-input"></Textarea>
       </div>
       <div>
-        <Button id="execute-sql" onClick={handleExec}>
+        <Button className="mt-5" id="execute-sql" onClick={handleExec}>
           Execute
         </Button>
       </div>
