@@ -1,0 +1,35 @@
+[
+    {
+      "labelText": "It's a beautiful day at the forest, where Ace Detective Bingus was writing his autobiography reminiscing about all the cases he had over the long five years of his career. When suddenly, he receives a call on his banana cat phone.",
+      "buttonText": ["", "Next", ""]
+    },
+    {
+      "labelText": "Search for your phone",
+      "buttonText": ["Hello", "Pull out the I am a good person card", "Cry inside"]
+    },
+    {
+      "labelText": "Hello",
+      "buttonText": ["yes", "wrong", "arcnae"]
+    },
+    {
+      "labelText": "Garfield: Are you tho",
+      "buttonText": ["yes", "no", "no"]
+    },
+    {
+      "labelText": "Garfield: fine, goodbye",
+      "buttonText": ["alrighty", "i apologize", "Ive got to go"]
+    },
+    {
+      "labelText": "Detective Gerbils: Thats It, I have cracked the case.",
+      "buttonText": ["Really?", "Who is it", "Watson?"]
+    },
+    {
+      "labelText": "Detective Gerbils: The murderer.....is Jack",
+      "buttonText": ["1", "JACK?!", "1?"]
+    },
+    {
+      "labelText": "Detective Gerbils: Thats It, I have cracked the case.",
+      "buttonText": ["", "", "1?"]
+    }
+  ]
+  

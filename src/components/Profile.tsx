@@ -11,7 +11,7 @@ if (!url || !key) {
 }
 
 const supabase = createClient(url, key);
-
+export { supabase };
 const Profile: React.FC = () => {
   const handleSignOut = async () => {
     try {
@@ -70,3 +70,4 @@ const Profile: React.FC = () => {
 };
 
 export default Profile;
+
