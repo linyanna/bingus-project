@@ -1,3 +1,7 @@
+.filecontainer {
+    overflow-y: scroll;
+}
+
 .container {
     position: absolute;
     top: 55%;

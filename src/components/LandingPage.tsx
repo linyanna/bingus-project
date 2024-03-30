@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/landingPage.css";
 import { useNavigate } from "react-router-dom";
 import FileContainer from "./FileContainer";
+import { Button } from "@/components/ui/button";
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -36,20 +37,19 @@ const LandingPage: React.FC = () => {
           <div className="landing-page">
             <div className="landing-page-content">
               <h1>Bingus</h1>
-              <h2>The SQL Sleuth</h2> 
+              <h2>The SQL Sleuth</h2>
               <form onSubmit={handleSubmitPlay}>
-                <button className="button">Play</button>
+                <Button className="button">Play</Button>
               </form>
 
               <div className="buttons-container">
                 <form onSubmit={handleSubmitSignup}>
-                  <button className="signupbutton">Sign Up</button>
+                  <Button className="signupbutton">Sign Up</Button>
                 </form>
-
-                <span className="button-text">OR</span> {/* Insert text between the buttons */}
-
+                <span className="button-text">OR</span>{" "}
+                {/* Insert text between the buttons */}
                 <form onSubmit={handleSubmitLogin}>
-                  <button className="signupbutton">Login</button>
+                  <Button className="signupbutton">Login</Button>
                 </form>
               </div>
             </div>
