@@ -22,11 +22,11 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveTab }) => {
   return (
     <div className="parent">
         <div className="navbar">
-          <a href="#" className="tab" onClick={() => handleTabClick(Tab.BRIEF)}>Brief</a>
-          <a href="#" className="tab" onClick={() => handleTabClick(Tab.SQL)}>Notebook</a>
-          <a href="#" className="tab" onClick={() => handleTabClick(Tab.RESULTS)}>Evidence</a>
-          <a href="#" className="tab" onClick={() => handleTabClick(Tab.GUIDE)}>Guide</a>
-          <a href="#" className="tab" onClick={() => handleTabClick(Tab.PROFILE)}>Profile</a>
+          <a href="#" className="tab font-bold text-gray-600" onClick={() => handleTabClick(Tab.BRIEF)}>Brief</a>
+          <a href="#" className="tab font-bold text-gray-600" onClick={() => handleTabClick(Tab.SQL)}>Notebook</a>
+          <a href="#" className="tab font-bold text-gray-600" onClick={() => handleTabClick(Tab.RESULTS)}>Evidence</a>
+          <a href="#" className="tab font-bold text-gray-600" onClick={() => handleTabClick(Tab.GUIDE)}>Guide</a>
+          <a href="#" className="tab font-bold text-gray-600" onClick={() => handleTabClick(Tab.PROFILE)}>Profile</a>
       </div>
     </div>
   );

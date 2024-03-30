@@ -1,5 +1,7 @@
-import { useState } from 'react'
-import ResultsTable from './ResultsTable';
+import { useState } from "react";
+import ResultsTable from "./ResultsTable";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 type Database = any;
 
@@ -20,22 +22,20 @@ function updateLocalStorage(database: Database) {
   }
 }
 
-
-
-function SqlRepl({ db }: { db: Database }) {
+function SqlInput({ db }: { db: Database }) {
   const [error, setError] = useState<null | string>(null);
+  const [command, setCommand] = useState<null | string>(null);
   const [results, setResults] = useState<[] | Array<string>>([]);
 
-  function exec(sql: string) {
+  function handleExec() {
     try {
       // The sql is executed synchronously on the UI thread.
       // You may want to use a web worker here instead
-      setResults(db.exec(sql)); // an array of objects is returned
+      setResults(db.exec(command)); // an array of objects is returned
       setError(null);
 
-       // Update local storage with the current database state
-       updateLocalStorage(db);
-
+      // Update local storage with the current database state
+      updateLocalStorage(db);
     } catch (err) {
       // exec throws an error when the SQL statement is invalid
       setError(err as string);
@@ -45,26 +45,34 @@ function SqlRepl({ db }: { db: Database }) {
 
   return (
     <div>
-      <h1>Bingus Mystery</h1>
-
-      <textarea
-        onChange={(e) => exec(e.target.value)}
-        placeholder="Enter some SQL. Not sure? Try “select * from clues.”"
-        cols={80} rows={10}
-      ></textarea>
+      <div>
+        <Textarea
+          onChange={(e) => setCommand(e.target.value)}
+          placeholder="Enter some SQL. Not sure? Try “select * from clues.”"
+          cols={80}
+          rows={10}
+          id="sql-input"></Textarea>
+      </div>
+      <div>
+        <Button className="mt-5" id="execute-sql" onClick={handleExec}>
+          Execute
+        </Button>
+      </div>
 
       <pre className="error">{(error || "").toString()}</pre>
 
       <pre>
         {
           // results contains one object per select statement in the query
-          (results as Array<{ columns: string[], values: any[][] }>).map(({ columns, values }, i) => (
-            <ResultsTable key={i} columns={columns} values={values} />
-          ))
+          (results as Array<{ columns: string[]; values: any[][] }>).map(
+            ({ columns, values }, i) => (
+              <ResultsTable key={i} columns={columns} values={values} />
+            )
+          )
         }
       </pre>
     </div>
   );
 }
 
-export default SqlRepl;
+export default SqlInput;
