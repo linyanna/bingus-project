@@ -1,24 +1,14 @@
 .overallContainer{
-  flex-direction: column;
-  position: fixed;
+  position: absolute;
   bottom: 150px;
-  align-items: left;
-  justify-content: left; 
-  left: 0;
+  align-items: left !important;
+  justify-content: left !important; 
+
 
 }
 .textContainer {
-  align-items: left;
-  justify-content: left; 
-  left: 0;
-
-
-
-    position: fixed;
-    bottom: 0px;
-    width: 90%;
-    
-    display: flex;
+  position: absolute;
+  width: 2vw;
   }
   .Bingus {
     margin-bottom: 50px; /*this is the margin between the text box and the buttons */
@@ -28,7 +18,6 @@
   }
 
   .label {
-  
   align-items: left;
   justify-content: left; 
   margin-left: 0;

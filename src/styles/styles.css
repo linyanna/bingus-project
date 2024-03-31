@@ -2,16 +2,23 @@
     overflow-y: scroll;
 }
 
-.container {
+/*.container {
     position: absolute;
-    top: 55%;
-    left: 50%;
-    justify-content: center;
-    transform: translate(-50%, -50%);
     background-color: #D8D7D7; 
     border-top-right-radius: 20px; 
-    width: 175vh; 
-    height: 75vh; 
+    margin-left: auto;
+    margin-right: auto;
+}*/
+
+.container {
+    position: relative !important; /* Keep the position as relative */
+    background-color: #D8D7D7; 
+    border-top-right-radius: 20px !important; 
+    justify-content: center;
+    width: 175vh !important; 
+    height: 80vh !important; 
+    margin: 0 auto !important; /* Center the filecontainer horizontally */
+    top: 7vh;
 }
 
 .tab-container {

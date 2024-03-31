@@ -6,6 +6,7 @@ import Guide from "./Guide";
 import Results from "./Results";
 import { Tab } from "./Navbar"; 
 import '../styles/dashboard.css'; 
+import '../styles/navbar.css'; 
 
 interface DashboardProps {
   activeTab: Tab; // pass the active tab as a prop
