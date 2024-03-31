@@ -80,7 +80,7 @@ const Brief: React.FC<Props> = ({ supabase }) => {
   const updateDialogue= async (dir: number) => {
     try {
       const newDialogue = dir
-      const { error: updateError } = await supabase.from("players")
+      const {} = await supabase.from("players")
       .update({ DialogueIndex: newDialogue })
       .eq('player_id', playerId);
       setCurrentDialogue(dialogues[dir])
@@ -102,7 +102,7 @@ const Brief: React.FC<Props> = ({ supabase }) => {
 //visibility of 1 is0
       updateDialogue(1)
 
-    //  setVisibility(1)
+      setVisibility(1)
 
     }
     else if(dialogueIndex === 1){
