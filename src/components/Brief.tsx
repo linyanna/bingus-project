@@ -4,7 +4,6 @@ import FileContainer from "./FileContainer";
 import dialogues from "../Dialouge/dialouge.json";
 //import { createStore } from 'redux';
 //import rootReducer from "../reducers";
-import { Tab } from "./Navbar"; 
 import Doge from '../Images/Doge.jpg';
 import Bingus from '../Images/Bingus.jpg';
 import Camp from '../Images/Camp.jpg';
@@ -15,14 +14,12 @@ import { SupabaseClient } from '@supabase/supabase-js';
 interface Props {
   supabase: SupabaseClient;
 }
-interface DiaIndex {
-  name: string;
-}
+
 
 
 const Brief: React.FC<Props> = ({ supabase }) => {
-  const [campVisibility, setCampVisibility] = useState<boolean>(true);
-  const [bingusVisibility, setBingusVisibility] = useState<boolean>(true); 
+ // const [campVisibility, setCampVisibility] = useState<boolean>(true);
+ // const [bingusVisibility, setBingusVisibility] = useState<boolean>(true); 
   const [visibility, setVisibility] = useState<number>(1);
 
   //visibiility 0 is hidden, 1 is visible, 2 is visible but only for one button

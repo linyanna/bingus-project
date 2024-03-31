@@ -5,7 +5,6 @@ import Guide from "./Guide";
 import Results from "./Results";
 import { Tab } from "./Navbar"; 
 import '../styles/dashboard.css'; 
-import { createClient, Session } from "@supabase/supabase-js";
 import Profile, { supabase } from './Profile';
 
 
