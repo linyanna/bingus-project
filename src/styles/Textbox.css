@@ -1,14 +1,11 @@
 .overallContainer{
   position: absolute;
-  bottom: 150px;
   align-items: left !important;
   justify-content: left !important; 
-
-
 }
-.textContainer {
-  position: absolute;
-  width: 2vw;
+
+  .textContainer {
+    position: absolute;
   }
   .Bingus {
     margin-bottom: 50px; /*this is the margin between the text box and the buttons */
@@ -18,21 +15,17 @@
   }
 
   .label {
-  align-items: left;
-  justify-content: left; 
-  margin-left: 0;
-  padding-left: 0;
-
-  
+    align-items: left;
+    justify-content: left; 
+    margin-left: 0;
+    padding-left: 0;
     background-color: #cda565; 
     border: 1px solid #131313; 
     margin-right: 20px;
-
     border-radius: 20px;
-   
     padding: 30px; 
     box-sizing: border-box; 
-    width: 7000px; 
+    width: 50vw; 
     height: 200px;
     font-family: Marker Felt;
     font-size: 20px;

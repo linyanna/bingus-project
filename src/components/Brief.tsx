@@ -79,7 +79,7 @@ const Brief: React.FC = () => {
   };
 
   return (
-    <FileContainer>
+   
       <div className="overallContainer">
         <img src={Bingus} alt="Image" className="Bingus" />
 
@@ -109,7 +109,7 @@ const Brief: React.FC = () => {
           </div>
         </div>
       </div>
-    </FileContainer>
+   
   );
 };
 
