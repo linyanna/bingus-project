@@ -15,6 +15,7 @@ interface CollapsibleProps {
 const Button = styled.button`
     background-color: #D8D7D7;
     color: black;
+    font-weight: bold;
     padding: 10px 30px;
     outline: 0;
     border: 0;
@@ -32,8 +33,10 @@ const defaultAnimationValues = {
 
 const CollapsibleWrapper = styled.div<{ open: boolean; animation: Animation }>`
     display: grid;
+    padding: 0px 40px;
     grid-template-rows: ${(props) => (props.open ? "1fr" : "0fr")};
     opacity: 0;
+    width: 50%;
     transition: all ${(props) => props.animation.duration}s
         ${(props) => props.animation.ease};
     opacity: ${(props) => (props.open ? 1 : 0)};
