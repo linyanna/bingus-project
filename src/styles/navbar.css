@@ -11,11 +11,10 @@
 
 .filecontainer {
   position: relative; /* Keep the position as relative */
-  top: 70%; /* Adjust as needed */
   background-color: #D8D7D7; 
   border-top-right-radius: 20px; 
   width: 175vh; 
-  height: 75vh; 
+  height: 80vh; 
   margin: 0 auto; /* Center the filecontainer horizontally */
 }
   
