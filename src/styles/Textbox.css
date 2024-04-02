@@ -20,11 +20,37 @@
     
     display: flex;
   }
+  .NPC2 {
+    margin-bottom: 50px; /*this is the margin between the text box and the buttons */
+    align-items: left; 
+    width: 200px; 
+    height: auto; /* aspect ratio */
+
+    position: relative;
+    z-index: 1; 
+    left: 300px; 
+    top: 20px;
+  }
   .Bingus {
     margin-bottom: 50px; /*this is the margin between the text box and the buttons */
     align-items: left; 
     width: 150px; 
     height: auto; /* aspect ratio */
+
+    position: relative;
+    top: 10px;
+    left: 20px; 
+    z-index: 1; 
+  }
+  .Camp {
+
+    align-items: right; 
+    width: 700px; 
+    height: auto;
+    top: 100px;
+
+    z-index: 0;
+
   }
 
   .label {
@@ -43,7 +69,7 @@
    
     padding: 30px; 
     box-sizing: border-box; 
-    width: 7000px; 
+    width: 800px; 
     height: 200px;
     font-family: Marker Felt;
     font-size: 20px;
