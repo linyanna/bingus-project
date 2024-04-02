@@ -44,7 +44,28 @@
     text-align: center;
 }
 
-
 .tab:last-child {
     margin-left: 0; 
+}
+
+.code-snippet {
+    color: #464646;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: large;
+}
+
+.code-block {
+    border: 1px solid gray;
+    border-radius: 5%;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: large;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
 }
