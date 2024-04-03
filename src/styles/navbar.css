@@ -32,10 +32,6 @@
   margin-left: 0px;
 }
 
-.tab:last-child {
-  margin-left: 1px; 
-}
-
 .tab:hover {
   color: #7C7C7C !important;
   background-color: #D8D7D7 !important;
