@@ -3,13 +3,15 @@
 }
 
 .container {
-    position: relative;
+    position: relative !important;
     justify-content: center;
     background-color: #D8D7D7; 
-    border-top-right-radius: 20px; 
-    width: 175vh; 
+    border-top-right-radius: 20px !important;
+    justify-content: center; 
+    width: 175vh !important; 
     height: 80vh !important; 
-    margin-top: 15vh !important;
+    margin: 0 auto !important;
+    top: 7vh;
 }
 
 .tab-container {
