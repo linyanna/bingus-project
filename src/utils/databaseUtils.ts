@@ -57,3 +57,49 @@ export async function fetchTableNames(): Promise<string[]> {
     throw error;
   }
 }
+
+
+// Define the data structure to hold table schema information
+interface TableSchema {
+  name: string;
+  columns: string[];
+  types: string[];
+}
+
+// Function to fetch table schema from SQL.js database
+export const fetchTableSchemaFromSQL = async (): Promise<{ tables: TableSchema[] }> => {
+  try {
+    const SQL = await initSqlJs({ locateFile: () => sqlWasm }); // Initialize SQL.js
+    const db = await deserializeDatabaseFromLocalStorage();
+    const tableNames = await fetchTableNames(); // Fetch table names from database
+    const tables: TableSchema[] = [];
+
+    for (const tableName of tableNames) {
+
+      const columnsResult = db.exec(`PRAGMA table_info(${tableName});`);
+      if (!columnsResult || !columnsResult.length) {
+        throw new Error(`No columns found for table ${tableName}.`);
+      }
+
+      const columns: string[] = [];
+      const types: string[] = [];
+
+      columnsResult.forEach((tableColumnData: any) => {
+        // Iterate over row.values in steps of six to extract name and type
+
+        for (let i = 0; i < tableColumnData.values.length; i ++){
+            const columnName = tableColumnData.values[i][1];
+            const columnType = tableColumnData.values[i][2]; 
+            columns.push(columnName);
+            types.push(columnType);
+        }
+    });
+
+      tables.push({ name: tableName, columns, types });
+    }
+
+    return { tables };
+  } catch (error) {
+    throw new Error(`Error fetching table schema: ${error}`);
+  }
+};
