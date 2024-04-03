@@ -1,6 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 import "../styles/profile.css";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
+import Account from "./Account";
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 const key = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
@@ -62,14 +64,35 @@ const Profile: React.FC = () => {
     }
   };
 
+  // const getUserData = async () => {
+  //   try {
+  //     const { user, error } = supabase.auth.user();
+  //     if (error) {
+  //       throw error;
+  //     }
+
+  //     console.log(user);
+  //   } catch (error) {
+  //     console.error("Error getting user data:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getUserData();
+  // }, []);
+
   return (
     <div className="profile">
       <h2>Profile</h2>
-      <Button className="mt-3" onClick={handleSignOut}>Sign Out</Button>
-      <Button  className="mt-3" onClick={handleSaveToSupabase}>Save to Supabase</Button>
+      <Account />
+      <Button className="mt-3" onClick={handleSignOut}>
+        Sign Out
+      </Button>
+      <Button className="mt-3" onClick={handleSaveToSupabase}>
+        Save to Supabase
+      </Button>
     </div>
   );
 };
 
 export default Profile;
-
