@@ -2,23 +2,14 @@
     overflow-y: scroll;
 }
 
-/*.container {
-    position: absolute;
+.container {
+    position: relative;
+    justify-content: center;
     background-color: #D8D7D7; 
     border-top-right-radius: 20px; 
-    margin-left: auto;
-    margin-right: auto;
-}*/
-
-.container {
-    position: relative !important; /* Keep the position as relative */
-    background-color: #D8D7D7; 
-    border-top-right-radius: 20px !important; 
-    justify-content: center;
-    width: 175vh !important; 
+    width: 175vh; 
     height: 80vh !important; 
-    margin: 0 auto !important; /* Center the filecontainer horizontally */
-    top: 7vh;
+    margin-top: 15vh !important;
 }
 
 .tab-container {
