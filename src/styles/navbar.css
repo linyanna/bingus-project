@@ -18,20 +18,30 @@
   margin: 0 auto; /* Center the filecontainer horizontally */
 }
   
-  .tab {
-    background-color: #CACACB ;
-    margin-left: 1px; 
-    width: 200px !important;
-    height: 50px !important; 
-    border-top-left-radius: 10px; 
-    border-top-right-radius: 10px; 
-    color: #7C7C7C;
-  }
-  
-.tab-hover{
-  color: #7C7C7C !important;
+.tab {
+  background-color: #CACACB ;
+  margin-left: 1px; 
+  width: 200px !important;
+  height: 50px !important; 
+  border-top-left-radius: 10px; 
+  border-top-right-radius: 10px; 
+  color: #7C7C7C;
 }
 
-  .tab:last-child {
-    margin-left: 1px; 
+.tab:first-child {
+  margin-left: 0px;
+}
+
+.tab:hover {
+  color: #7C7C7C !important;
+  background-color: #D8D7D7 !important;
+}
+
+.tab.active {
+  color: #7C7C7C !important;
+  background-color: #D8D7D7 !important;
+}
+
+.mode-toggle {
+  margin-left: auto;
 }

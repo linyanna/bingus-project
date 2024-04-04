@@ -3,7 +3,9 @@ import { deserializeDatabaseFromLocalStorage, serializeDatabaseToLocalStorage } 
 // Sql.js config: https://github.com/sql-js/react-sqljs-demo/blob/master/src/App.js
 import initSqlJs from "sql.js";
 import sqlWasm from "../../node_modules/sql.js/dist/sql-wasm.wasm?url"; // Required to let webpack 4 know it needs to copy the wasm file to our assets
-import SqlInput from "./SqlInput";
+import SqlEditorInput from "./SqlEditorInput";
+import SqlEditorBrief from "./SqlEditorBrief";
+import SqlEditorCommands from "./SqlEditorCommands";
 import "../styles/sqlEditor.css";
 
 // Database type from sql.js
@@ -74,7 +76,13 @@ function SqlEditor() {
   else
     return (
       <div className="sqlEditor">
-        <SqlInput db={db} />
+        <div className="sqlEditor.left">
+          <SqlEditorBrief />
+          <SqlEditorCommands />
+        </div>
+        <div className="sqlEditor.right">
+          <SqlEditorInput db={db} />
+        </div>
       </div>
     );
 }
