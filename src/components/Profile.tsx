@@ -1,7 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import "../styles/profile.css";
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
 import Account from "./Account";
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
@@ -63,23 +62,6 @@ const Profile: React.FC = () => {
       console.error("Error saving to Supabase:", error);
     }
   };
-
-  // const getUserData = async () => {
-  //   try {
-  //     const { user, error } = supabase.auth.user();
-  //     if (error) {
-  //       throw error;
-  //     }
-
-  //     console.log(user);
-  //   } catch (error) {
-  //     console.error("Error getting user data:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getUserData();
-  // }, []);
 
   return (
     <div className="profile">
