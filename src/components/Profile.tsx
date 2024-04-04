@@ -14,7 +14,7 @@ if (!url || !key) {
 }
 
 const supabase = createClient(url, key);
-
+export { supabase };
 const Profile: React.FC = () => {
   const handleSignOut = async () => {
     try {
@@ -61,10 +61,11 @@ const Profile: React.FC = () => {
   return (
     <div className="profile">
       <h2>Profile</h2>
-      <Button onClick={handleSignOut}>Sign Out</Button>
-      <Button onClick={handleSaveToSupabase}>Save to Supabase</Button>
+      <Button className="mt-3" onClick={handleSignOut}>Sign Out</Button>
+      <Button  className="mt-3" onClick={handleSaveToSupabase}>Save to Supabase</Button>
     </div>
   );
 };
 
 export default Profile;
+
