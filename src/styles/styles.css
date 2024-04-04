@@ -16,8 +16,7 @@
 
 .tab-container {
     display: flex;
-    justify-content: flex-end; 
-    flex-direction: row-reverse; 
+    justify-content: flex-start;
     position: absolute;
     bottom: 100%; 
     left: 0;
@@ -35,10 +34,6 @@
     text-decoration: none; 
     font-size: 30px;
     text-align: center;
-}
-
-.tab:last-child {
-    margin-left: 0; 
 }
 
 .code-snippet {

@@ -1,8 +1,26 @@
 .sqlEditor {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 2rem;
+  color: #7C7C7C;
+
+  .left {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    background-color: antiquewhite;
+    color: #7C7C7C;
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     padding: 2rem;
     color: #7C7C7C;
+  
+  }
 }
