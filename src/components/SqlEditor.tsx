@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getLocalDatabase, getPlayerId } from "../utils/databaseUtils"; // Import function to fetch table names and schema
+import { getPlayerId } from "../utils/databaseUtils"; // Import function to fetch table names and schema
 import { deserializeDatabaseFromLocalStorage, serializeDatabaseToLocalStorage } from "../utils/databaseUtils";
 // Sql.js config: https://github.com/sql-js/react-sqljs-demo/blob/master/src/App.js
 import initSqlJs from "sql.js";

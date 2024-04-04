@@ -96,7 +96,6 @@ interface TableSchema {
 // Function to fetch table schema from SQL.js database
 export const fetchTableSchemaFromSQL = async (): Promise<{ tables: TableSchema[] }> => {
   try {
-    const SQL = await initSqlJs({ locateFile: () => sqlWasm }); // Initialize SQL.js
     const db = await deserializeDatabaseFromLocalStorage();
     const tableNames = await fetchTableNames(); // Fetch table names from database
     const tables: TableSchema[] = [];
