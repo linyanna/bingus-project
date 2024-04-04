@@ -58,6 +58,33 @@ export async function fetchTableNames(): Promise<string[]> {
   }
 }
 
+export const getPlayerId = () => {
+  try {
+    const authToken = localStorage.getItem("sb-lynhjymnmasejyhzbhwv-auth-token");
+    if (!authToken) {
+      throw new Error("Authentication token not found in local storage");
+    }
+    const user = JSON.parse(authToken).user;
+    const playerId = user.id;
+    return playerId;
+  } 
+  catch (error) {
+    console.error("Error checking user login status:", error);
+    return null;
+  }
+};
+
+export const getLocalDatabase = () => {
+  try {
+    const userLocalDatabase = localStorage.getItem("userLocalDatabase");
+    return userLocalDatabase;
+  } 
+  catch (error) {
+    console.error("Error Getting Local Databse:", error);
+    return null;
+  }
+};
+
 
 // Define the data structure to hold table schema information
 interface TableSchema {

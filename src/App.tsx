@@ -19,7 +19,7 @@ if (!url || !key) {
   );
 }
 
-const supabase = createClient(url, key);
+export const supabase = createClient(url, key);
 
 function App() {
   const location = useLocation();

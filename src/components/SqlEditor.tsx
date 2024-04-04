@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { getLocalDatabase, getPlayerId } from "../utils/databaseUtils"; // Import function to fetch table names and schema
 import { deserializeDatabaseFromLocalStorage, serializeDatabaseToLocalStorage } from "../utils/databaseUtils";
 // Sql.js config: https://github.com/sql-js/react-sqljs-demo/blob/master/src/App.js
 import initSqlJs from "sql.js";
 import sqlWasm from "../../node_modules/sql.js/dist/sql-wasm.wasm?url"; // Required to let webpack 4 know it needs to copy the wasm file to our assets
 import SqlInput from "./SqlInput";
 import "../styles/sqlEditor.css";
+import { supabase } from "../App"; // Assuming the path to App.tsx is correct
+
 
 // Database type from sql.js
 // TODO: define interface with methods
@@ -16,34 +19,52 @@ function SqlEditor() {
 
   useEffect(() => {
     const fetchSqlData = async () => {
-      // sql.js needs to fetch its wasm file, so we cannot immediately instantiate the database
-      // without any configuration, initSqlJs will fetch the wasm files directly from the same path as the js
-      // see ../craco.config.js
-      try {
-        // Check if serialized database exists in local storage
-        const serializedDb = localStorage.getItem("userLocalDatabase");
 
-      if (serializedDb) {
-        console.log("Database is serialized");
-        try {
-          // Deserialize and use the existing database from local storage
-          const sqlDb = await deserializeDatabaseFromLocalStorage();
-          setDb(sqlDb);
-        } catch (error) {
-          console.error("Error deserializing database:", error);
-          // Handle the error as needed
-        }
-      } 
-      else {
-        console.log("database is not serialized")
-          const sqlPromise = await initSqlJs({ locateFile: () => sqlWasm });
-          // Using a dummy database from: https://www.sqlitetutorial.net/sqlite-sample-database/
-          // ex table names include playlists, artists, customers
-          const dataPromise = fetch(
-            "https://lynhjymnmasejyhzbhwv.supabase.co/storage/v1/object/public/game_data/game_data.db"
-          ).then((res) => res.arrayBuffer());
-          const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
-          setDb(new SQL.Database(new Uint8Array(buf)));
+      //Try to get database from 3 locations
+      try {
+        //1) database already in local storage
+        const serializedDb = localStorage.getItem("userLocalDatabase");
+        if (serializedDb) {
+          console.log("Database is serialized");
+          try {
+            const sqlDb = await deserializeDatabaseFromLocalStorage();
+            setDb(sqlDb);
+          } catch (error) {
+            console.error("Error deserializing database:", error);
+          }
+        } 
+        else {
+          const playerId = getPlayerId();
+          //2) Fetch database from player save table
+          if (playerId) {
+            console.log("Player Logged in is: " + playerId);
+            const { data, error } = await supabase
+              .from("players")
+              .select("player_database")
+              .eq("player_id", playerId)
+              .single();
+            if (error) {
+              throw error;
+            }
+            if (data) {
+              const playerDatabase = data.player_database;
+              const SQL = await initSqlJs({ locateFile: () => sqlWasm });
+              const buf = new Uint8Array(JSON.parse(playerDatabase));
+              setDb(new SQL.Database(buf));
+            } else {
+              console.log("No player data found for playerId:", playerId);
+            }
+          } 
+          //3) Fetch database from game_data. (Start from scratch)
+          else {
+            console.log("User is not logged in, fetching from game_data.db");
+            const sqlPromise = await initSqlJs({ locateFile: () => sqlWasm });
+            const dataPromise = fetch(
+              "https://lynhjymnmasejyhzbhwv.supabase.co/storage/v1/object/public/game_data/game_data.db"
+            ).then((res) => res.arrayBuffer());
+            const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
+            setDb(new SQL.Database(new Uint8Array(buf)));
+          }
         }
       } catch (err) {
         setError(err as string);
