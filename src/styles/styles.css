@@ -2,22 +2,15 @@
     overflow-y: scroll;
 }
 
-/*.container {
-    position: absolute;
-    background-color: #D8D7D7; 
-    border-top-right-radius: 20px; 
-    margin-left: auto;
-    margin-right: auto;
-}*/
-
 .container {
-    position: relative !important; /* Keep the position as relative */
-    background-color: #D8D7D7; 
-    border-top-right-radius: 20px !important; 
+    position: relative !important;
     justify-content: center;
+    background-color: #D8D7D7; 
+    border-top-right-radius: 20px !important;
+    justify-content: center; 
     width: 175vh !important; 
     height: 80vh !important; 
-    margin: 0 auto !important; /* Center the filecontainer horizontally */
+    margin: 0 auto !important;
     top: 7vh;
 }
 

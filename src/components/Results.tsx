@@ -59,7 +59,7 @@ const Results: React.FC = () => {
   ];
 
   return (
-    <div className="container">
+    <div className="container2">
       <div className="left-side">
         {/* Title */}
         <div className="title">
