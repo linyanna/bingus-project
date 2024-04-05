@@ -12,7 +12,7 @@ import "../styles/sqlEditor.css";
 // TODO: define interface with methods
 type Database = any;
 
-function SqlEditor() {
+const SqlEditor: React.FC = () => {
   const [db, setDb] = useState<null | Database>(null);
   const [error, setError] = useState<null | string>(null);
 
