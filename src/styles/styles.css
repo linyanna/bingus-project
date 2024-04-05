@@ -3,21 +3,20 @@
 }
 
 .container {
-    position: absolute;
-    top: 55%;
-    left: 50%;
+    position: relative !important;
     justify-content: center;
-    transform: translate(-50%, -50%);
     background-color: #D8D7D7; 
-    border-top-right-radius: 20px; 
-    width: 175vh; 
-    height: 75vh; 
+    border-top-right-radius: 20px !important;
+    justify-content: center; 
+    width: 175vh !important; 
+    height: 80vh !important; 
+    margin: 0 auto !important;
+    top: 7vh;
 }
 
 .tab-container {
     display: flex;
-    justify-content: flex-end; 
-    flex-direction: row-reverse; 
+    justify-content: flex-start;
     position: absolute;
     bottom: 100%; 
     left: 0;
@@ -35,10 +34,6 @@
     text-decoration: none; 
     font-size: 30px;
     text-align: center;
-}
-
-.tab:last-child {
-    margin-left: 0; 
 }
 
 .code-snippet {
