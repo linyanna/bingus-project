@@ -1,42 +1,37 @@
 import React, { useState, useEffect } from "react";
 import CustomTable from "./CustomTable";
 import Modal from "react-modal";
+import { fetchTableNames, fetchTableSchemaFromSQL } from "../utils/databaseUtils"; // Import function to fetch table names and schema
 import "../styles/results.css"; // Import the CSS file
 
 const Results: React.FC = () => {
-  // Define state variables
   const [selectedOption, setSelectedOption] = useState<string>("");
-  const [tableData, setTableData] = useState<any>({ nodes: [] }); // Initialize with empty nodes array
+  const [tableData, setTableData] = useState<any>({ nodes: [] });
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [tableSchema, setTableSchema] = useState<any>(null);
 
   useEffect(() => {
-    // Generate initial data
-    generateData(selectedOption);
-  }, [selectedOption]);
+    fetchAndPrintTableNames(); // Fetch and print table names when component mounts
+    fetchAndPrintTableSchema(); // Fetch and print table schema when component mounts
+  }, []);
 
-  const generateData = (selectedOption: string) => {
-    // Your logic to generate data dynamically based on the selected option
-    let nodes: any[] = [];
-
-    if (selectedOption === "Suspects") {
-      // Example data for Suspects
-      nodes = [
-        { name: "id", value: 'Int' },
-        { name: "Name", value: 'String' },
-        { name: "Age", value: 'Int' },
-        { name: "Occupation", value: 'String' },
-      ];
-    } else if (selectedOption === "Clues") {
-      // Example data for Clues
-      nodes = [
-        { name: "id", value: 'Int' },
-        { name: "Description", value: 'String' },
-        { name: "Location", value: 'String' },
-        { name: "Type", value: 'String' },
-      ];
+  useEffect(() => {
+    if (selectedOption && tableSchema) {
+      generateData(selectedOption, tableSchema);
     }
+  }, [selectedOption, tableSchema]);
 
-    setTableData({ nodes });
+  const generateData = (selectedOption: string, tableSchema: any) => {
+    const selectedTable = tableSchema.tables.find((table: any) => table.name === selectedOption);
+    if (selectedTable) {
+      const nodes = selectedTable.columns.map((column: string, index: number) => ({
+        name: column,
+        value: selectedTable.types[index] // Use the corresponding type from types list
+      }));
+      setTableData({ nodes });
+    } else {
+      setTableData({ nodes: [] });
+    }
   };
 
   const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -52,39 +47,50 @@ const Results: React.FC = () => {
     setModalIsOpen(false);
   };
 
-  // Define columns for the table
+  const fetchAndPrintTableNames = async () => {
+    try {
+      const tableNames = await fetchTableNames(); // Fetch table names from Supabase
+      console.log("Table Names:", tableNames); // Print table names to console
+    } catch (error) {
+      console.error("Error fetching table names:", error);
+    }
+  };
+
+  const fetchAndPrintTableSchema = async () => {
+    try {
+      const tableSchema = await fetchTableSchemaFromSQL(); // Fetch table schema from SQL.js database
+      console.log("Table Schema:", tableSchema); // Print table schema to console
+      setTableSchema(tableSchema);
+    } catch (error) {
+      console.error("Error fetching table schema:", error);
+    }
+  };
+
   const COLUMNS = [
     { label: "Name", renderCell: (item: any) => item.name },
     { label: "Value", renderCell: (item: any) => item.value },
   ];
 
   return (
-    <div className="container2">
+    <div className="container">
       <div className="left-side">
-        {/* Title */}
         <div className="title">
           <h2>{selectedOption ? `${selectedOption}` : "No Option Selected"}</h2>
         </div>
-
-        {/* Table */}
         <div className="table-container">
-          {/* Use CustomTable component */}
           <CustomTable columns={COLUMNS} data={tableData}/>
         </div>
       </div>
-
-      {/* Right side */}
       <div className="right-side">
         <div className="dropdown-container">
-          {/* Dropdown */}
           <select className="dropdown" value={selectedOption} onChange={handleDropdownChange}>
             <option value="">Select Option</option>
-            <option value="Suspects">Suspects</option>
-            <option value="Clues">Clues</option>
+            {tableSchema && tableSchema.tables.map((table: any) => (
+              <option key={table.name} value={table.name}>{table.name}</option>
+            ))}
           </select>
         </div>
         <div className="static-picture">
-          {/* Placeholder Image Will be an expandable image for the initial database schema*/}
           <img src="https://via.placeholder.com/300x200" alt="Static Picture" onClick={openModal} />
           <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
             <img src="https://via.placeholder.com/600x400" alt="Expanded Picture" />
