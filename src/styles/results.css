@@ -1,5 +1,5 @@
 /* Container */
-.container2 {
+.container {
   display: flex;
   height: 100%;
 }
@@ -17,6 +17,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 40px; 
+  color: black; 
+  text-transform: capitalize; 
 }
 
 .left-side .table-container {
@@ -53,6 +56,8 @@
 .right-side .dropdown {
   width: 40%;
   height: 50%;
+  color: black; 
+  text-transform: capitalize; 
 }
 
 .right-side .static-picture-container {

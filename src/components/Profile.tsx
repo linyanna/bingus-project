@@ -1,6 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 import "../styles/profile.css";
 import { Button } from "@/components/ui/button";
+import { getLocalDatabase, getPlayerId } from "../utils/databaseUtils"; // Import function to fetch table names and schema
+
 import Account from "./Account";
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
@@ -28,17 +30,10 @@ const Profile: React.FC = () => {
 
   const handleSaveToSupabase = async () => {
     try {
-      const userLocalDatabase = localStorage.getItem("userLocalDatabase");
-      const authToken = localStorage.getItem(
-        "sb-lynhjymnmasejyhzbhwv-auth-token"
-      );
-      if (!authToken) {
-        throw new Error("Authentication token not found in local storage");
-      }
-      const user = JSON.parse(authToken).user;
-      const playerId = user.id;
+      
+      const playerId = getPlayerId();
+      const userLocalDatabase = getLocalDatabase();
       console.log(playerId);
-      console.log(userLocalDatabase);
 
       if (!userLocalDatabase) {
         throw new Error("userLocalDatabase is not available in local storage");
@@ -56,9 +51,10 @@ const Profile: React.FC = () => {
       if (error) {
         throw error;
       }
-
       console.log("Player data updated successfully:", data);
-    } catch (error) {
+    }
+
+    catch (error) {
       console.error("Error saving to Supabase:", error);
     }
   };
