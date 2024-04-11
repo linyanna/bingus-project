@@ -1,5 +1,7 @@
 import initSqlJs from "sql.js";
 import sqlWasm from "../../node_modules/sql.js/dist/sql-wasm.wasm?url"; // Required to let webpack 4 know it needs to copy the wasm file to our assets
+import { supabase } from "../App"; // Assuming the path to App.tsx is correct
+type Database = any;
 
 // Function to serialize the database and save it to local storage
 export function serializeDatabaseToLocalStorage(db: any): void {
@@ -138,3 +140,50 @@ export async function createDatabaseFromBucket() {
   const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
   return new SQL.Database(new Uint8Array(buf));
 }
+
+
+export const fetchSqlData = async (setDb: (db: null | Database) => void, setError: (error: string | null) => void) => {
+  try {
+    const serializedDb = localStorage.getItem("userLocalDatabase");
+    if (serializedDb) {
+      console.log("Database is serialized");
+      try {
+        const sqlDb = await deserializeDatabaseFromLocalStorage();
+        setDb(sqlDb);
+      } catch (error: any) {
+        console.error("Error deserializing database:", error);
+        setError(error.toString()); // Convert error to string
+      }
+    } else {
+      const playerId = getPlayerId();
+      if (playerId) {
+        console.log("Player Logged in is: " + playerId);
+        const { data, error } = await supabase
+          .from("players")
+          .select("player_database")
+          .eq("player_id", playerId)
+          .single();
+        if (error) {
+          throw error;
+        }
+        const playerDatabase = data.player_database;
+        const SQL = await initSqlJs({ locateFile: () => sqlWasm });
+        const buf = new Uint8Array(JSON.parse(playerDatabase));
+        console.log(playerDatabase)
+        if (playerDatabase === null) {
+          console.log("Supabase DB in null")
+          const db = await createDatabaseFromBucket();
+          setDb(db);
+        } else {
+          setDb(new SQL.Database(buf));
+          console.log("Player Data is not empty, setting LocalDB = SupabaseDB", playerId);
+        }
+      } else {
+        const db = await createDatabaseFromBucket();
+        setDb(db);
+      }
+    }
+  } catch (error: any) { // Specify error type as any here
+    setError(error.toString()); // Convert error to string
+  }
+};
