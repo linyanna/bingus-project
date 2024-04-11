@@ -19,7 +19,7 @@ const LandingPage: React.FC = () => {
 
   const handleSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate("/dashboard");
+    navigate("/login");
   };
 
   return (

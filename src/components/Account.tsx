@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "./Profile";
 
 const Account: React.FC = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<any>();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -23,8 +23,8 @@ const Account: React.FC = () => {
         (console.log(user),
         (
           <div>
-            <img src={user.user.user_metadata.avatar_url} />
-            <p>Email: {user.user.email}</p>
+            <img src={user.user_metadata.avatar_url} alt="User Avatar" />
+            <p>Email: {user.email}</p>
           </div>
         ))}
     </div>
