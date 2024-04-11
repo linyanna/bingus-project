@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPlayerId } from "../utils/databaseUtils"; // Import function to fetch table names and schema
-import { deserializeDatabaseFromLocalStorage, serializeDatabaseToLocalStorage } from "../utils/databaseUtils";
+import { deserializeDatabaseFromLocalStorage, serializeDatabaseToLocalStorage, createDatabaseFromBucket  } from "../utils/databaseUtils";
 // Sql.js config: https://github.com/sql-js/react-sqljs-demo/blob/master/src/App.js
 import initSqlJs from "sql.js";
 import sqlWasm from "../../node_modules/sql.js/dist/sql-wasm.wasm?url"; // Required to let webpack 4 know it needs to copy the wasm file to our assets
@@ -9,11 +9,14 @@ import SqlEditorBrief from "./SqlEditorBrief";
 import SqlEditorCommands from "./SqlEditorCommands";
 import "../styles/sqlEditor.css";
 import { supabase } from "../App"; // Assuming the path to App.tsx is correct
+import { create } from "domain";
 
 
 // Database type from sql.js
 // TODO: define interface with methods
 type Database = any;
+
+
 
 function SqlEditor() {
   const [db, setDb] = useState<null | Database>(null);
@@ -47,25 +50,26 @@ function SqlEditor() {
               .single();
             if (error) {
               throw error;
+            }  
+            const playerDatabase = data.player_database;
+            const SQL = await initSqlJs({ locateFile: () => sqlWasm });
+            const buf = new Uint8Array(JSON.parse(playerDatabase));
+            console.log(playerDatabase)
+            if (playerDatabase === null){
+              console.log("Supabase DB in null")
+              const db = await createDatabaseFromBucket();
+              setDb(db);
+              
             }
-            if (data) {
-              const playerDatabase = data.player_database;
-              const SQL = await initSqlJs({ locateFile: () => sqlWasm });
-              const buf = new Uint8Array(JSON.parse(playerDatabase));
+            else {
               setDb(new SQL.Database(buf));
-            } else {
-              console.log("No player data found for playerId:", playerId);
+              console.log("Player Data is not empty, setting LocalDB = SupabaseDB", playerId);
             }
           } 
           //3) Fetch database from game_data. (Start from scratch)
           else {
-            console.log("User is not logged in, fetching from game_data.db");
-            const sqlPromise = await initSqlJs({ locateFile: () => sqlWasm });
-            const dataPromise = fetch(
-              "https://lynhjymnmasejyhzbhwv.supabase.co/storage/v1/object/public/game_data/game_data.db"
-            ).then((res) => res.arrayBuffer());
-            const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
-            setDb(new SQL.Database(new Uint8Array(buf)));
+            const db = await createDatabaseFromBucket();
+            setDb(db);
           }
         }
       } catch (err) {
@@ -75,7 +79,9 @@ function SqlEditor() {
     fetchSqlData();
   }, []);
 
-  // Serialize and store the database in local storage whenever it changes
+
+  
+
   // Serialize and store the database in local storage whenever it changes
   useEffect(() => {
     if (db) {

@@ -129,3 +129,12 @@ export const fetchTableSchemaFromSQL = async (): Promise<{ tables: TableSchema[]
     throw new Error(`Error fetching table schema: ${error}`);
   }
 };
+
+export async function createDatabaseFromBucket() {
+  const sqlPromise = await initSqlJs({ locateFile: () => sqlWasm });
+  const dataPromise = fetch(
+    "https://lynhjymnmasejyhzbhwv.supabase.co/storage/v1/object/public/game_data/game_data.db"
+  ).then((res) => res.arrayBuffer());
+  const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
+  return new SQL.Database(new Uint8Array(buf));
+}
