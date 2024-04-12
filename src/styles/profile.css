@@ -3,9 +3,9 @@
     flex-direction: column;
     padding: 2rem;
     color: #7C7C7C;
-  
     width: 50vw;
     margin: 0 auto;
+   
 }
 
 .metadata {
@@ -33,5 +33,7 @@
   }
   
   .button{
-    width:150px;
+    width:250px;
+    position: relative; /* Allows positioning relative to its normal position */
+    top: -100px; /* Adjust this value to move the buttons up or down */
   }
