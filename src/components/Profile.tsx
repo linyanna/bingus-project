@@ -61,13 +61,12 @@ const Profile: React.FC = () => {
 
   return (
     <div className="profile">
-      <h2>Profile</h2>
       <Account />
-      <Button className="mt-3" onClick={handleSignOut}>
+      <Button className="button mt-3" onClick={handleSignOut}>
         Sign Out
       </Button>
-      <Button className="mt-3" onClick={handleSaveToSupabase}>
-        Save to Supabase
+      <Button className="button mt-3" onClick={handleSaveToSupabase}>
+        Save game
       </Button>
     </div>
   );

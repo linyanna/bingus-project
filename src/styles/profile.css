@@ -1,8 +1,37 @@
 .profile{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 2rem;
     color: #7C7C7C;
+  
+    width: 50vw;
+    margin: 0 auto;
 }
+
+.metadata {
+    display: flex;
+ 
+  }
+  
+  .profile-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: flex-start;
+    gap: 1rem; 
+
+  }
+  
+  .avatar {
+    width: 250px; 
+    height: 250px; 
+  }
+  
+  .avatar-placeholder {
+    width: 250px; 
+    height: 250px; 
+    background-color: rgb(71, 89, 107);
+  }
+  
+  .button{
+    width:150px;
+  }
