@@ -10,6 +10,34 @@ const Results: React.FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [tableSchema, setTableSchema] = useState<any>(null);
 
+  const [stringList, setStringList] = useState<string[]>([]);
+  const [integerRange, setIntegerRange] = useState<number>(5);
+
+  useEffect(() => {
+    updateStringList(integerRange);
+  }, [integerRange]);
+
+  const updateStringList = (range: number) => {
+    const newStringList = generateStringList(range);
+    setStringList(newStringList);
+  }
+
+  const generateStringList = (intRange: number) => {
+    const stringLists = [];
+    for (let i = 1; i <= intRange; i++) {
+      const strings = [];
+      if (i >= 1) {
+        strings.push("Clues", "Suspects", "Inventory");
+      }
+      if (i >= 2) {
+        strings.push("Location", "Police_List");
+      }
+      // Add more conditions for each integer increase if needed
+      stringLists.push(strings);
+    }
+    return stringLists.flat(); // Flatten the array of arrays
+  }
+
   useEffect(() => {
     fetchAndPrintTableNames(); // Fetch and print table names when component mounts
     fetchAndPrintTableSchema(); // Fetch and print table schema when component mounts
@@ -85,9 +113,14 @@ const Results: React.FC = () => {
         <div className="dropdown-container">
           <select className="dropdown" value={selectedOption} onChange={handleDropdownChange}>
             <option value="">Select Option</option>
-            {tableSchema && tableSchema.tables.map((table: any) => (
-              <option key={table.name} value={table.name}>{table.name}</option>
-            ))}
+            {tableSchema && tableSchema.tables
+              .filter((table: any) => {
+                // Check if table name is equal to any string in the list
+                return stringList.includes(table.name);
+              })
+              .map((table: any) => (
+                <option key={table.name} value={table.name}>{table.name}</option>
+              ))}
           </select>
         </div>
         <div className="static-picture">
