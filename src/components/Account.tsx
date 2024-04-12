@@ -5,13 +5,20 @@ import { Label } from "@/components/ui/label";
 import { PasswordInput } from "@/components/PasswordInput";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Terminal } from "lucide-react";
+
 
 const Account: React.FC = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [user, setUser] = useState<any>();
   const [newEmail, setNewEmail] = useState("");
+  const [user, setUser] = useState<any>();
+  const [passwordSuccessMessage, setPasswordSuccessMessage] = useState("");
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+  const [emailSuccessMessage, setEmailSuccessMessage] = useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = useState("");
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -26,33 +33,37 @@ const Account: React.FC = () => {
     fetchUser();
   }, []);
 
-  const updateEmail = async () => {
-    try {
-      const {  error } = await supabase.auth.updateUser({
-        email: newEmail,
-      });
-      if (error) {
-        console.error("Error updating email:", error.message);
-        return;
-      }
-      console.log("Email updated successfully!");
-    } catch (error) {
-      console.error("Unexpected error:", error);
-    }
-  };
-
   const updatePassword = async () => {
     try {
       const { error } = await supabase.auth.updateUser({
         password: newPassword,
       });
       if (error) {
-        console.error("Error updating password:", error.message, newPassword);
+        console.error("Error updating password:", error.message);
+        setPasswordErrorMessage("Error updating password. Please try again.");
         return;
       }
-      console.log("Password updated successfully!");
+      setPasswordSuccessMessage("Password updated successfully!");
     } catch (error) {
       console.error("Unexpected error:", error);
+      setPasswordErrorMessage("Unexpected error occurred. Please try again.");
+    }
+  };
+
+  const updateEmail = async () => {
+    try {
+      const { error } = await supabase.auth.updateUser({
+        email: newEmail,
+      });
+      if (error) {
+        console.error("Error updating email:", error.message);
+        setEmailErrorMessage("Error updating email. Please try again.");
+        return;
+      }
+      setEmailSuccessMessage("Email updated successfully!");
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      setEmailErrorMessage("Unexpected error occurred. Please try again.");
     }
   };
 
@@ -60,6 +71,32 @@ const Account: React.FC = () => {
     <div className="metadata">
       {user && (
         <div className="profile-content">
+            {passwordSuccessMessage && (
+            <Alert className="my-4">
+              <AlertTitle>Success!</AlertTitle>
+              <AlertDescription>{passwordSuccessMessage}</AlertDescription>
+            </Alert>
+          )}
+          {passwordErrorMessage && (
+            <Alert  className="my-4">
+              <AlertTitle>Error!</AlertTitle>
+              <AlertDescription>{passwordErrorMessage}</AlertDescription>
+            </Alert>
+          )}
+
+          {emailSuccessMessage && (
+            <Alert  className="my-4">
+              <AlertTitle>Success!</AlertTitle>
+              <AlertDescription>{emailSuccessMessage}</AlertDescription>
+            </Alert>
+          )}
+          {emailErrorMessage && (
+            <Alert className="my-4">
+              <AlertTitle>Error!</AlertTitle>
+              <AlertDescription>{emailErrorMessage}</AlertDescription>
+            </Alert>
+          )}
+
           {user.user_metadata && user.user_metadata.avatar_url ? (
             <img src={user.user_metadata.avatar_url} alt="User Avatar" className="avatar" />
           ) : (
