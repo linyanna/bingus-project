@@ -68,35 +68,11 @@ const Account: React.FC = () => {
   };
 
   return (
+    <div className="bigcontainer">
     <div className="metadata">
       {user && (
         <div className="profile-content">
-            {passwordSuccessMessage && (
-            <Alert className="my-4">
-              <AlertTitle>Success!</AlertTitle>
-              <AlertDescription>{passwordSuccessMessage}</AlertDescription>
-            </Alert>
-          )}
-          {passwordErrorMessage && (
-            <Alert  className="my-4">
-              <AlertTitle>Error!</AlertTitle>
-              <AlertDescription>{passwordErrorMessage}</AlertDescription>
-            </Alert>
-          )}
-
-          {emailSuccessMessage && (
-            <Alert  className="my-4">
-              <AlertTitle>Success!</AlertTitle>
-              <AlertDescription>{emailSuccessMessage}</AlertDescription>
-            </Alert>
-          )}
-          {emailErrorMessage && (
-            <Alert className="my-4">
-              <AlertTitle>Error!</AlertTitle>
-              <AlertDescription>{emailErrorMessage}</AlertDescription>
-            </Alert>
-          )}
-
+          
           {user.user_metadata && user.user_metadata.avatar_url ? (
             <img src={user.user_metadata.avatar_url} alt="User Avatar" className="avatar" />
           ) : (
@@ -117,7 +93,6 @@ const Account: React.FC = () => {
 
             <Separator className="my-4" />
 
-            {/* Password fields */}
             <div className="space">
               <div>
                 <Label htmlFor="current_password">Current Password</Label>
@@ -153,6 +128,35 @@ const Account: React.FC = () => {
           </div>
         </div>
       )}
+
+    </div>
+          <div className="alerts">
+            {passwordSuccessMessage && (
+            <Alert className="my-4">
+              <AlertTitle>Success!</AlertTitle>
+              <AlertDescription>{passwordSuccessMessage}</AlertDescription>
+            </Alert>
+          )}
+          {passwordErrorMessage && (
+            <Alert  className="my-4">
+              <AlertTitle>Error!</AlertTitle>
+              <AlertDescription>{passwordErrorMessage}</AlertDescription>
+            </Alert>
+          )}
+
+          {emailSuccessMessage && (
+            <Alert  className="my-4">
+              <AlertTitle>Success!</AlertTitle>
+              <AlertDescription>{emailSuccessMessage}</AlertDescription>
+            </Alert>
+          )}
+          {emailErrorMessage && (
+            <Alert className="my-4">
+              <AlertTitle>Error!</AlertTitle>
+              <AlertDescription>{emailErrorMessage}</AlertDescription>
+            </Alert>
+          )}
+      </div>
     </div>
   );
 };

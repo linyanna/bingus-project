@@ -32,8 +32,6 @@
     background-color: rgb(71, 89, 107);
   }
   
-  .button{
-    width:250px;
-    position: relative; /* Allows positioning relative to its normal position */
-    top: -100px; /* Adjust this value to move the buttons up or down */
-  }
+
+
+ 
