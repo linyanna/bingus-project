@@ -3,7 +3,6 @@ import "../styles/profile.css";
 import { Button } from "@/components/ui/button";
 import { getLocalDatabase, getPlayerId } from "../utils/databaseUtils"; // Import function to fetch table names and schema
 
-
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 const key = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
 

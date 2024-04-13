@@ -11,7 +11,7 @@ const Results: React.FC = () => {
   const [tableSchema, setTableSchema] = useState<any>(null);
 
   const [stringList, setStringList] = useState<string[]>([]);
-  const [integerRange, setIntegerRange] = useState<number>(5);
+  const [integerRange, setIntegerRange] = useState<number>(1);
 
   useEffect(() => {
     updateStringList(integerRange);
@@ -27,20 +27,20 @@ const Results: React.FC = () => {
     for (let i = 1; i <= intRange; i++) {
       const strings = [];
       if (i >= 1) {
-        strings.push("Clues", "Suspects", "Inventory");
+        strings.push("Clues", "SUSPECT", "INVENTORY");
       }
       if (i >= 2) {
         strings.push("Location", "Police_List");
       }
-      // Add more conditions for each integer increase if needed
+      
       stringLists.push(strings);
     }
     return stringLists.flat(); // Flatten the array of arrays
   }
 
   useEffect(() => {
-    fetchAndPrintTableNames(); // Fetch and print table names when component mounts
-    fetchAndPrintTableSchema(); // Fetch and print table schema when component mounts
+    fetchAndPrintTableNames(); 
+    fetchAndPrintTableSchema(); 
   }, []);
 
   useEffect(() => {
@@ -79,6 +79,7 @@ const Results: React.FC = () => {
     try {
       const tableNames = await fetchTableNames(); // Fetch table names from Supabase
       console.log("Table Names:", tableNames); // Print table names to console
+      console.log("Available Tables:" + stringList);
     } catch (error) {
       console.error("Error fetching table names:", error);
     }
@@ -115,12 +116,16 @@ const Results: React.FC = () => {
             <option value="">Select Option</option>
             {tableSchema && tableSchema.tables
               .filter((table: any) => {
-                // Check if table name is equal to any string in the list
-                return stringList.includes(table.name);
+                // Convert table name and stringList items to lowercase for case-insensitive comparison
+                const lowercaseTableName = table.name.toLowerCase();
+                const lowercaseStringList = stringList.map((str: string) => str.toLowerCase());
+                // Check if lowercase table name is equal to any string in the lowercase stringList
+                return lowercaseStringList.includes(lowercaseTableName);
               })
               .map((table: any) => (
                 <option key={table.name} value={table.name}>{table.name}</option>
-              ))}
+              ))
+            }
           </select>
         </div>
         <div className="static-picture">
