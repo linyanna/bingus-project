@@ -1,4 +1,4 @@
-import  {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { createClient, Session } from "@supabase/supabase-js";
 import LandingPage from "./components/LandingPage";
@@ -19,7 +19,7 @@ if (!url || !key) {
   );
 }
 
-const supabase = createClient(url, key);
+export const supabase = createClient(url, key);
 
 function App() {
   const location = useLocation();
@@ -50,25 +50,44 @@ function App() {
 
   return (
     <div className="app mt-20">
-       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         {isNavbarVisible && <Navbar setActiveTab={handleSetActiveTab} />}
+
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route
             path="/dashboard"
-            element={session ? <Dashboard activeTab={activeTab} /> : <Navigate to="/login" />}
+            element={
+              session ? (
+                <Dashboard activeTab={activeTab} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
           />
           <Route
             path="/signup"
-            element={session ? <Navigate to="/dashboard" /> : <Signup supabaseClient={supabase} />}
+            element={
+              session ? (
+                <Navigate to="/dashboard" />
+              ) : (
+                <Signup supabaseClient={supabase} />
+              )
+            }
           />
           <Route
             path="/login"
-            element={session ? <Navigate to="/dashboard" /> : <Login supabaseClient={supabase} />}
+            element={
+              session ? (
+                <Navigate to="/dashboard" />
+              ) : (
+                <Login supabaseClient={supabase} />
+              )
+            }
           />
           <Route path="*">"404 Not Found"</Route>
         </Routes>
-        </ThemeProvider>
+      </ThemeProvider>
     </div>
   );
 }
