@@ -58,7 +58,7 @@ function App() {
           <Route
             path="/dashboard"
             element={
-                <Dashboard activeTab={activeTab} />
+                <Dashboard activeTab={activeTab} supabase={supabase} setActiveTab={setActiveTab} />
             }
           />
           <Route
