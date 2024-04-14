@@ -10,12 +10,9 @@ import Camp from '../Images/Camp.jpg';
 import { useState, useEffect } from 'react';
 import { SupabaseClient } from '@supabase/supabase-js';
 
-
 interface Props {
   supabase: SupabaseClient;
 }
-
-
 
 const Brief: React.FC<Props> = ({ supabase }) => {
  // const [campVisibility, setCampVisibility] = useState<boolean>(true);
@@ -25,13 +22,15 @@ const Brief: React.FC<Props> = ({ supabase }) => {
   //visibiility 0 is hidden, 1 is visible, 2 is visible but only for one button
 
   
-
-    let authToken = localStorage.getItem("sb-lynhjymnmasejyhzbhwv-auth-token");
-  if (!authToken) {
-    throw new Error("Authentication token not found in local storage");
-  }
-  const user = JSON.parse(authToken).user;
-  const playerId = user.id;
+      //const userLocalDatabase = localStorage.getItem("userLocalDatabase");
+      const authToken = localStorage.getItem(
+        "sb-lynhjymnmasejyhzbhwv-auth-token"
+      );
+      if (!authToken) {
+        throw new Error("Authentication token not found in local storage");
+      }
+      const user = JSON.parse(authToken).user;
+      const playerId = user.id;
   
   /*      const { data, error } = await supabase
         .from("players")
@@ -73,7 +72,7 @@ const Brief: React.FC<Props> = ({ supabase }) => {
    
         return data?.DialogueIndex
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error: no dialgoue", error);
     }
 
   }
@@ -168,8 +167,7 @@ const Brief: React.FC<Props> = ({ supabase }) => {
             {buttonText}
           </button>
         ))}
-    
-
+  
       </div>
     </div>
   </div>
