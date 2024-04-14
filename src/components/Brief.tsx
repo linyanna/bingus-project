@@ -31,11 +31,12 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
   // const [currentDialogue, setCurrentDialogue] = useState<Dialogue>(dialogues[0]);
   const [dialogueIndex, setDialogueIndex] = useState<number>(0);
   const authToken = localStorage.getItem("sb-lynhjymnmasejyhzbhwv-auth-token");
-      if (!authToken) {
-        throw new Error("Authentication token not found in local storage");
-      }
-      const user = JSON.parse(authToken).user;
-      const playerId = user.id;
+  if (!authToken) {
+    throw new Error("Authentication token not found in local storage");
+  }
+  const user = JSON.parse(authToken).user;
+  const playerId = user.id;
+
   
   /*      const { data, error } = await supabase
         .from("players")
@@ -44,33 +45,34 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
 
 
 
-  useEffect(() => {
-    //use effect hook to fetch data from the database
-    async function fetchData() {
-      try {
-        // const currentDialogueIndex = await getDialouge();
-        // const currentDialogue = dialogues[currentDialogueIndex];
-        // setCurrentDialogue(currentDialogue);
-        setDialogueIndex(await getDialogueIndex());
-      } catch (error) {
-        console.error("Error fetching dialogue:", error);
-      }
-    }
-    fetchData();
-  }, []);
+        useEffect(() => {
+          //use effect hook to fetch data from the database
+          async function fetchData() {
+            try {
+              // const currentDialogueIndex = await getDialouge();
+              // const currentDialogue = dialogues[currentDialogueIndex];
+              // setCurrentDialogue(currentDialogue);
+              setDialogueIndex(await getDialogueIndex());
+            } catch (error) {
+              console.error("Error fetching dialogue:", error);
+            }
+          }
+          fetchData();
+        }, []);
+      
 
-  async function getDialogueIndex() {
-    try {
-      // Fetch dialogue index from Supabase database
-      const { data } = await supabase.from("players")
-        .select("DialogueIndex")
-        .eq('player_id', playerId)
-        .single();
-        return data?.DialogueIndex
-    } catch (error) {
-      console.error("Error: no dialgoue", error);
-    }
-  }
+        async function getDialogueIndex() {
+          try {
+            // Fetch dialogue index from Supabase database
+            const { data } = await supabase.from("players")
+              .select("DialogueIndex")
+              .eq('player_id', playerId)
+              .single();
+              return data?.DialogueIndex
+          } catch (error) {
+            console.error("Error:", error);
+          }
+        }
 
   const handleButtonClick = () => {
     // try {
@@ -97,7 +99,6 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
 
     }
   }
- 
   return (
     <FileContainer>
     <img src= {Camp} alt="Image" className= "Camp" />
