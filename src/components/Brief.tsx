@@ -1,10 +1,10 @@
 import '../styles/Textbox.css';
 
 import FileContainer from "./FileContainer";
-import dialogues from "../Dialouge/dialogue.json";
-import Doge from '../Images/Doge.jpg';
-import Bingus from '../Images/Bingus.jpg';
-import Camp from '../Images/Camp.jpg';
+import dialogues from "../assets/scripts/dialogue.json";
+import Doge from '../assets/images/Doge.jpg';
+import Bingus from '../assets/images/Bingus.jpg';
+import Camp from '../assets/images/Camp.jpg';
 import { useState, useEffect } from 'react';
 import { SupabaseClient } from '@supabase/supabase-js';
 
