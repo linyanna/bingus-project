@@ -31,11 +31,18 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
   // const [currentDialogue, setCurrentDialogue] = useState<Dialogue>(dialogues[0]);
   const [dialogueIndex, setDialogueIndex] = useState<number>(0);
   const authToken = localStorage.getItem("sb-lynhjymnmasejyhzbhwv-auth-token");
-  if (!authToken) {
-    throw new Error("Authentication token not found in local storage");
-  }
-  const user = JSON.parse(authToken).user;
-  const playerId = user.id;
+      if (!authToken) {
+        throw new Error("Authentication token not found in local storage");
+      }
+      const user = JSON.parse(authToken).user;
+      const playerId = user.id;
+  
+  /*      const { data, error } = await supabase
+        .from("players")
+        .update({ player_database: userLocalDatabase })
+        .eq("player_id", playerId);*/ 
+
+
 
   useEffect(() => {
     //use effect hook to fetch data from the database
@@ -61,7 +68,7 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
         .single();
         return data?.DialogueIndex
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error: no dialgoue", error);
     }
   }
 

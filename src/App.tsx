@@ -24,7 +24,7 @@ export const supabase = createClient(url, key);
 function App() {
   const location = useLocation();
   const [session, setSession] = useState<Session | null>(null);
-  const [activeTab, setActiveTab] = useState<Tab>(Tab.BRIEF); // Initialize the active tab
+  const [activeTab, setActiveTab] = useState<Tab>(Tab.RESULTS); // Initialize the active tab
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -58,11 +58,7 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              session ? (
                 <Dashboard activeTab={activeTab} supabase={supabase} setActiveTab={setActiveTab} />
-              ) : (
-                <Navigate to="/login" />
-              )
             }
           />
           <Route
