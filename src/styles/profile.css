@@ -1,12 +1,17 @@
+.profile-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .profile{
     display: flex;
     flex-direction: column;
-    padding: 2rem;
-    color: #7C7C7C;
-    width: 50vw;
-    margin: 0 auto;
-   
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin-top: 20px;
 }
+
 
 .metadata {
     display: flex;
@@ -22,7 +27,7 @@
   }
   
   .avatar {
-    width: 250px; 
+    width: 250px !important; 
     height: 250px; 
   }
   
