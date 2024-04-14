@@ -56,7 +56,7 @@ const Brief: React.FC<Props> = ({ supabase }) => {
         .single();
         return data?.DialogueIndex
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error: no dialgoue", error);
     }
   }
 
