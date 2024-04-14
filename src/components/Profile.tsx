@@ -3,6 +3,7 @@ import "../styles/profile.css";
 import { Button } from "@/components/ui/button";
 import { getLocalDatabase, getPlayerId } from "../utils/databaseUtils"; // Import function to fetch table names and schema
 
+import Account from "./Account";
 
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 const key = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
@@ -59,13 +60,18 @@ const Profile: React.FC = () => {
   };
 
   return (
-    <div className="profile">
-      <h2>Profile</h2>
-      <Button className="mt-3" onClick={handleSignOut}>Sign Out</Button>
-      <Button  className="mt-3" onClick={handleSaveToSupabase}>Save to Supabase</Button>
+    <div className="profile-container">
+      <div className="profile">
+        <Account />
+        <Button className="button mt-3" onClick={handleSignOut}>
+          Sign Out
+        </Button>
+        <Button className="button mt-3" onClick={handleSaveToSupabase}>
+          Save game
+        </Button>
+      </div>
     </div>
   );
 };
 
 export default Profile;
-
