@@ -59,7 +59,7 @@ function App() {
             path="/dashboard"
             element={
               session ? (
-                <Dashboard activeTab={activeTab} />
+                <Dashboard activeTab={activeTab} supabase={supabase} setActiveTab={setActiveTab} />
               ) : (
                 <Navigate to="/login" />
               )
