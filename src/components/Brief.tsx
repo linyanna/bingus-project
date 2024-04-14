@@ -16,14 +16,14 @@ interface Props {
 
 
 
-interface Dialogue {
+/*interface Dialogue {
   id: number;
   labelText: string;
   buttonText: string[];
   hasHintFlag: boolean;
   sqlEditorFlag: boolean;
 }
-
+*/
 
 
 

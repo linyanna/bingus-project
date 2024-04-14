@@ -4,7 +4,7 @@
     "labelText": "It's a beautiful day at the forest, where Ace Detective Bingus was writing his autobiography and reminiscing about all the cases he had over the long five years of his career. Suddenly, he receives a call on his banana cat phone.",
     "buttonText": ["Next", "", ""],
     "hasHintFlag": true,
-    "sqlEditorFlag": true
+    "sqlEditorFlag": false
   },
   {
     "id": 1.2,
@@ -16,9 +16,9 @@
   {
     "id": 1.3,
     "labelText": "Bingus: Who is this?",
-    "buttonText": ["", "", ""],
+    "buttonText": ["Next", "", ""],
     "hasHintFlag": false,
-    "sqlEditorFlag": false
+    "sqlEditorFlag": true
   },
   {
     "id": 1.4,
