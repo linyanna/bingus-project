@@ -60,14 +60,16 @@ const Profile: React.FC = () => {
   };
 
   return (
-    <div className="profile">
-      <Account />
-      <Button className="button mt-3" onClick={handleSignOut}>
-        Sign Out
-      </Button>
-      <Button className="button mt-3" onClick={handleSaveToSupabase}>
-        Save game
-      </Button>
+    <div className="profile-container">
+      <div className="profile">
+        <Account />
+        <Button className="button mt-3" onClick={handleSignOut}>
+          Sign Out
+        </Button>
+        <Button className="button mt-3" onClick={handleSaveToSupabase}>
+          Save game
+        </Button>
+      </div>
     </div>
   );
 };

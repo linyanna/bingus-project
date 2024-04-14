@@ -69,11 +69,10 @@ const Account: React.FC = () => {
   return (
     <div className="bigcontainer">
     <div className="metadata">
-      {user && (
+      {user && (console.log(user),(
         <div className="profile-content">
-          
-          {user.user_metadata && user.user_metadata.avatar_url ? (
-            <img src={user.user_metadata.avatar_url} alt="User Avatar" className="avatar" />
+          {user.user.user_metadata.avatar_url ? (
+            <img src={user.user.user_metadata.avatar_url} alt="User Avatar" className="avatar" />
           ) : (
             <div className="avatar-placeholder"></div>
           )}
@@ -126,7 +125,7 @@ const Account: React.FC = () => {
             </div>
           </div>
         </div>
-      )}
+      ))}
 
     </div>
           <div className="alerts">
