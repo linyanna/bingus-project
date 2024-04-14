@@ -36,13 +36,6 @@
     text-align: center;
 }
 
-<<<<<<< HEAD
-.tab:last-child {
-    margin-left: 0; 
-}
-
-=======
->>>>>>> cc199b975b16ef8055c08bd89651bc82a276772a
 .code-snippet {
     color: #464646;
     page-break-inside: avoid;
