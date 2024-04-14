@@ -3,6 +3,13 @@ import CustomTable from "./CustomTable";
 import Modal from "react-modal";
 import { fetchTableNames, fetchTableSchemaFromSQL } from "../utils/databaseUtils"; // Import function to fetch table names and schema
 import "../styles/results.css"; // Import the CSS file
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../components/ui/Select"
 
 const Results: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
@@ -62,11 +69,6 @@ const Results: React.FC = () => {
     }
   };
 
-  const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedOption = event.target.value;
-    setSelectedOption(selectedOption);
-  };
-
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -95,6 +97,11 @@ const Results: React.FC = () => {
     }
   };
 
+  const handleValueChange = (value: string) => {
+    console.log(value);
+    setSelectedOption(value);
+  };
+
   const COLUMNS = [
     { label: "Name", renderCell: (item: any) => item.name },
     { label: "Value", renderCell: (item: any) => item.value },
@@ -112,21 +119,21 @@ const Results: React.FC = () => {
       </div>
       <div className="right-side">
         <div className="dropdown-container">
-          <select className="dropdown" value={selectedOption} onChange={handleDropdownChange}>
-            <option value="">Select Option</option>
-            {tableSchema && tableSchema.tables
-              .filter((table: any) => {
-                // Convert table name and stringList items to lowercase for case-insensitive comparison
-                const lowercaseTableName = table.name.toLowerCase();
-                const lowercaseStringList = stringList.map((str: string) => str.toLowerCase());
-                // Check if lowercase table name is equal to any string in the lowercase stringList
-                return lowercaseStringList.includes(lowercaseTableName);
-              })
-              .map((table: any) => (
-                <option key={table.name} value={table.name}>{table.name}</option>
-              ))
-            }
-          </select>
+        <Select onValueChange={handleValueChange}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select Option" />
+          </SelectTrigger>
+          <SelectContent>
+            {tableSchema && tableSchema.tables.map((table: any) => (
+              <SelectItem
+                key={table.name}
+                value={table.name}
+              >
+                {table.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
         </div>
         <div className="static-picture">
           <img src="https://via.placeholder.com/300x200" alt="Static Picture" onClick={openModal} />
