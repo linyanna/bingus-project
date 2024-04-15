@@ -1,13 +1,11 @@
 import '../styles/Textbox.css';
-
-import FileContainer from "./FileContainer";
 import dialogues from "../assets/scripts/dialogue.json";
 import Doge from '../assets/images/Doge.jpg';
 import Bingus from '../assets/images/Bingus.jpg';
-import Camp from '../assets/images/Camp.jpg';
 import { useState, useEffect } from 'react';
 import { SupabaseClient } from '@supabase/supabase-js';
 import { Tab } from "./Navbar";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   supabase: SupabaseClient;
@@ -78,25 +76,37 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
     setDialogueIndex(dialogueIndex+1);
   }
 
+  function getImage(character?: string): string {
+    if (character === undefined) {
+      const defaultImageUrl = 'default.jpg';
+      console.error('Character is undefined.');
+      return defaultImageUrl;
+  }
+
+    const imageMap: { [key: string]: string } = {
+        'Doge': Doge,
+        'Bingus': Bingus,
+        
+    };
+    console.log(imageMap[character]);
+    return imageMap[character] || ''; 
+}
+
   return (
-    <FileContainer>
-      <img src= {Camp} alt="Image" className= "Camp" />
       <div className="overallContainer">
-          <img src= {Bingus} alt="Image" className= "Bingus" />
-          <img src= {Doge} alt="Image" className= "NPC2" />
+          <img src= {getImage(dialogues[dialogueIndex].character)} alt="Image" className= "Speaker" />
       <div className="textContainer">
         <div className="label">{dialogues[dialogueIndex].text}</div>
         <div className="button-container">
           {dialogues[dialogueIndex] && dialogues[dialogueIndex].responseOptions.map((buttonText: string, i: number) => (
             //each button has a key prop set to the index of the button in the array
-            <button key={i} className="dialogue" type="submit" onClick={() => handleButtonClick()}>
+            <Button key={i} className="dialogue" type="submit" onClick={() => handleButtonClick()}>
               {buttonText}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
     </div>
-  </FileContainer>
   );
 };
 

@@ -7,7 +7,7 @@ interface FileContainerProps {
 
   const FileContainer: React.FC<FileContainerProps> = ({ children }) => {
   return (
-    <div className="container">
+    <div className="container56">
       {children}
     </div>
   );
