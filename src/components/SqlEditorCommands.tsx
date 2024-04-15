@@ -1,4 +1,4 @@
-function SqlEditorCommands() {
+const SqlEditorCommands: React.FC = () => {
   return (
     <div>
       <p>SQL Editor Commands</p>
