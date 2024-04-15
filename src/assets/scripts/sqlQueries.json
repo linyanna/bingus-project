@@ -14,14 +14,14 @@
     "answers": []
   },
   {
-    "id": 2.5,
+    "id": 2.4,
     "nextDialogueId": 3.0,
     "briefDirection": "Investigate the suspects table and look for clues relating to “poptarts” or “rainbows.",
     "queries": ["SELECT * FROM suspects WHERE notes=”poptarts” OR notes=”rainbow”;"],
     "answers": []
   },
   {
-    "id": 3.5,
+    "id": 3.3,
     "nextDialogueId": 4.0,
     "briefDirection": "Use the suspects table acquired from Doge to check for Meowfia associations.",
     "queries": ["SELECT * FROM suspects WHERE notes=”meowfia”;"],
@@ -34,10 +34,4 @@
     "queries": ["SELECT * FROM inventory;","SELECT type FROM inventory WHERE type=”phone”;"],
     "answers": []
   },
-  {
-    "id": 1.0,
-    "briefDirection": "Check supermarket table for when it gets its pop tart shipment",
-    "queries": ["SELECT item, shipmentTime FROM supermarket WHERE item =”pop tart”;"],
-    "answers": []
-  }
 ]

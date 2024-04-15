@@ -2,7 +2,7 @@
   {
     "id": 0.0,
     "character": "Narrator",
-    "labelText": "Welcome to Bingus The SQL Sleuth. In this interactive story, you will play as Detective Bingus, a cat detective with a knack for solving crimes using the power of SQL-deduction. If you're ready to begin, hit the 'Next' button to start the story.",
+    "text": "Welcome to Bingus The SQL Sleuth. In this interactive story, you will play as Detective Bingus, a cat detective with a knack for solving crimes using the power of SQL-deduction. If you're ready to begin, hit the 'Next' button to start the story.",
     "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
@@ -10,7 +10,7 @@
   {
     "id": 1.0,
     "character": "Narrator",
-    "labelText": "It's a beautiful day at the forest, where Ace Detective Bingus was writing his autobiography and reminiscing about all the cases he had over the long five years of his career. Suddenly, he receives a call on his banana cat phone.",
+    "text": "It's a beautiful day at the forest, where Ace Detective Bingus was writing his autobiography and reminiscing about all the cases he had over the long five years of his career. Suddenly, he receives a call on his banana cat phone.",
     "responseOptions": ["Can't a cat get some peace and quiet around here?", "Who could be calling me at this hour?", "I wonder who this could be?"],
     "newTableInfoFlag": true,
     "sqlEditorFlag": true
@@ -19,23 +19,15 @@
     "id": 1.1,
     "character": "Mysterious voice",
     "text": "Greetings Detective Bingus.",
-    "responseOptions": [],
+    "responseOptions": ["Excuse me, I'm on PTO...", "Hello?", "Who is this?"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": 1.2,
-    "character": "Bingus",
-    "text": "Who is this?",
-    "responseOptions": [],
-    "newTableInfoFlag": false,
-    "sqlEditorFlag": false
-  },
-  {
-    "id": 1.3,
     "character": "Mysterious voice",
     "text": "Only the best pawlice officer of all time, the great Officer Doge himself!",
-    "responseOptions": [],
+    "responseOptions": ["Wow, you're a real character.", "I see...", "What can I do for you?"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -43,14 +35,14 @@
     "id": 1.4,
     "character": "Officer Doge",
     "text": "Anyway I’m calling to let you know that we have a case that’s a little out of our hands–or should I say paws? So we need you to come down to the station. *Doge hangs up.*",
-    "responseOptions": [],
+    "responseOptions": ["That was entirely abrupt.", "I wonder what this case could be about?", "I better head to the pawlice station."],
     "newTableInfoFlag": false,
     "sqlEditorFlag": true
   },
   {
     "id": 2.0,
-    "labelText": "As Bingus makes his way to the pawlice station, he sees a contingent of pawlice officers and recognizes the boisterous voice of Officer Doge.",
-    "responseOptions": [],
+    "text": "As Bingus makes his way to the pawlice station, he sees a contingent of pawlice officers and recognizes the boisterous voice of Officer Doge.",
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -58,7 +50,7 @@
     "id": 2.1,
     "character": "Bingus",
     "text": "Hello, Officer Doge.",
-    "responseOptions": [],
+    "responseOptions": ["*Tip hat*", "*Nod*", "*Reach out for a pawshake*"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -66,31 +58,23 @@
     "id": 2.2,
     "character": "Officer Doge",
     "text": "DETECTIVE BINGUS, HOW NICE OF YOU TO JOIN US!",
-    "responseOptions": [],
+    "responseOptions": ["WHY ARE WE YELLING", "What seems to be the issue here?", "What's going on?"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": 2.3,
-    "character": "Bingus",
-    "text": "What seems to be the issue here?",
-    "responseOptions": [],
+    "character": "Officer Doge",
+    "text": "We have an apparent homicide case but no leads whatsoever. We were hoping you’d be able to help us out, given your expertise on murder cases.",
+    "responseOptions": ["Right, I am a pawsome detective!", "I'm something of a detective, yes.", "Of course."],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": 2.4,
     "character": "Officer Doge",
-    "text": "We have an apparent homicide case but no leads whatsoever. We were hoping you’d be able to help us out, given your expertise on murder cases.",
-    "responseOptions": [],
-    "newTableInfoFlag": false,
-    "sqlEditorFlag": false
-  },
-  {
-    "id": 2.5,
-    "character": "Officer Doge",
     "text": "We found all these poptarts crumbs and rainbow sprinkles covering the crime scene and body. Here’s our pawlice database of suspects based on past homicides, in case it’ll help you.",
-    "responseOptions": [],
+    "responseOptions": ["Catastic!", "Thanks, appreciate it.", "I'm on it."],
     "newTableInfoFlag": true,
     "sqlEditorFlag": true
   },
@@ -98,7 +82,7 @@
     "id": 3.0,
     "character": "Narrator",
     "text": "Detective Bingus has uncovered clues that point to Nyan Cat's involvement in the murder. He returns to Officer Doge to get more information about this Nyan Cat fellow.",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -106,40 +90,23 @@
     "id": 3.1,
     "character": "Doge",
     "text": "Hmmm, yeah that’s Nyan Cat. He must be a dangerous man. 7 reports of cat burglary and 2 accounts of assault.",
-    "responseOptions": [],
+    "responseOptions": ["What a son of a cat!", "Was there any relation between Nyan Cat and the victim?", "Can you tell me about the victim?" ],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": 3.2,
-    "character": "Bingus",
-    "text": "What a son of a cat! Was there any relation between Nyan Cat and the victim?",
-    "responseOptions": ["Doge: The victim, Clementine, is an upstanding citizen from all records. She seemed to have been orphaned at a young age and lived a difficult life though."],
-    "responseOptions": [],
+    "character": "Officer Doge",
+    "text": "We're not sure. The victim, Clementine, is an upstanding citizen from all records. She seemed to have been orphaned at a young age and lived a difficult life though.",
+    "responseOptions": ["Where can I nab this Nyan Cat?", "I’m sorry to hear that. What about Nyan Cat?", "I think I’ll start the investigation by looking into the whereabouts of this Nyan Cat?"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": 3.3,
     "character": "Officer Doge",
-    "text": "The victim, Clementine, is an upstanding citizen from all records. She seemed to have been orphaned at a young age and lived a difficult life though.",
-    "responseOptions": [],
-    "newTableInfoFlag": false,
-    "sqlEditorFlag": false
-  },
-  {
-    "id": 3.4,
-    "character": "Bingus",
-    "text": "I’m sorry to hear that. I think I’ll start the investigation by looking into the whereabouts of this Nyan Cat?",
-    "responseOptions": [],
-    "newTableInfoFlag": false,
-    "sqlEditorFlag": false
-  },
-  {
-    "id": 3.5,
-    "character": "Officer Doge",
     "text": "We don’t have his location, but you could try checking that list of past homicide criminals and search for Meowfia associations.",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": true,
     "sqlEditorFlag": true
   },
@@ -147,7 +114,7 @@
     "id": 4.0,
     "character": "Narrator",
     "text": "Bingus arrives at the gym and sees dozen of denizens working out and begins to scan for the Gym Bro Momo.",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -155,7 +122,7 @@
     "id": 4.1,
     "character": "Bingus",
     "text": "Hello Momo, I am detective Bingus and I know you are with the meowfia. A cat has been murdered and I’m requesting information.",
-    "responseOptions": [],
+    "responseOptions": ["*Stares menacingly*", "*Glances around*", "*Stare blankly*"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -163,7 +130,7 @@
     "id": 4.2,
     "character": "Momo",
     "text": "Oh, uhhh, I don’t know anything about that. I’m just a gym bro, bro. If anything, you should be looking for my boss Nyan Cat. He’s the real meowfia boss man. Oh wait-. Forget I said that.",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -171,7 +138,7 @@
     "id": 4.3,
     "character": "Bingus",
     "text": "Oh don't worry at all. Also can you tell me more about this Nyan Cat fellow?",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -179,15 +146,15 @@
     "id": 4.4,
     "character": "Momo",
     "text": "I don’t know much about him, but I heard he’s been buying out all the poptarts in the city. I think he’s planning something big. Oh wait-. Forget I said that too.",
-    "responseOptions": [],
+    "responseOptions": ["*Stares blankly*", "*Wonder if Momo's alright*", "Interesting..."],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": 4.5,
     "character": "Bingus",
-    "text": "*Tips head* Alright, that's all I need to know. Thank you for your time, Momo. I’ll be sure to keep your name out of this.",
-    "responseOptions": [],
+    "text": "Alright, that's all I need to know. Thank you for your time, Momo. I’ll be sure to keep your name out of this.",
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -195,15 +162,15 @@
     "id": 4.6,
     "character": "Momo",
     "text": "*Sweats profusely* Uh oh yeah, no problem, bro. I’ll be uh here, lifting weights and stuff.",
-    "responseOptions": [],
+    "responseOptions": ["Yes, keep at that.", "Right you will.", "We'll be in touch."],
     "newTableInfoFlag": true,
     "sqlEditorFlag": true
   },
   {
     "id": 5.0,
     "character": "Narrator",
-    "text": "Bingus heads to the supermarket to arrest Nyan Cat rainbow-handed. Then, Nyan Cat is taken to the pawlice station to be interrogated.",
-    "responseOptions": [],
+    "text": "Bingus uncovers the time of the next Pop-Tart shipment and heads to the supermarket to arrest Nyan Cat rainbow-handed. Then, Nyan Cat is taken to the pawlice station to be interrogated.",
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -211,7 +178,7 @@
     "id": 5.1,
     "character": "Narrator",
     "text": "The interrogation room is dark and depressing, the only source of light emanating from a single bulb dangling overhead. Detective Bingus sits at the table across from Nyan Cat, who is slumped in his chair. Nyan Cat's eyes flick nervously as Detective Bingus begins the interrogation.",
-    "responseOptions": [],
+    "responseOptions": ["*Slams table*", "*Clears throat*", "*Stares intently*"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -219,7 +186,7 @@
     "id": 5.2,
     "character": "Bingus",
     "text": "Nyan Cat, let's cut to the chase. You were caught rainbow-handed trying to cause an economic disaster through a Pop-Tart shortage. But what I want to know is if you were involved in the murder of a fellow catizen named Clem.",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -227,7 +194,7 @@
     "id": 5.3,
     "character": "Nyan Cat",
     "text": "*shifting uncomfortably, his voice shaky* Detective Bingus, I swear on all the glorious Pop-Tarts in existence, I didn't do it! I may have a bad rap as the Meowfia Boss, but I'm innocent of this crime!",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -235,7 +202,7 @@
     "id": 5.4,
     "character": "Bingus",
     "text": "Explain why Pop-Tart crumbs littered the crime scene then. Who else could have done it if not for you, since you’ve been buying out all the Pop-Tarts in the city?",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -243,7 +210,7 @@
     "id": 5.5,
     "character": "Nyan Cat",
     "text": "[sighing heavily] Okay, okay, I'll come clean. It wasn't me who murdered Clem, it was... it was Clem himself!",
-    "responseOptions": [],
+    "responseOptions": ["WHAT?!", "Huh?", "No way!"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -251,7 +218,7 @@
     "id": 5.6,
     "character": "Detective Bingus",
     "text": "What do you mean? Clem is dead.",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -259,7 +226,7 @@
     "id": 5.5,
     "character": "Nyan Cat",
     "text": "He framed me, Detective. He saw me buying all the Pop-Tarts at the store one day, and he got furious. He threatened to expose my Pop-Tart addiction and ruin my reputation. He said he'd make sure the Meowfia would come crashing down on me. I was scared, Bingus, scared for my life! So I had to do something to protect myself.",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -267,7 +234,7 @@
     "id": 5.6,
     "character": "Detective Bingus",
     "text": "So you're saying Clem staged his own murder to frame you?",
-    "responseOptions": [],
+    "responseOptions": ["*Strokes imaginary beard*", "*Scratches beard*", "Smokes pipe*"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -275,7 +242,7 @@
     "id": 5.7,
     "character": "Nyan Cat",
     "text": "Yes! He knew about my Meowfia association, so he thought it would be easy to pin his murder on me. But I swear, I didn't lay a paw on him!",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -283,7 +250,7 @@
     "id": 5.8,
     "character": "Detective Bingus",
     "text": "*Contemplating the revelation* This changes things. But we need evidence to corroborate your story.",
-    "responseOptions": [],
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -291,15 +258,15 @@
     "id": 5.9,
     "character": "Nyan Cat",
     "text": "I understand, Detective. But I'm telling you the truth.",
-    "responseOptions": [],
+    "responseOptions": ["*Shakes head*", "*Nods*", "Whatever you say..."],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": 5.10,
     "character": "Detective Bingus",
-    "text": "*Nods* We'll see about that. For now, you're coming with me.",
-    "responseOptions": [],
+    "text": "We'll see about that. For now, you're coming with me.",
+    "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
@@ -307,7 +274,7 @@
     "id": 5.11,
     "character": "Narrator",
     "text": "Detective Bingus escorts Nyan Cat out of the interrogation room, his mind racing with the newfound information. He knows he needs to dig deeper to uncover the truth behind Clem's death and Nyan Cat's involvement.",
-    "responseOptions": [],
+    "responseOptions": ["To be continued..."],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   }
