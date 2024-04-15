@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1.1,
+    "labelText": "It's a beautiful day at the forest, where Ace Detective Bingus was writing his autobiography and reminiscing about all the cases he had over the long five years of his career. Suddenly, he receives a call on his banana cat phone.",
+    "buttonText": ["Next", "", ""],
+    "hasHintFlag": true,
+    "sqlEditorFlag": false
+  },
+  {
+    "id": 1.2,
+    "labelText": "Mysterious voice: Greetings Detective Bingus.",
+    "buttonText": ["Next", "", ""],
+    "hasHintFlag": false,
+    "sqlEditorFlag": false
+  },
+  {
+    "id": 1.3,
+    "labelText": "Bingus: Who is this?",
+    "buttonText": ["Next", "", ""],
+    "hasHintFlag": false,
+    "sqlEditorFlag": true
+  },
+  {
+    "id": 1.4,
+    "labelText": "Officer Doge: Anyway I’m calling to let you know that we have a case that’s a little out of our hands–or should I say paws??. So we need you to come down to the station. *Doge hangs up.*",
+    "buttonText": ["Next", "", ""],
+    "hasHintFlag": false,
+    "sqlEditorFlag": false
+  },
+  {
+    "id": 1.5,
+    "labelText": "Garfield: fine, goodbye",
+    "buttonText": ["alrighty", "i apologize", "Ive got to go"],
+    "hasHintFlag": false,
+    "sqlEditorFlag": false
+  },
+  {
+    "id": 1.6,
+    "labelText": "Detective Gerbils: Thats It, I have cracked the case.",
+    "buttonText": ["Really?", "Who is it", "Watson?"],
+    "hasHintFlag": false,
+    "sqlEditorFlag": false
+  },
+  {
+    "id": 1.7,
+    "labelText": "Detective Gerbils: The murderer.....is Jack",
+    "buttonText": ["1", "JACK?!", "1?"],
+    "hasHintFlag": false,
+    "sqlEditorFlag": false
+  },
+  {
+    "id": 1.8,
+    "labelText": "Detective Gerbils: Thats It, I have cracked the case.",
+    "buttonText": ["", "", "1?"],
+    "hasHintFlag": false,
+    "sqlEditorFlag": false
+  }
+]
