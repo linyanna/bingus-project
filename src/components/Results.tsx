@@ -3,13 +3,16 @@ import { fetchTableNames, fetchTableSchemaFromSQL } from "../utils/databaseUtils
 import "../styles/results.css"; // Import the CSS file
 import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue,} from "../components/ui/Select"
 import {Dialog,DialogContent,DialogTrigger,} from "../components/ui/dialog"
-import { TableCol, columns } from "../components/Columns"
+import { columns } from "../components/Columns"
 import { DataTable } from "../components/DataTable"
 
 const Results: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [tableData, setTableData] = useState<any>({ nodes: [] });
   const [tableSchema, setTableSchema] = useState<any>(null);
+
+
+/*
 
   const [stringList, setStringList] = useState<string[]>([]);
   const [integerRange, setIntegerRange] = useState<number>(1);
@@ -38,7 +41,7 @@ const Results: React.FC = () => {
     }
     return stringLists.flat(); // Flatten the array of arrays
   }
-
+*/
   useEffect(() => {
     fetchAndPrintTableNames(); 
     fetchAndPrintTableSchema(); 
@@ -79,7 +82,6 @@ const Results: React.FC = () => {
     try {
       const tableNames = await fetchTableNames(); // Fetch table names from Supabase
       console.log("Table Names:", tableNames); // Print table names to console
-      console.log("Available Tables:" + stringList);
     } catch (error) {
       console.error("Error fetching table names:", error);
     }

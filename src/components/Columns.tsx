@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { ColumnDef } from "@tanstack/react-table"
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import { ArrowUpDown} from "lucide-react"
 
 export type TableCol = {
   id: string
