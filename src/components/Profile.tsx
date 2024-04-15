@@ -86,6 +86,18 @@ const Profile: React.FC = () => {
     navigate("/signup");
   };
 
+  const handleRestartGame = async () => {
+    try {
+      const playerId = getPlayerId();
+      await supabase.from("players")
+      .update({ DialogueIndex: 0 })
+      .eq('player_id', playerId);
+      console.log("Game restarted successfully");
+    } catch (updateError) {
+      console.error("Error:", updateError);
+    }
+  }
+
   return (
     <div className="profile-container">
       <div className="profile">
@@ -97,6 +109,9 @@ const Profile: React.FC = () => {
             </Button>
             <Button className="button mt-3" onClick={handleSaveToSupabase}>
               Save game
+            </Button>
+            <Button className="button mt-3" onClick={handleRestartGame}>
+              Restart game
             </Button>
           </>
         ) : (
