@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from "react";
-import CustomTable from "./CustomTable";
-import Modal from "react-modal";
 import { fetchTableNames, fetchTableSchemaFromSQL } from "../utils/databaseUtils"; // Import function to fetch table names and schema
 import "../styles/results.css"; // Import the CSS file
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../components/ui/Select"
+import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue,} from "../components/ui/Select"
+import {Dialog,DialogContent,DialogTrigger,} from "../components/ui/dialog"
+import { TableCol, columns } from "../components/Columns"
+import { DataTable } from "../components/DataTable"
 
 const Results: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [tableData, setTableData] = useState<any>({ nodes: [] });
-  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [tableSchema, setTableSchema] = useState<any>(null);
 
   const [stringList, setStringList] = useState<string[]>([]);
@@ -58,24 +52,28 @@ const Results: React.FC = () => {
 
   const generateData = (selectedOption: string, tableSchema: any) => {
     const selectedTable = tableSchema.tables.find((table: any) => table.name === selectedOption);
+    
     if (selectedTable) {
       const nodes = selectedTable.columns.map((column: string, index: number) => ({
         name: column,
-        value: selectedTable.types[index] // Use the corresponding type from types list
+        type: selectedTable.types[index] // Use the corresponding type from types list
       }));
-      setTableData({ nodes });
+  
+      // Convert nodes into the format expected by the DataTable component
+      const data = nodes.map((node: { name: string; type: string; }, rowIndex: number) => ({
+        id: rowIndex.toString(), // Assuming unique IDs for each row
+        ...node // Spread the node object
+      }));
+  
+      // Ensure tableData.nodes is set properly
+      setTableData({ nodes: data });
     } else {
+      // Ensure tableData.nodes is set properly even when no data is available
       setTableData({ nodes: [] });
     }
   };
-
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+  
+  
 
   const fetchAndPrintTableNames = async () => {
     try {
@@ -102,45 +100,45 @@ const Results: React.FC = () => {
     setSelectedOption(value);
   };
 
-  const COLUMNS = [
-    { label: "Name", renderCell: (item: any) => item.name },
-    { label: "Value", renderCell: (item: any) => item.value },
-  ];
-
   return (
     <div className="container">
       <div className="left-side">
         <div className="title">
           <h2>{selectedOption ? `${selectedOption}` : "No Option Selected"}</h2>
         </div>
+
         <div className="table-container">
-          <CustomTable columns={COLUMNS} data={tableData}/>
+          <DataTable columns={columns} data={tableData.nodes} />
         </div>
+
       </div>
       <div className="right-side">
         <div className="dropdown-container">
-        <Select onValueChange={handleValueChange}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select Option" />
-          </SelectTrigger>
-          <SelectContent>
-            {tableSchema && tableSchema.tables.map((table: any) => (
-              <SelectItem
-                key={table.name}
-                value={table.name}
-              >
-                {table.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+          <Select onValueChange={handleValueChange}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Select Option" />
+            </SelectTrigger>
+            <SelectContent>
+              {tableSchema && tableSchema.tables.map((table: any) => (
+                <SelectItem
+                  key={table.name}
+                  value={table.name}
+                >
+                  {table.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
         <div className="static-picture">
-          <img src="https://via.placeholder.com/300x200" alt="Static Picture" onClick={openModal} />
-          <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-            <img src="https://via.placeholder.com/600x400" alt="Expanded Picture" />
-            <button onClick={closeModal}>Close</button>
-          </Modal>
+          <Dialog>
+            <DialogTrigger>
+              <img src="https://via.placeholder.com/300x200" alt="Static Picture" />
+            </DialogTrigger>
+            <DialogContent>
+              <img src="https://via.placeholder.com/800x800" alt="Static Picture" />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </div>
