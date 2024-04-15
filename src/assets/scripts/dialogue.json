@@ -209,7 +209,7 @@
   {
     "id": 5.5,
     "character": "Nyan Cat",
-    "text": "[sighing heavily] Okay, okay, I'll come clean. It wasn't me who murdered Clem, it was... it was Clem himself!",
+    "text": "*Sighing heavily* Okay, okay, I'll come clean. It wasn't me who murdered Clem, it was... it was Clem himself!",
     "responseOptions": ["WHAT?!", "Huh?", "No way!"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
