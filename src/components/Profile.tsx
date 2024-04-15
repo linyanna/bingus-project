@@ -6,7 +6,6 @@ import { getLocalDatabase, getPlayerId } from "../utils/databaseUtils"; // Impor
 import Account from "./Account";
 import { useEffect, useState } from "react";
 
-
 const url = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 const key = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
 
