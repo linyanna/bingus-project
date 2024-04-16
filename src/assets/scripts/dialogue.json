@@ -49,7 +49,7 @@
   },
   {
     "id": 2.1,
-    "character": "Bingus",
+    "character": "Detective Bingus",
     "text": "Hello, Officer Doge.",
     "responseOptions": ["*Tip hat*", "*Nod*", "*Reach out for a pawshake*"],
     "newTableInfoFlag": false,
@@ -89,7 +89,7 @@
   },
   {
     "id": 3.1,
-    "character": "Doge",
+    "character": "Officer Doge",
     "text": "Hmmm, yeah that’s Nyan Cat. He must be a dangerous man. 7 reports of cat burglary and 2 accounts of assault.",
     "responseOptions": ["What a son of a cat!", "Was there any relation between Nyan Cat and the victim?", "Can you tell me about the victim?" ],
     "newTableInfoFlag": false,
@@ -114,22 +114,22 @@
   {
     "id": 4.0,
     "character": "Narrator",
-    "text": "Bingus arrives at the gym and sees dozen of denizens working out and begins to scan for the Gym Bro Momo.",
+    "text": "Bingus arrives at the gym and sees dozen of denizens working out and begins to scan for the Gym Bro MaoMao.",
     "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": 4.1,
-    "character": "Bingus",
-    "text": "Hello Momo, I am detective Bingus and I know you are with the meowfia. A cat has been murdered and I’m requesting information.",
+    "character": "Detective Bingus",
+    "text": "Hello MaoMao, I am detective Bingus and I know you are with the meowfia. A cat has been murdered and I’m requesting information.",
     "responseOptions": ["*Stares menacingly*", "*Glances around*", "*Stare blankly*"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": 4.2,
-    "character": "Momo",
+    "character": "MaoMao",
     "text": "Oh, uhhh, I don’t know anything about that. I’m just a gym bro, bro. If anything, you should be looking for my boss Nyan Cat. He’s the real meowfia boss man. Oh wait-. Forget I said that.",
     "responseOptions": ["Next"],
     "newTableInfoFlag": false,
@@ -137,7 +137,7 @@
   },
   {
     "id": 4.3,
-    "character": "Bingus",
+    "character": "Detective Bingus",
     "text": "Oh don't worry at all. Also can you tell me more about this Nyan Cat fellow?",
     "responseOptions": ["Next"],
     "newTableInfoFlag": false,
@@ -145,23 +145,23 @@
   },
   {
     "id": 4.4,
-    "character": "Momo",
+    "character": "MaoMao",
     "text": "I don’t know much about him, but I heard he’s been buying out all the poptarts in the city. I think he’s planning something big. Oh wait-. Forget I said that too.",
-    "responseOptions": ["*Stares blankly*", "*Wonder if Momo's alright*", "Interesting..."],
+    "responseOptions": ["*Stares blankly*", "*Wonder if MaoMao's alright*", "Interesting..."],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": 4.5,
-    "character": "Bingus",
-    "text": "Alright, that's all I need to know. Thank you for your time, Momo. I’ll be sure to keep your name out of this.",
+    "character": "Detective Bingus",
+    "text": "Alright, that's all I need to know. Thank you for your time, MaoMao. I’ll be sure to keep your name out of this.",
     "responseOptions": ["Next"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": 4.6,
-    "character": "Momo",
+    "character": "MaoMao",
     "text": "*Sweats profusely* Uh oh yeah, no problem, bro. I’ll be uh here, lifting weights and stuff.",
     "responseOptions": ["Yes, keep at that.", "Right you will.", "We'll be in touch."],
     "newTableInfoFlag": true,
@@ -185,7 +185,7 @@
   },
   {
     "id": 5.2,
-    "character": "Bingus",
+    "character": "Detective Bingus",
     "text": "Nyan Cat, let's cut to the chase. You were caught rainbow-handed trying to cause an economic disaster through a Pop-Tart shortage. But what I want to know is if you were involved in the murder of a fellow catizen named Clem.",
     "responseOptions": ["Next"],
     "newTableInfoFlag": false,
@@ -201,7 +201,7 @@
   },
   {
     "id": 5.4,
-    "character": "Bingus",
+    "character": "Detective Bingus",
     "text": "Explain why Pop-Tart crumbs littered the crime scene then. Who else could have done it if not for you, since you’ve been buying out all the Pop-Tarts in the city?",
     "responseOptions": ["Next"],
     "newTableInfoFlag": false,
