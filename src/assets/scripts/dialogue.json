@@ -41,6 +41,7 @@
   },
   {
     "id": 2.0,
+    "character": "Narrator",
     "text": "As Bingus makes his way to the pawlice station, he sees a contingent of pawlice officers and recognizes the boisterous voice of Officer Doge.",
     "responseOptions": ["Next"],
     "newTableInfoFlag": false,

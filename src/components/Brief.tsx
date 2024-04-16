@@ -2,6 +2,8 @@ import '../styles/Textbox.css';
 import dialogues from "../assets/scripts/dialogue.json";
 import Doge from '../assets/images/Doge.jpg';
 import Bingus from '../assets/images/Bingus.jpg';
+import Placeholder from '../assets/images/placeholder.png';
+import Mysterious_Voice from '../assets/images/Mysterious_Voice.png'
 import { useState, useEffect } from 'react';
 import { SupabaseClient } from '@supabase/supabase-js';
 import { Tab } from "./Navbar";
@@ -49,7 +51,7 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
         .select("DialogueIndex")
         .eq('player_id', playerId)
         .single();
-        console.log("Data:", data?.DialogueIndex);
+        //console.log("Data:", data?.DialogueIndex);
         return data?.DialogueIndex
     } catch (error) {
       console.error("Error:", error);
@@ -86,9 +88,16 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
     const imageMap: { [key: string]: string } = {
         'Doge': Doge,
         'Bingus': Bingus,
-        
+        'Officer Doge': Doge,
+        'Narrator': Placeholder,
+        'Momo': Placeholder,
+        'MaoMao': Placeholder,
+        'Nyan Cat': Placeholder,
+        'Detective Bingus': Placeholder,
+        'Mysterious voice': Mysterious_Voice
     };
-    console.log(imageMap[character]);
+    console.log(dialogueIndex);
+    console.log("Character: " + character + " mapping to: " + imageMap[character]);
     return imageMap[character] || ''; 
 }
 
@@ -100,7 +109,7 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
         <div className="button-container">
           {dialogues[dialogueIndex] && dialogues[dialogueIndex].responseOptions.map((buttonText: string, i: number) => (
             //each button has a key prop set to the index of the button in the array
-            <Button key={i} className="dialogue" type="submit" onClick={() => handleButtonClick()}>
+            <Button key={i} className="dialogue px-auto" type="submit" onClick={() => handleButtonClick()}>
               {buttonText}
             </Button>
           ))}
