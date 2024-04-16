@@ -3,7 +3,8 @@ import dialogues from "../assets/scripts/dialogue.json";
 import Doge from '../assets/images/Doge.jpg';
 import Bingus from '../assets/images/Bingus.jpg';
 import Nyan_Cat from '../assets/images/Nyan-Cat.png';
-import Placeholder from '../assets/images/placeholder.png';
+import MaoMao from '../assets/images/maomao.png';
+//import Placeholder from '../assets/images/placeholder.png';
 import Narrator from '../assets/images/hello_freeman.png'
 import Mysterious_Voice from '../assets/images/Mysterious_Voice.png'
 import { useState, useEffect } from 'react';
@@ -90,7 +91,7 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
     const imageMap: { [key: string]: string } = {
         'Officer Doge': Doge,
         'Narrator': Narrator,
-        'MaoMao': Placeholder,
+        'MaoMao': MaoMao,
         'Nyan Cat': Nyan_Cat,
         'Detective Bingus': Bingus,
         'Mysterious voice': Mysterious_Voice
