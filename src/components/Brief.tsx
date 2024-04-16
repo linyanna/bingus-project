@@ -18,67 +18,53 @@ interface Props {
 }
 
 const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
-  // const [currentDialogue, setCurrentDialogue] = useState<Dialogue>(dialogues[0]);
   const [dialogueIndex, setDialogueIndex] = useState<number>(0);
-  const authToken = localStorage.getItem("sb-lynhjymnmasejyhzbhwv-auth-token");
-  if (!authToken) {
-    throw new Error("Authentication token not found in local storage");
-  }
-  const user = JSON.parse(authToken).user;
-  const playerId = user.id;
-  
-  // const { data, error } = await supabase
-  // .from("players")
-  // .update({ player_database: userLocalDatabase })
-  // .eq("player_id", playerId);
 
   useEffect(() => {
-    //use effect hook to fetch data from the database
-    async function fetchData() {
-      try {
-        // const currentDialogueIndex = await getDialouge();
-        // const currentDialogue = dialogues[currentDialogueIndex];
-        // setCurrentDialogue(currentDialogue);
-        setDialogueIndex(await getDialogueIndex());
-      } catch (error) {
-        console.error("Error fetching dialogue:", error);
-      }
-    }
     fetchData();
   }, []);
 
-  async function getDialogueIndex() {
+  async function fetchData() {
     try {
-      // Fetch dialogue index from Supabase database
-      const { data } = await supabase.from("players")
-        .select("DialogueIndex")
-        .eq('player_id', playerId)
-        .single();
-        //console.log("Data:", data?.DialogueIndex);
-        return data?.DialogueIndex
+      // Fetch dialogue index from Supabase database if user is authenticated
+      const authToken = localStorage.getItem("sb-lynhjymnmasejyhzbhwv-auth-token");
+      if (authToken) {
+        const user = JSON.parse(authToken).user;
+        const playerId = user.id;
+        const { data } = await supabase.from("players")
+          .select("DialogueIndex")
+          .eq('player_id', playerId)
+          .single();
+        if (data) {
+          setDialogueIndex(data.DialogueIndex);
+        }
+      } else {
+        // Set a default dialogue index if user is not authenticated
+        setDialogueIndex(0);
+      }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error fetching dialogue:", error);
     }
   }
 
   const handleButtonClick = async () => {
     if (dialogues[dialogueIndex].sqlEditorFlag) {
-      console.log("SQL Editor flag is true");
       try {
         const nextDialogue = dialogueIndex + 1;
-        const {} = await supabase.from("players")
-        .update({ DialogueIndex: nextDialogue })
-        .eq('player_id', playerId);
+        const authToken = localStorage.getItem("sb-lynhjymnmasejyhzbhwv-auth-token");
+        if (authToken) {
+          const user = JSON.parse(authToken).user;
+          const playerId = user.id;
+          await supabase.from("players")
+            .update({ DialogueIndex: nextDialogue })
+            .eq('player_id', playerId);
+        }
       } catch (updateError) {
         console.error("Error:", updateError);
       }
-
       setActiveTab(Tab.SQL);
     }
-    else {
-      console.log("SQL flag not true; Continue dialogue");
-    }
-    setDialogueIndex(dialogueIndex+1);
+    setDialogueIndex(dialogueIndex + 1);
   }
 
   function getImage(character?: string): string {
