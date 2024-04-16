@@ -122,30 +122,42 @@ function SqlEditorInput({ db }: { db: Database }) {
     <div>
       <div>
         <Textarea
+          cols={20}
+          rows={5}
+          id="sql-input"
           onChange={(e) => setCommand(e.target.value)}
           placeholder="Enter some SQL. Not sure? Try “select * from clues.”"
-          cols={80}
-          rows={10}
-          id="sql-input"></Textarea>
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && e.shiftKey) {
+              e.preventDefault();
+              handleExec();
+            }
+          }}>
+        </Textarea>
       </div>
-      <div>
-        <Button className="mt-5" id="execute-sql" onClick={handleExec}>
+      <div style={{ margin: "20px 0 0 0"}}>
+        <Button id="execute-sql" onClick={handleExec}>
           Execute
         </Button>
       </div>
-
-      <pre className="error">{(error || "").toString()}</pre>
-
-      <pre>
-        {
-          // results contains one object per select statement in the query
-          (results as Array<{ columns: string[]; values: any[][] }>).map(
-            ({ columns, values }, i) => (
-              <ResultsTable key={i} columns={columns} values={values} />
+      <div style={{ margin: "10px 0 0 0"}}>
+        <p>
+          <strong>Tip:</strong> You can use "SHIFT + ENTER" to execute your command.
+        </p>
+      </div>
+      <div style={{ margin: "20px 0 0 0"}}>
+        <pre className="error">{(error || "").toString()}</pre>
+        <pre>
+          {
+            // results contains one object per select statement in the query
+            (results as Array<{ columns: string[]; values: any[][] }>).map(
+              ({ columns, values }, i) => (
+                <ResultsTable key={i} columns={columns} values={values} />
+              )
             )
-          )
-        }
-      </pre>
+          }
+        </pre>
+      </div>
     </div>
   );
 }
