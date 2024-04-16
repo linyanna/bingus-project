@@ -13,8 +13,9 @@
 
   .Speaker {
     position: absolute; /* Set content to absolute positioning */
-    left: 5vw;
-    width: 300px;
+    left: 1vw;
+    width: 350px !important;
+    height: 400px !important;
     top: 25vh;
   }
 
@@ -42,7 +43,8 @@
   }
   
   .dialogue {
-    width: 200px;
+    width: 50vw;
     height: 50px;
     margin-top: 10px; /* buttons margin */
+
   }
