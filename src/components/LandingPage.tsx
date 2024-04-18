@@ -25,7 +25,7 @@ const LandingPage: React.FC = () => {
   return (
     <FileContainer>
       <div className="tab-container">
-        <div className="tab font-bold text-gray-600">Welcome!</div>
+        <div className="tab active font-bold text-gray-600">Welcome!</div>
       </div>
 
       <div className="Main " style={{ display: "flex" }}>

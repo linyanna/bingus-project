@@ -10,7 +10,7 @@ const Login = ({ supabaseClient }: Props) => {
   return (
     <FileContainer>
       <div className="tab-container">
-        <div className="tab font-bold text-gray-600">Login</div>
+        <div className="tab active font-bold text-gray-600">Login</div>
       </div>
       <div className="signup mt-2 mb-2">
         <Auth 
