@@ -5,6 +5,18 @@
   height: 60vh;
 }
 
+.nameBox{
+  background-color: #4f4d4b; 
+  border: 1px solid #131313; 
+  width: 20vw;
+  height: 5vh;
+  position: absolute;
+  border-radius: 10px;
+  font-family: Marker Felt;
+  font-size: 20px;
+  text-align: center;
+}
+
   .textContainer {
     position: absolute; /* Set content to absolute positioning */
     left: 25vw;
@@ -20,6 +32,7 @@
   }
 
   .label {
+    margin-top: 6vh;
     align-items: left;
     justify-content: left; 
     margin-left: 0;
@@ -29,8 +42,7 @@
     margin-right: 20px;
     border-radius: 20px;
     padding: 30px; 
-    box-sizing: border-box; 
-    width: 800px; 
+    box-sizing: border-box;  
     width: 50vw; 
     height: 200px;
     font-family: Marker Felt;
