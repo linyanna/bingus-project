@@ -19,7 +19,7 @@ interface Props {
  * @param {{db: import("sql.js").Database}} props
  */
 
-const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTab }) => {
+const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
   const [error, setError] = useState<null | string>(null);
   const [command, setCommand] = useState<null | string>(null);
   const [results, setResults] = useState<[] | Array<string>>([]);
