@@ -7,11 +7,6 @@ import MaoMao from '../assets/images/maomao.png';
 //import Placeholder from '../assets/images/placeholder.png';
 import Narrator from '../assets/images/hello_freeman.png'
 import Mysterious_Voice from '../assets/images/Mysterious_Voice.png'
-import Nyan_Cat from '../assets/images/Nyan-Cat.png';
-import MaoMao from '../assets/images/maomao.png';
-//import Placeholder from '../assets/images/placeholder.png';
-import Narrator from '../assets/images/hello_freeman.png'
-import Mysterious_Voice from '../assets/images/Mysterious_Voice.png'
 import { useState, useEffect } from 'react';
 import { SupabaseClient } from '@supabase/supabase-js';
 import { Tab } from "./Navbar";
