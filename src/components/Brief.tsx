@@ -30,19 +30,13 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
     }
 
     if (playerId){
-      async function fetchData() {
-        try {
-          setDialogueId(await getDialogueId());
-        } catch (error) {
-          console.error("Error fetching story progress:", error);
-        }
-      }
       fetchData();
     }
     else{
       const guestIndex = localStorage.getItem('guestDialogueIndex');
       setDialogueId(guestIndex ? guestIndex : "0.0");
     }
+    
     console.log("Dialouge Id:    " + dialogueId);
     console.log("Dialouge Index: " + dialogueIndex)
     
@@ -61,6 +55,14 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
     }
   }
 
+  async function fetchData() {
+    try {
+      setDialogueId(await getDialogueId());
+    } catch (error) {
+      console.error("Error fetching story progress:", error);
+    }
+  }
+
   const handleButtonClick = async () => {
     if (dialogue[dialogueIndex].sqlEditorFlag) {
       console.log("SQL Editor flag is true");
@@ -68,8 +70,6 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
 
       // TODO: store progress locally and if user is logged in, update to supabase
       try {
-        // const nextDialogue = dialogueIndex + 1;
-        // const nextDialogueId = dialogue[dialogueIndex+1].id;
         await supabase.from("players")
         .update({ dialogue_id: dialogueId })
         .eq('player_id', playerId);
@@ -82,8 +82,6 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
     else if (dialogueIndex === dialogue.length - 1) {
       console.error("End of dialogue reached");
       try {
-        // const nextDialogue = dialogueIndex + 1;
-        // const nextDialogueId = dialogue[dialogueIndex+1].id;
         await supabase.from("players")
         .update({ dialogue_id: dialogueId })
         .eq('player_id', playerId);
