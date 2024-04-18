@@ -19,15 +19,13 @@ interface Props {
  * @param {{db: import("sql.js").Database}} props
  */
 
-const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
+const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTab }) => {
   const [error, setError] = useState<null | string>(null);
   const [command, setCommand] = useState<null | string>(null);
   const [results, setResults] = useState<[] | Array<string>>([]);
   const [nextDialogueId, setNextDialogueId] = useState<string>("0.0");
+  const [gotAnswer, setGotAnswer] = useState<boolean>(false);
   const playerId = getPlayerId();
-  // const theme = useState<Theme>(
-  //   () => (localStorage.getItem("vite-ui-theme") as Theme) || "system"
-  // )
 
   useEffect(() => {
     const getNextDialogueId = () => {
@@ -61,7 +59,6 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
       setError(null);
 
       if (isCorrectCommand) {
-
         if (playerId){
           // Update the dialogue_id in the players table
           supabase.from("players")
@@ -71,19 +68,12 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
             console.log("Dialogue updated successfully: ", nextDialogueId);
           });
         }
-        else{
+        else {
           //Update local storage with new index
           localStorage.setItem('guestDialogueIndex', nextDialogueId);
-
         }
-        
-
-          
-
-          // Set active tab to Brief
-          // setActiveTab(Tab.BRIEF);
+        setGotAnswer(true);
       }
-
       // Update local storage with the current database state
       updateLocalStorage(db);
     } catch (err) {
@@ -166,7 +156,7 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
     if (array[3][0] != table)    throw new Error("Hint: we are trying to look through the " + table);
   }
 
-  const filterCheck = (array: any, column: String, name: String, index: number) => {
+  const filterCheck = (array: any, column: string, name: string, index: number) => {
     if (array[index++][0] != column) throw new Error("Incorrect");
     if (array[index++][0] != '=')    throw new Error("Incorrect");
     if (array[index][0] != name)     throw new Error("Incorrect");
@@ -187,15 +177,18 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
           }}>
         </Textarea>
       </div>
-      <div>
-        <Button className="mt-5" id="execute-sql" onClick={handleExec}>
-          Execute
-        </Button>
-      </div>
-      <div className="grayText" style={{ margin: "10px 0 0 0"}}>
-        <p>
-          <strong>Tip:</strong> You can use "SHIFT + ENTER" to execute your command.
-        </p>
+      <div style={{ margin: "1rem 0"}}>
+        {gotAnswer ? (
+        <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
+          <div className="grayText">Correct!</div>
+          <Button onClick={() => setActiveTab(Tab.BRIEF)} style={{width: "110px", marginLeft: "auto" }}>Back To Brief</Button>
+        </div>
+        ) : (
+        <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
+          <div className="grayText">Execute your SQL query.</div>
+          <Button id="execute-sql" onClick={handleExec} style={{width: "110px", marginLeft: "auto"}}>Execute</Button>
+        </div>
+        )}
       </div>
       <div className="grayText" style={{ margin: "20px 0 0 0"}}>
         <pre className="error">{(error || "").toString()}</pre>
