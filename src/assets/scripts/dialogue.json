@@ -20,6 +20,14 @@
     "character": "Narrator",
     "text": "It's a beautiful day at the forest, where Ace Detective Bingus is writing his autobiography and reminiscing about all the cases he had over the long five years of his career. Suddenly, he receives a call on his banana cat phone.",
     "responseOptions": ["Can't a cat get some peace and quiet around here?", "Who could be calling me at this hour?", "I wonder who this could be?"],
+    "newTableInfoFlag": false,
+    "sqlEditorFlag": false
+  },
+  {
+    "id": "1.0.1",
+    "character": "Narrator",
+    "text": "Use SQL queries to find the row containing your phone from the “inventory” table. Hint, look at “SELECT all data in a table” and “SELECT specific attributes” in the Guide tab to help you how to do this.",
+    "responseOptions": ["Go to Notebook"],
     "newTableInfoFlag": true,
     "sqlEditorFlag": true
   },
@@ -44,6 +52,14 @@
     "character": "Officer Doge",
     "text": "Anyway I’m calling to let you know that we have a case that’s a little out of our hands–or should I say paws? So we need you to come down to the station. *Doge hangs up.*",
     "responseOptions": ["That was entirely abrupt.", "I wonder what this case could be about?", "I better head to the pawlice station."],
+    "newTableInfoFlag": false,
+    "sqlEditorFlag": false
+  },
+  {
+    "id": "1.4.1",
+    "character": "Narrator",
+    "text": "Select the top biggest items from your inventory so Bingus can pack them into a Bag.",
+    "responseOptions": ["Go to Notebook"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": true
   },
@@ -84,6 +100,14 @@
     "character": "Officer Doge",
     "text": "We found all these poptarts crumbs and rainbow sprinkles covering the crime scene and body. Here’s our pawlice database of suspects based on past homicides, in case it’ll help you.",
     "responseOptions": ["Catastic!", "Thanks, appreciate it.", "I'm on it."],
+    "newTableInfoFlag": false,
+    "sqlEditorFlag": false
+  },
+  {
+    "id": "2.4.1",
+    "character": "Narrator",
+    "text": "Investigate the suspects table and look for clues relating to “poptarts” or “rainbows.",
+    "responseOptions": ["Go to Notebook"],
     "newTableInfoFlag": true,
     "sqlEditorFlag": true
   },
@@ -116,6 +140,14 @@
     "character": "Officer Doge",
     "text": "We don’t have his location, but you could try checking that list of past homicide criminals and search for Meowfia associations.",
     "responseOptions": ["Next"],
+    "newTableInfoFlag": false,
+    "sqlEditorFlag": false
+  },
+  {
+    "id": "3.3.1",
+    "character": "Narrator",
+    "text": "Use the suspects table acquired from Doge to check for Meowfia associations.",
+    "responseOptions": ["Go to Notebook"],
     "newTableInfoFlag": true,
     "sqlEditorFlag": true
   },
@@ -172,6 +204,14 @@
     "character": "MaoMao",
     "text": "*Sweats profusely* Uh oh yeah, no problem, bro. I’ll be uh here, lifting weights and stuff.",
     "responseOptions": ["Yes, keep at that.", "Right you will.", "We'll be in touch."],
+    "newTableInfoFlag": false,
+    "sqlEditorFlag": false
+  },
+  {
+    "id": "4.6.1",
+    "character": "Narrator",
+    "text": "Check the supermarket table for when it gets its pop tart shipment.",
+    "responseOptions": ["Go to Notebook"],
     "newTableInfoFlag": true,
     "sqlEditorFlag": true
   },
