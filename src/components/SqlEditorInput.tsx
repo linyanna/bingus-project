@@ -121,11 +121,11 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
         if (array[9][0] != '5')            throw new Error("Hint: Limit 5");
         break;
       case 2.4:
-        // SELECT * FROM suspects WHERE notes="poptarts" OR notes="rainbow"
+        // SELECT * FROM suspects WHERE notes = "poptarts" OR notes = "rainbows";
         selectAllCheck(array, 'suspects');
         if (array[4][0] != 'where')        throw new Error("Hint: use the WHERE clause when trying to filter rows");
         filterCheck(array, 'notes', '\"poptarts\"', 5);
-        if (array[8][0] != 'OR')           throw new Error("Incorrect");
+        if (array[8][0] != 'or')           throw new Error("Incorrect-OR");
         filterCheck(array, 'notes', '\"rainbows\"', 9);
         break;
       case 3.3:
@@ -136,14 +136,14 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
         break;
       case 4.6:
         // SELECT item, shipmentTime FROM supermarket WHERE item ="poptart";
+        console.log("array:", array);
         if (array[0][0] != 'select')       throw new Error("Hint: use the SELECT statement.");
         if (array[1][0] != 'item')         throw new Error("Hint: we want to select an item and shipment time from the supermarket.");
-        if (array[2][0] != ',')            throw new Error("Hint: delimit column names with a comma");
-        if (array[3][0] != 'shipmentTime') throw new Error("Hint: we want to select an item and shipment time from the supermarket.")
-        if (array[4][0] != 'from')         throw new Error("Hint: use the FROM clause when trying to grab data from a table");
-        if (array[5][0] != 'supermarket')  throw new Error("Hint: we are trying to look through our 'inventory'");
-        if (array[6][0] != 'where')        throw new Error("Hint: use the WHERE clause when trying to filter rows");
-        filterCheck(array, 'item', '\"poptart\"', 7);
+        if (array[2][0] != 'shipmenttime') throw new Error("Hint: we want to select an item and shipment time from the supermarket.")
+        if (array[3][0] != 'from')         throw new Error("Hint: use the FROM clause when trying to grab data from a table");
+        if (array[4][0] != 'supermarket')  throw new Error("Hint: we are trying to look through our 'inventory'");
+        if (array[5][0] != 'where')        throw new Error("Hint: use the WHERE clause when trying to filter rows");
+        filterCheck(array, 'item', '\"poptart\"', 6);
         break;
     }
     return true;
@@ -164,10 +164,8 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
 
   return (
     <div>
-      <div>
+      <div className="sqlEditorInputContainer">
         <Textarea
-          cols={20}
-          rows={5}
           id="sql-input"
           onChange={(e) => setCommand(e.target.value)}
           placeholder="Enter some SQL. Not sure? Try “select * from inventory.”"

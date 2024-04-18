@@ -3,9 +3,7 @@ import { serializeDatabaseToLocalStorage, fetchSqlData, getPlayerId  } from "../
 // Sql.js config: https://github.com/sql-js/react-sqljs-demo/blob/master/src/App.js
 import SqlEditorInput from "./SqlEditorInput";
 import SqlEditorBrief from "./SqlEditorBrief";
-import SqlEditorCommands from "./SqlEditorCommands";
 import "../styles/sqlEditor.css";
-import sqlQueries from "../assets/scripts/sqlQueries.json";
 import { SupabaseClient } from '@supabase/supabase-js';
 
 interface Props {
@@ -19,7 +17,6 @@ const SqlEditor: React.FC<Props> = ({ supabase, setActiveTab }) => {
 
   const playerId = getPlayerId();
   const [dialogueId, setDialogueId] = useState<number>(0);
-  const [briefDirections, setBriefDirections] = useState<string>("");
 
   // Initial pull of user database
   useEffect(() => {
@@ -40,14 +37,6 @@ const SqlEditor: React.FC<Props> = ({ supabase, setActiveTab }) => {
     }
     getDialogueId();
   }, []);
-
-  // // Update the brief directions whenever the dialogueId changes
-  // useEffect(() => {
-  //   const index = sqlQueries.findIndex(field => field.id === dialogueId);
-  //   if (index != -1) {
-  //     setBriefDirections(sqlQueries[index].briefDirection);
-  //   }
-  // }, [dialogueId]);
 
   // Serialize and store the database in local storage whenever it changes
   useEffect(() => {
@@ -71,11 +60,11 @@ const SqlEditor: React.FC<Props> = ({ supabase, setActiveTab }) => {
   else
     return (
       <div className="sqlEditor">
-        <div className="sqlEditor.left">
-          <SqlEditorBrief directions={briefDirections} />
-          <SqlEditorCommands />
+        <div className="editorItem">
+          <SqlEditorBrief dialogueId={dialogueId}/>
+          {/* <SqlEditorCommands /> */}
         </div>
-        <div className="sqlEditor.right">
+        <div className="editorItem">
           <SqlEditorInput supabase={supabase} db={db} dialogueId={dialogueId}  setActiveTab={setActiveTab} />
         </div>
       </div>
