@@ -25,7 +25,9 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
   const [results, setResults] = useState<[] | Array<string>>([]);
   const [nextDialogueId, setNextDialogueId] = useState<string>("0.0");
   const playerId = getPlayerId();
-  // const nextDialogueId = sqlQueries.find(field => field.id === dialogueId)?.nextDialogueId;
+  // const theme = useState<Theme>(
+  //   () => (localStorage.getItem("vite-ui-theme") as Theme) || "system"
+  // )
 
   useEffect(() => {
     const getNextDialogueId = () => {
@@ -68,7 +70,7 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
           });
 
           // Set active tab to Brief
-          setActiveTab(Tab.BRIEF);
+          // setActiveTab(Tab.BRIEF);
       }
 
       // Update local storage with the current database state
