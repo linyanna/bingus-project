@@ -16,7 +16,7 @@ const SqlEditor: React.FC<Props> = ({ supabase, setActiveTab }) => {
   const [error, setError] = useState<null | string>(null);
 
   const playerId = getPlayerId();
-  const [dialogueId, setDialogueId] = useState<number>(0);
+  const [dialogueId, setDialogueId] = useState<string>("0.0");
 
   // Initial pull of user database
   useEffect(() => {

@@ -1,39 +1,39 @@
 [
   {
-    "id": 1.0,
-    "nextDialogueId": 1.1,
+    "id": "1.0",
+    "nextDialogueId": "1.1",
     "briefDirection": "Use SQL queries to find the row containing your phone from the “inventory” table. Hint, look at “SELECT all data in a table” and “SELECT specific attributes” in the Guide tab to help you how to do this.",
     "answer": "SELECT type FROM inventory WHERE type = \"phone\";",
     "queries": ["SELECT * FROM inventory;","SELECT type FROM inventory WHERE type = \"phone\";"],
     "answers": []
   },
   {
-    "id": 1.4,
-    "nextDialogueId": 2.0,
+    "id": "1.4",
+    "nextDialogueId": "2.0",
     "briefDirection": "Select the top biggest items from your inventory so Bingus can pack them into a Bag.",
     "answer": "SELECT * FROM Inventory ORDER BY size DESC LIMIT 5;",
     "queries": ["SELECT * FROM Inventory ORDER BY size DESC LIMIT 5;"],
     "answers": []
   },
   {
-    "id": 2.4,
-    "nextDialogueId": 3.0,
+    "id": "2.4",
+    "nextDialogueId": "3.0",
     "briefDirection": "Investigate the suspects table and look for clues relating to “poptarts” or “rainbows.",
     "answer": "SELECT * FROM suspects WHERE notes = \"poptarts\" OR notes = \"rainbows\";",
     "queries": ["SELECT * FROM suspects WHERE notes = \"poptarts\" OR notes = \"rainbows\";"],
     "answers": []
   },
   {
-    "id": 3.3,
-    "nextDialogueId": 4.0,
+    "id": "3.3",
+    "nextDialogueId": "4.0",
     "briefDirection": "Use the suspects table acquired from Doge to check for Meowfia associations.",
     "answer": "SELECT * FROM suspects WHERE notes = \"meowfia\";",
     "queries": ["SELECT * FROM suspects WHERE notes = \"meowfia\";"],
     "answers": ["Momo"]
   },
   {
-    "id": 4.6,
-    "nextDialogueId": 5.0,
+    "id": "4.6",
+    "nextDialogueId": "5.0",
     "briefDirection": "Check the supermarket table for when it gets its pop tart shipment.",
     "answer": "SELECT item, shipmentTime FROM supermarket WHERE item = \"poptart\";",
     "queries": ["SELECT item, shipmentTime FROM supermarket WHERE item = \"poptart\";"],

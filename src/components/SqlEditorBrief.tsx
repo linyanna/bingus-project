@@ -9,7 +9,7 @@ import sqlQueries from "../assets/scripts/sqlQueries.json";
 import { Button } from "./ui/button";
 
 interface Props {
-  dialogueId: number;
+  dialogueId: string;
 }
 
 const SqlEditorBrief: React.FC<Props> = ({ dialogueId }) => {

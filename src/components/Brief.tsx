@@ -20,13 +20,8 @@ interface Props {
 
 const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
   const playerId = getPlayerId();
-  const [dialogueId, setDialogueId] = useState<number>(0);
+  const [dialogueId, setDialogueId] = useState<string>("0.0");
   const dialogueIndex = dialogue.findIndex(field => field.id === dialogueId);
-  
-  // const { data, error } = await supabase
-  // .from("players")
-  // .update({ player_database: userLocalDatabase })
-  // .eq("player_id", playerId);
 
   useEffect(() => {
     //use effect hook to fetch data from the database
@@ -69,6 +64,19 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
         console.error("Error:", updateError);
       }
     }
+    else if (dialogueIndex === dialogue.length - 1) {
+      console.error("End of dialogue reached");
+      try {
+        // const nextDialogue = dialogueIndex + 1;
+        // const nextDialogueId = dialogue[dialogueIndex+1].id;
+        await supabase.from("players")
+        .update({ dialogue_id: dialogueId })
+        .eq('player_id', playerId);
+        console.log("Dialogue updated successfully: ", dialogueId);
+      } catch (updateError) {
+        console.error("Error:", updateError);
+      }
+    }
     else {
       console.log("SQL flag not true; Continue dialogue");
       setDialogueId(dialogue[dialogueIndex+1].id);
@@ -90,9 +98,8 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
         'Detective Bingus': Bingus,
         'Mysterious voice': Mysterious_Voice
     };
-    // console.log("Character: " + character + " mapping to: " + imageMap[character]);
     return imageMap[character] || ''; 
-}
+  }
 
   return (
       <div className="overallContainer">

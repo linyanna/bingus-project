@@ -10,7 +10,7 @@ import sqlQueries from "../assets/scripts/sqlQueries.json";
 interface Props {
   supabase: SupabaseClient;
   db: any;
-  dialogueId: number;
+  dialogueId: string;
   setActiveTab: (tab: Tab) => void;
 }
 
@@ -23,7 +23,7 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
   const [error, setError] = useState<null | string>(null);
   const [command, setCommand] = useState<null | string>(null);
   const [results, setResults] = useState<[] | Array<string>>([]);
-  const [nextDialogueId, setNextDialogueId] = useState<number>(0);
+  const [nextDialogueId, setNextDialogueId] = useState<string>("0.0");
   const playerId = getPlayerId();
   // const nextDialogueId = sqlQueries.find(field => field.id === dialogueId)?.nextDialogueId;
 
