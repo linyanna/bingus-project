@@ -208,7 +208,8 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
               )
             )
           }
-      </pre>
+        </pre>
+      </div>
     </div>
   );
 }
