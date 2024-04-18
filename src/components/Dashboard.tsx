@@ -17,7 +17,7 @@ const Dashboard: React.FC<DashboardProps> = ({ activeTab, supabase, setActiveTab
   return (
     <div className="filecontainer">
       {activeTab === Tab.BRIEF && <Brief supabase={supabase} setActiveTab={setActiveTab} />}
-      {activeTab === Tab.SQL && <SqlEditor />}
+      {activeTab === Tab.SQL && <SqlEditor supabase={supabase} setActiveTab={setActiveTab}/>}
       {activeTab === Tab.RESULTS && <Results />}
       {activeTab === Tab.GUIDE && <Guide />}
       {activeTab === Tab.PROFILE && <Profile />}

@@ -89,7 +89,7 @@ const Profile: React.FC = () => {
     try {
       const playerId = getPlayerId();
       await supabase.from("players")
-      .update({ DialogueIndex: 0 })
+      .update({ dialogue_id: 0 })
       .eq('player_id', playerId);
       console.log("Game restarted successfully");
     } catch (updateError) {

@@ -224,7 +224,7 @@
     "sqlEditorFlag": false
   },
   {
-    "id": 5.5,
+    "id": 5.7,
     "character": "Nyan Cat",
     "text": "He framed me, Detective. He saw me buying all the Pop-Tarts at the store one day, and he got furious. He threatened to expose my Pop-Tart addiction and ruin my reputation. He said he'd make sure the Meowfia would come crashing down on me. I was scared, Bingus, scared for my life! So I had to do something to protect myself.",
     "responseOptions": ["Next"],
@@ -232,7 +232,7 @@
     "sqlEditorFlag": false
   },
   {
-    "id": 5.6,
+    "id": 5.8,
     "character": "Detective Bingus",
     "text": "So you're saying Clem staged his own murder to frame you?",
     "responseOptions": ["*Strokes imaginary beard*", "*Scratches beard*", "Smokes pipe*"],
@@ -240,7 +240,7 @@
     "sqlEditorFlag": false
   },
   {
-    "id": 5.7,
+    "id": 5.9,
     "character": "Nyan Cat",
     "text": "Yes! He knew about my Meowfia association, so he thought it would be easy to pin his murder on me. But I swear, I didn't lay a paw on him!",
     "responseOptions": ["Next"],
@@ -248,7 +248,7 @@
     "sqlEditorFlag": false
   },
   {
-    "id": 5.8,
+    "id": 5.10,
     "character": "Detective Bingus",
     "text": "*Contemplating the revelation* This changes things. But we need evidence to corroborate your story.",
     "responseOptions": ["Next"],
@@ -256,7 +256,7 @@
     "sqlEditorFlag": false
   },
   {
-    "id": 5.9,
+    "id": 5.11,
     "character": "Nyan Cat",
     "text": "I understand, Detective. But I'm telling you the truth.",
     "responseOptions": ["*Shakes head*", "*Nods*", "Whatever you say..."],
@@ -264,7 +264,7 @@
     "sqlEditorFlag": false
   },
   {
-    "id": 5.10,
+    "id": 5.12,
     "character": "Detective Bingus",
     "text": "We'll see about that. For now, you're coming with me.",
     "responseOptions": ["Next"],
@@ -272,7 +272,7 @@
     "sqlEditorFlag": false
   },
   {
-    "id": 5.11,
+    "id": 5.13,
     "character": "Narrator",
     "text": "Detective Bingus escorts Nyan Cat out of the interrogation room, his mind racing with the newfound information. He knows he needs to dig deeper to uncover the truth behind Clem's death and Nyan Cat's involvement.",
     "responseOptions": ["To be continued..."],
