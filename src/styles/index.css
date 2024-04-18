@@ -1,7 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+/*
+Used to define the color palette for the application.
+*/ 
+
 @layer base {
   :root {
     --background: 0 0% 100%;

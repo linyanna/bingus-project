@@ -14,6 +14,7 @@ interface DashboardProps {
   setActiveTab: (tab: Tab) => void;
 }
 
+// provide a dashboard component that will render the appropriate component based on the active tab
 const Dashboard: React.FC<DashboardProps> = ({ activeTab, supabase, setActiveTab }) => {
   return (
     <div className="filecontainer">

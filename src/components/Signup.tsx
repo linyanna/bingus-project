@@ -6,7 +6,7 @@ import FileContainer from "./FileContainer";
 interface Props {
   supabaseClient: any;
 }
-
+// Create a Signup component that will render the signup form
 const Signup = ({ supabaseClient }: Props) => {
   return (
     <FileContainer>
