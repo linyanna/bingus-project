@@ -63,7 +63,6 @@ const SqlEditor: React.FC<Props> = ({ supabase, setActiveTab }) => {
       <div className="sqlEditor">
         <div className="editorItem">
           <SqlEditorBrief dialogueId={dialogueId}/>
-          {/* <SqlEditorCommands /> */}
         </div>
         <div className="editorItem">
           <SqlEditorInput supabase={supabase} db={db} dialogueId={dialogueId}  setActiveTab={setActiveTab} />

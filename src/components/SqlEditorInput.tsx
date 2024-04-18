@@ -24,10 +24,8 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
   const [command, setCommand] = useState<null | string>(null);
   const [results, setResults] = useState<[] | Array<string>>([]);
   const [nextDialogueId, setNextDialogueId] = useState<string>("0.0");
+  const [gotAnswer, setGotAnswer] = useState<boolean>(false);
   const playerId = getPlayerId();
-  // const theme = useState<Theme>(
-  //   () => (localStorage.getItem("vite-ui-theme") as Theme) || "system"
-  // )
 
   useEffect(() => {
     const getNextDialogueId = () => {
@@ -68,7 +66,7 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
           .then(() => {
             console.log("Dialogue updated successfully: ", nextDialogueId);
           });
-
+          setGotAnswer(true);
           // Set active tab to Brief
           // setActiveTab(Tab.BRIEF);
       }
@@ -176,15 +174,19 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
           }}>
         </Textarea>
       </div>
-      <div style={{ margin: "20px 0 0 0"}}>
-        <Button id="execute-sql" onClick={handleExec}>
-          Execute
-        </Button>
-      </div>
-      <div className="grayText" style={{ margin: "10px 0 0 0"}}>
-        <p>
-          <strong>Tip:</strong> You can use "SHIFT + ENTER" to execute your command.
-        </p>
+      <div style={{ margin: "1rem 0"}}>
+        {gotAnswer ? (
+        <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
+          <div className="grayText">Correct!</div>
+          <Button onClick={() => setActiveTab(Tab.BRIEF)} style={{width: "110px", marginLeft: "auto" }}>Back To Brief</Button>
+        </div>
+        ) : (
+        <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
+          <div className="grayText">Execute your SQL query.</div>
+          <Button id="execute-sql" onClick={handleExec} style={{width: "110px", marginLeft: "auto"}}>Execute</Button>
+        </div>
+        )}
+        
       </div>
       <div className="grayText" style={{ margin: "20px 0 0 0"}}>
         <pre className="error">{(error || "").toString()}</pre>
