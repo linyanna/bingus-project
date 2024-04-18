@@ -32,7 +32,7 @@ function SqlEditorInput({ db }: { db: Database }) {
       // The sql is executed synchronously on the UI thread.
       // You may want to use a web worker here instead
 
-      handleCommand(1, command);
+      handleCommand(0, command);
 
       setResults(db.exec(command)); // an array of objects is returned
       setError(null);
