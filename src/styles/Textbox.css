@@ -1,43 +1,22 @@
 .overallContainer{
-  position: absolute;
-  align-items: left !important;
-  justify-content: left !important; 
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically align items */
+  height: 60vh;
 }
 
   .textContainer {
-    position: absolute;
+    position: absolute; /* Set content to absolute positioning */
+    left: 25vw;
+    top: 10vh;
   }
-  .NPC2 {
-    margin-bottom: 50px; /*this is the margin between the text box and the buttons */
-    align-items: left; 
-    width: 200px; 
-    height: auto; /* aspect ratio */
 
-    position: relative;
-    z-index: 1; 
-    left: 300px; 
-    top: 20px;
-  }
-  .Bingus {
-    margin-bottom: 50px; /*this is the margin between the text box and the buttons */
-    align-items: left; 
-    width: 150px; 
-    height: auto; /* aspect ratio */
-
-    position: relative;
-    top: 10px;
-    left: 20px; 
-    z-index: 1; 
-  }
-  .Camp {
-
-    align-items: right; 
-    width: 700px; 
-    height: auto;
-    top: 100px;
-
-    z-index: 0;
-
+  .Speaker {
+    position: absolute; /* Set content to absolute positioning */
+    left: 1vw;
+    width: 350px !important;
+    height: 400px !important;
+    top: 25vh;
   }
 
   .label {
@@ -45,7 +24,7 @@
     justify-content: left; 
     margin-left: 0;
     padding-left: 0;
-    background-color: #cda565; 
+    background-color: #4f4d4b; 
     border: 1px solid #131313; 
     margin-right: 20px;
     border-radius: 20px;
@@ -64,7 +43,8 @@
   }
   
   .dialogue {
-    width: 200px;
+    width: 50vw;
     height: 50px;
     margin-top: 10px; /* buttons margin */
+
   }
