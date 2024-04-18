@@ -1,7 +1,6 @@
 .navbar {
   display: flex;
   justify-content: flex-start; 
-  color: #7C7C7C;
   width: 175vh;
   z-index: 1000;
   margin-left: auto;
@@ -43,5 +42,6 @@
 }
 
 .mode-toggle {
-  margin-left: auto;
+  position: absolute;
+  right: 10px;
 }
