@@ -36,6 +36,17 @@
     text-align: center;
 }
 
+.tab.active {
+  color: #7C7C7C !important;
+  background-color: #D8D7D7 !important;
+}
+
+.container56 .mode-toggle {
+  position: absolute;
+  right: 10px;
+  top: -50px;
+}
+
 .code-snippet {
     color: #464646;
     page-break-inside: avoid;
