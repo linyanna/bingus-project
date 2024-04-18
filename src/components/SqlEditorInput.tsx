@@ -57,12 +57,6 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
       const isCorrectCommand = handleCommand(dialogueId, command);
       // The sql is executed synchronously on the UI thread.
       // You may want to use a web worker here instead
-<<<<<<< HEAD
-
-      handleCommand(0, command);
-
-=======
->>>>>>> b32bb81bd6f781632b7af6056caaba02e5a56f43
       setResults(db.exec(command)); // an array of objects is returned
       setError(null);
 
@@ -182,13 +176,6 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
     <div>
       <div className="sqlEditorInputContainer">
         <Textarea
-<<<<<<< HEAD
-          onChange={(e) => setCommand(e.target.value)}
-          placeholder="Enter some SQL. Not sure? Try “select * from clues.”"
-          cols={80}
-          rows={10}
-          id="sql-input"></Textarea>
-=======
           id="sql-input"
           onChange={(e) => setCommand(e.target.value)}
           placeholder="Enter some SQL. Not sure? Try “select * from inventory.”"
@@ -199,24 +186,12 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
             }
           }}>
         </Textarea>
->>>>>>> b32bb81bd6f781632b7af6056caaba02e5a56f43
       </div>
       <div>
         <Button className="mt-5" id="execute-sql" onClick={handleExec}>
           Execute
         </Button>
       </div>
-<<<<<<< HEAD
-
-      <pre className="error">{(error || "").toString()}</pre>
-
-      <pre>
-        {
-          // results contains one object per select statement in the query
-          (results as Array<{ columns: string[]; values: any[][] }>).map(
-            ({ columns, values }, i) => (
-              <ResultsTable key={i} columns={columns} values={values} />
-=======
       <div className="grayText" style={{ margin: "10px 0 0 0"}}>
         <p>
           <strong>Tip:</strong> You can use "SHIFT + ENTER" to execute your command.
@@ -231,10 +206,8 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
               ({ columns, values }, i) => (
                 <ResultsTable key={i} columns={columns} values={values} />
               )
->>>>>>> b32bb81bd6f781632b7af6056caaba02e5a56f43
             )
-          )
-        }
+          }
       </pre>
     </div>
   );
