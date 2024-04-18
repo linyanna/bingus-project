@@ -61,13 +61,24 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
       setError(null);
 
       if (isCorrectCommand) {
-        // Update the dialogue_id in the players table
-        supabase.from("players")
+
+        if (playerId){
+          // Update the dialogue_id in the players table
+          supabase.from("players")
           .update({ dialogue_id: nextDialogueId })
           .eq('player_id', playerId)
           .then(() => {
             console.log("Dialogue updated successfully: ", nextDialogueId);
           });
+        }
+        else{
+          //Update local storage with new index
+          localStorage.setItem('guestDialogueIndex', nextDialogueId);
+
+        }
+        
+
+          
 
           // Set active tab to Brief
           // setActiveTab(Tab.BRIEF);
@@ -176,8 +187,8 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
           }}>
         </Textarea>
       </div>
-      <div style={{ margin: "20px 0 0 0"}}>
-        <Button id="execute-sql" onClick={handleExec}>
+      <div>
+        <Button className="mt-5" id="execute-sql" onClick={handleExec}>
           Execute
         </Button>
       </div>

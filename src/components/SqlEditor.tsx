@@ -25,15 +25,23 @@ const SqlEditor: React.FC<Props> = ({ supabase, setActiveTab }) => {
     fetchSqlData(setDb, setError);
     // Fetch the dialogue index from supabase
     async function getDialogueId() {
-      try {
-        // Fetch dialogue index from Supabase database
-        const { data } = await supabase.from("players")
-          .select("dialogue_id")
-          .eq('player_id', playerId)
-          .single();
-          setDialogueId(data?.dialogue_id);
-      } catch (error) {
-        console.error("Error:", error);
+
+      if (playerId){
+        try {
+          // Fetch dialogue index from Supabase database
+          const { data } = await supabase.from("players")
+            .select("dialogue_id")
+            .eq('player_id', playerId)
+            .single();
+            setDialogueId(data?.dialogue_id);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+      else{
+        //No player is logged in, pull from localStorage
+        const guestIndex = localStorage.getItem('guestDialogueIndex');
+        setDialogueId(guestIndex ? guestIndex : "0.0");
       }
     }
     getDialogueId();
