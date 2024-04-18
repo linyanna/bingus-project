@@ -97,14 +97,14 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
       setDialogueId(dialogue[dialogueIndex+1].id);
     }
   }
-
+//function to get the image of the character speaking
   function getImage(character?: string): string {
     if (character === undefined) {
       const defaultImageUrl = 'default.jpg';
       console.error('Character is undefined.');
       return defaultImageUrl;
     }
-
+//inctroduce images to each characters to be able to switch
     const imageMap: { [key: string]: string } = {
         'Officer Doge': Doge,
         'Narrator': Narrator,

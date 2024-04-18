@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+
 interface Animation {
     duration?: number;
     ease?: string;
@@ -11,7 +12,7 @@ interface CollapsibleProps {
     animation?: Animation;
     label: React.ReactNode;
 }
-
+//provide styling for the collapsible component in guide
 const Button = styled.button`
     background-color: #D8D7D7;
     color: black;
@@ -47,6 +48,7 @@ const CollapsibleInner = styled.div`
     color: rgb(0,0,0);
 `;
 
+//allows for collapsible components
 const Collapsible: React.FC<CollapsibleProps> = ({
     children,
     label,

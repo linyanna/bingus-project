@@ -2,6 +2,7 @@ import Collapsible from "./Collapsible";
 
 function Guide() {
     return (
+        //provide labels and descriptions for the SQL guide
     <div className="Guide">
         <Collapsible label = "What is SQL?">
             <p>
