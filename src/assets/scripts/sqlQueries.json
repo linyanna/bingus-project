@@ -10,7 +10,7 @@
   {
     "id": "1.4",
     "nextDialogueId": "2.0",
-    "briefDirection": "Select the top biggest items from your inventory so Bingus can pack them into a Bag.",
+    "briefDirection": "Select the top five biggest items from your inventory so Bingus can pack them into a Bag.",
     "answer": "SELECT * FROM Inventory ORDER BY size DESC LIMIT 5;",
     "queries": ["SELECT * FROM Inventory ORDER BY size DESC LIMIT 5;"],
     "answers": []

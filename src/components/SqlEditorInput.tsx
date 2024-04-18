@@ -187,8 +187,8 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId }) => {
           }}>
         </Textarea>
       </div>
-      <div style={{ margin: "20px 0 0 0"}}>
-        <Button id="execute-sql" onClick={handleExec}>
+      <div>
+        <Button className="mt-5" id="execute-sql" onClick={handleExec}>
           Execute
         </Button>
       </div>
