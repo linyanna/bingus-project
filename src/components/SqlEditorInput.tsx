@@ -59,18 +59,21 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
       setError(null);
 
       if (isCorrectCommand) {
-        // Update the dialogue_id in the players table
-        supabase.from("players")
+        if (playerId){
+          // Update the dialogue_id in the players table
+          supabase.from("players")
           .update({ dialogue_id: nextDialogueId })
           .eq('player_id', playerId)
           .then(() => {
             console.log("Dialogue updated successfully: ", nextDialogueId);
           });
-          setGotAnswer(true);
-          // Set active tab to Brief
-          // setActiveTab(Tab.BRIEF);
+        }
+        else {
+          //Update local storage with new index
+          localStorage.setItem('guestDialogueIndex', nextDialogueId);
+        }
+        setGotAnswer(true);
       }
-
       // Update local storage with the current database state
       updateLocalStorage(db);
     } catch (err) {

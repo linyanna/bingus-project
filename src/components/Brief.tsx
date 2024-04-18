@@ -24,15 +24,28 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
   const dialogueIndex = dialogue.findIndex(field => field.id === dialogueId);
 
   useEffect(() => {
-    //use effect hook to fetch data from the database
-    async function fetchData() {
-      try {
-        setDialogueId(await getDialogueId());
-      } catch (error) {
-        console.error("Error fetching story progress:", error);
-      }
+    //Initialize guestDialougeIndex if it doesn't exist already
+    if (!localStorage.getItem('guestDialogueIndex')) {
+      localStorage.setItem('guestDialogueIndex', '0.0');
     }
-    fetchData();
+
+    if (playerId){
+      async function fetchData() {
+        try {
+          setDialogueId(await getDialogueId());
+        } catch (error) {
+          console.error("Error fetching story progress:", error);
+        }
+      }
+      fetchData();
+    }
+    else{
+      const guestIndex = localStorage.getItem('guestDialogueIndex');
+      setDialogueId(guestIndex ? guestIndex : "0.0");
+    }
+    console.log("Dialouge Id:    " + dialogueId);
+    console.log("Dialouge Index: " + dialogueIndex)
+    
   }, []);
 
   async function getDialogueId() {
@@ -51,6 +64,8 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
   const handleButtonClick = async () => {
     if (dialogue[dialogueIndex].sqlEditorFlag) {
       console.log("SQL Editor flag is true");
+      localStorage.setItem('guestDialogueIndex', dialogueId);
+
       // TODO: store progress locally and if user is logged in, update to supabase
       try {
         // const nextDialogue = dialogueIndex + 1;
