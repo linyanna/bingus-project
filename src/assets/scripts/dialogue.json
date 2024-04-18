@@ -18,7 +18,7 @@
   {
     "id": "1.0",
     "character": "Narrator",
-    "text": "It's a beautiful day at the forest, where Ace Detective Bingus was writing his autobiography and reminiscing about all the cases he had over the long five years of his career. Suddenly, he receives a call on his banana cat phone.",
+    "text": "It's a beautiful day at the forest, where Ace Detective Bingus is writing his autobiography and reminiscing about all the cases he had over the long five years of his career. Suddenly, he receives a call on his banana cat phone.",
     "responseOptions": ["Can't a cat get some peace and quiet around here?", "Who could be calling me at this hour?", "I wonder who this could be?"],
     "newTableInfoFlag": true,
     "sqlEditorFlag": true
