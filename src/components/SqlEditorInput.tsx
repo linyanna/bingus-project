@@ -156,7 +156,7 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
     if (array[3][0] != table)    throw new Error("Hint: we are trying to look through the " + table);
   }
 
-  const filterCheck = (array: any, column: String, name: String, index: number) => {
+  const filterCheck = (array: any, column: string, name: string, index: number) => {
     if (array[index++][0] != column) throw new Error("Incorrect");
     if (array[index++][0] != '=')    throw new Error("Incorrect");
     if (array[index][0] != name)     throw new Error("Incorrect");
@@ -189,7 +189,6 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
           <Button id="execute-sql" onClick={handleExec} style={{width: "110px", marginLeft: "auto"}}>Execute</Button>
         </div>
         )}
-        
       </div>
       <div className="grayText" style={{ margin: "20px 0 0 0"}}>
         <pre className="error">{(error || "").toString()}</pre>

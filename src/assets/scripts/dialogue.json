@@ -8,6 +8,14 @@
     "sqlEditorFlag": false
   },
   {
+    "id": "0.1",
+    "character": "Narrator",
+    "text": "Use the 'Brief' tab to progress through the story and get the latest briefing for the mission. Use the 'Notebook' tab to enter and execute SQL statements. Use the 'Evidence' tab to view the schema (column names) for the databases when you are not sure where to query from. If you are not sure what SQL statement to use, check out the 'Guide' tab.",
+    "responseOptions": ["Next"],
+    "newTableInfoFlag": false,
+    "sqlEditorFlag": false
+  },
+  {
     "id": "1.0",
     "character": "Narrator",
     "text": "It's a beautiful day at the forest, where Ace Detective Bingus was writing his autobiography and reminiscing about all the cases he had over the long five years of his career. Suddenly, he receives a call on his banana cat phone.",
