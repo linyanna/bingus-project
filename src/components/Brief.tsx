@@ -115,10 +115,9 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
   }
 
   return (
-      <div className="overallContainer">
-        <img src= {getImage(dialogue[dialogueIndex].character)} alt="Image" className= "Speaker" />
-        
-        <div className="textContainer">
+    <div className="overallContainer">
+      <img src= {getImage(dialogue[dialogueIndex].character)} alt="Image" className= "Speaker" />
+      <div className="textContainer">
         <div className="nameBox">{dialogue[dialogueIndex].character}</div>
         <div className="label">{dialogue[dialogueIndex].text}</div>
         <div className="button-container">
