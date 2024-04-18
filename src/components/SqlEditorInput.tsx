@@ -65,9 +65,6 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
           .eq('player_id', playerId)
           .then(() => {
             console.log("Dialogue updated successfully: ", nextDialogueId);
-          })
-          .catch((error) => {
-            console.error("Error updating dialogue_id:", error);
           });
 
           // Set active tab to Brief
@@ -84,7 +81,7 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
   }
 
   // this function will lex/parse the SQL statement based off of the input paramater for where in the story the player is
-  const handleCommand = (crosscheck: number, command: String | null) => {
+  const handleCommand = (crosscheck: string, command: string | null) => {
     if (!command?.endsWith(";")) {
       throw new Error("Commands must end with a semicolon!");
     }
@@ -101,7 +98,7 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
       //   // SELECT * FROM Inventory;
       //   selectAllCheck(array, 'inventory');
       //   break;
-      case 1.0:
+      case "1.0":
         // SELECT Type FROM Inventory WHERE Type = "phone";
         if (array[0][0] != 'select')       throw new Error("Hint: use the SELECT statement.");
         if (array[1][0] != 'type')         throw new Error("Hint: we want to select a type from our inventory.");
@@ -110,7 +107,7 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
         if (array[4][0] != 'where')        throw new Error("Hint: use the WHERE clause when trying to filter rows");
         filterCheck(array, 'type', '\"phone\"', 5);
         break;
-      case 1.4:
+      case "1.4":
         // SELECT * FROM Inventory ORDER BY size DESC LIMIT 5;
         selectAllCheck(array, 'inventory');
         if (array[4][0] != 'order' && 
@@ -120,7 +117,7 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
         if (array[8][0] != 'limit')        throw new Error("Hint: use the LIMIT clause");
         if (array[9][0] != '5')            throw new Error("Hint: Limit 5");
         break;
-      case 2.4:
+      case "2.4":
         // SELECT * FROM suspects WHERE notes = "poptarts" OR notes = "rainbows";
         selectAllCheck(array, 'suspects');
         if (array[4][0] != 'where')        throw new Error("Hint: use the WHERE clause when trying to filter rows");
@@ -128,13 +125,13 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
         if (array[8][0] != 'or')           throw new Error("Incorrect-OR");
         filterCheck(array, 'notes', '\"rainbows\"', 9);
         break;
-      case 3.3:
+      case "3.3":
         // SELECT * FROM suspects WHERE notes="meowfia";
         selectAllCheck(array, 'suspects');
         if (array[4][0] != 'where')        throw new Error("Hint: use the WHERE clause when trying to filter rows");
         filterCheck(array, 'notes', '\"meowfia\"', 5);
         break;
-      case 4.6:
+      case "4.6":
         // SELECT item, shipmentTime FROM supermarket WHERE item ="poptart";
         console.log("array:", array);
         if (array[0][0] != 'select')       throw new Error("Hint: use the SELECT statement.");

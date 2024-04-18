@@ -5,6 +5,7 @@ import SqlEditorInput from "./SqlEditorInput";
 import SqlEditorBrief from "./SqlEditorBrief";
 import "../styles/sqlEditor.css";
 import { SupabaseClient } from '@supabase/supabase-js';
+import { Tab } from "./Navbar";
 
 interface Props {
   supabase: SupabaseClient;
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const SqlEditor: React.FC<Props> = ({ supabase, setActiveTab }) => {
-  const [db, setDb] = useState<null | Database>(null);
+  const [db, setDb] = useState<null | any>(null);
   const [error, setError] = useState<null | string>(null);
 
   const playerId = getPlayerId();
