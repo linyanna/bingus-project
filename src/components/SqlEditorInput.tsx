@@ -181,12 +181,12 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
           Execute
         </Button>
       </div>
-      <div style={{ margin: "10px 0 0 0"}}>
+      <div className="grayText" style={{ margin: "10px 0 0 0"}}>
         <p>
           <strong>Tip:</strong> You can use "SHIFT + ENTER" to execute your command.
         </p>
       </div>
-      <div style={{ margin: "20px 0 0 0"}}>
+      <div className="grayText" style={{ margin: "20px 0 0 0"}}>
         <pre className="error">{(error || "").toString()}</pre>
         <pre>
           {

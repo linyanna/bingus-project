@@ -45,8 +45,9 @@ const SqlEditorBrief: React.FC<Props> = ({ dialogueId }) => {
           {seeAnswer ? <p>Hide Answer</p> : <p>See Answer</p>}
         </Button>
       </div>
-          {/* {seeAnswer ? <p>{answer}</p> : `See Answer`} */}
-          {seeAnswer ? <div><strong>Answer: </strong>{answer}</div> : ``}
+          <div className="grayText">
+            {seeAnswer ? <div><strong>Answer: </strong>{answer}</div> : ``}
+          </div>
     </div>
   );
 }
