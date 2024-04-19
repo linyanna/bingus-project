@@ -22,6 +22,7 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
   const playerId = getPlayerId();
   const [dialogueId, setDialogueId] = useState<string>("0.0");
   const dialogueIndex = dialogue.findIndex(field => field.id === dialogueId);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     //Initialize guestDialougeIndex if it doesn't exist already
@@ -29,12 +30,13 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
       localStorage.setItem('guestDialogueIndex', '0.0');
     }
 
-    if (playerId){
+    if (playerId != null){
       fetchData();
     }
     else{
       const guestIndex = localStorage.getItem('guestDialogueIndex');
       setDialogueId(guestIndex ? guestIndex : "0.0");
+      setLoading(false);
     }
     
     console.log("Dialouge Id:    " + dialogueId);
@@ -56,8 +58,10 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
   }
 
   async function fetchData() {
+    setLoading(true);
     try {
       setDialogueId(await getDialogueId());
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching story progress:", error);
     }
@@ -114,23 +118,27 @@ const Brief: React.FC<Props> = ({ supabase, setActiveTab }) => {
     return imageMap[character] || ''; 
   }
 
-  return (
-    <div className="overallContainer">
-      <img src= {getImage(dialogue[dialogueIndex].character)} alt="Image" className= "Speaker" />
-      <div className="textContainer">
-        <div className="nameBox">{dialogue[dialogueIndex].character}</div>
-        <div className="label">{dialogue[dialogueIndex].text}</div>
-        <div className="button-container">
-          {dialogue[dialogueIndex] && dialogue[dialogueIndex].responseOptions.map((buttonText: string, i: number) => (
-            //each button has a key prop set to the index of the button in the array
-            <Button key={i} className="dialogue px-auto" type="submit" onClick={() => handleButtonClick()}>
-              {buttonText}
-            </Button>
-          ))}
+  if (loading) {
+    return;
+  } else {
+    return (
+      <div className="overallContainer">
+        <img src= {getImage(dialogue[dialogueIndex].character)} alt="Image" className= "Speaker" />
+        <div className="textContainer">
+          <div className="nameBox">{dialogue[dialogueIndex].character}</div>
+          <div className="label">{dialogue[dialogueIndex].text}</div>
+          <div className="button-container">
+            {dialogue[dialogueIndex] && dialogue[dialogueIndex].responseOptions.map((buttonText: string, i: number) => (
+              //each button has a key prop set to the index of the button in the array
+              <Button key={i} className="dialogue px-auto" type="submit" onClick={() => handleButtonClick()}>
+                {buttonText}
+              </Button>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Brief;

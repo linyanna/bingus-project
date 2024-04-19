@@ -19,20 +19,28 @@ const supabase = createClient(url, key);
 export { supabase };
 const Profile: React.FC = () => {
   const navigate = useNavigate();
+  const playerId = getPlayerId();
   const [user, setUser] = useState<any>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const { data, error } = await supabase.auth.getUser();
-      if (error) {
-        console.error("Error fetching user:", error.message);
-        return;
-      }
-      setUser(data);
-    };
-
-    fetchUser();
+    if (playerId != null) {
+      fetchUser();
+    }
   }, []);
+
+  async function fetchUser() {
+    setLoading(true);
+    try {
+      const user = supabase.auth.getUser();
+      if (user) {
+        setUser(user);
+      }
+    } catch (error) {
+      console.error("Error fetching user:", error);
+    }
+    setLoading(false);
+  }
 
   const handleSignOut = async () => {
     try {
@@ -48,8 +56,6 @@ const Profile: React.FC = () => {
 
   const handleSaveToSupabase = async () => {
     try {
-      
-      const playerId = getPlayerId();
       const userLocalDatabase = getLocalDatabase();
       console.log("playerid:" + playerId);
 
@@ -87,45 +93,74 @@ const Profile: React.FC = () => {
 
   const handleRestartGame = async () => {
     try {
-      const playerId = getPlayerId();
+      if (playerId) {
       await supabase.from("players")
       .update({ dialogue_id: "0.0" })
       .eq('player_id', playerId);
+      } else {
+        localStorage.setItem('guestDialogueIndex', '0.0');
+      }
       console.log("Game restarted successfully");
     } catch (updateError) {
       console.error("Error:", updateError);
     }
   }
 
-  return (
-    <div className="profile-container">
-      <div className="profile">
-      {user ? (
-          <>
-            <Account></Account>
-            <Button className="button mt-3" onClick={handleSignOut}>
-              Sign Out
-            </Button>
-            <Button className="button mt-3" onClick={handleSaveToSupabase}>
-              Save game
-            </Button>
-            <Button className="button mt-3" onClick={handleRestartGame}>
-              Restart game
-            </Button>
-          </>
-        ) : (
-          <>
+  if (loading) {
+    return (
+      <div className="profile-container">
+        <div style={{display: "flex", flexDirection: "column", alignContent: "center"}}>
           <Button className="button mt-3" onClick={handleSignIn}>
-              Sign In
-            </Button>
-            <Button className="button mt-3" onClick={handleSignUp}>
-              Sign Up
-            </Button>
-          </>
-        )}
+            Sign In
+          </Button>
+          <Button className="button mt-3" onClick={handleSignUp}>
+            Sign Up
+          </Button>
+          <Button className="button mt-3" onClick={handleRestartGame}>
+            Restart game
+          </Button>
+        </div>
       </div>
-    </div>
-  );
+    )
+  } else {
+    return (
+      <>
+        {!playerId ? 
+          (
+            <div className="profile-container">
+              <div style={{display: "flex", flexDirection: "column", alignContent: "center"}}>
+                <Button className="button mt-3" onClick={handleSignIn}>
+                  Sign In
+                </Button>
+                <Button className="button mt-3" onClick={handleSignUp}>
+                  Sign Up
+                </Button>
+                <Button className="button mt-3" onClick={handleRestartGame}>
+                  Restart game
+                </Button>
+              </div>
+            </div>
+          ):
+          (
+            <div className="profile-container">
+              <Account></Account>
+              <div style={{display: "flex", flexDirection: "column", alignContent: "center"}}>
+                <Button className="button mt-3" onClick={handleSignOut}>
+                  Sign Out
+                </Button>
+                <Button className="button mt-3" onClick={handleSaveToSupabase}>
+                  Save game
+                </Button>
+                <Button className="button mt-3" onClick={handleRestartGame}>
+                  Restart game
+                </Button>
+              </div>
+            </div>
+          )}
+        {/* </div> */}
+      </>
+    );
+}
 };
 
 export default Profile;
