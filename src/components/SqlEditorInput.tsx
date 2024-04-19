@@ -23,11 +23,12 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
   const [error, setError] = useState<null | string>(null);
   const [command, setCommand] = useState<null | string>(null);
   const [results, setResults] = useState<[] | Array<string>>([]);
-  const [nextDialogueId, setNextDialogueId] = useState<string>("0.0");
+  const [nextDialogueId, setNextDialogueId] = useState<string>(dialogueId);
   const [gotAnswer, setGotAnswer] = useState<boolean>(false);
   const playerId = getPlayerId();
 
   useEffect(() => {
+    setNextDialogueId(dialogueId);
     const getNextDialogueId = () => {
     const index = sqlQueries.findIndex(field => field.id === dialogueId);
     if (index != -1) {
@@ -52,12 +53,12 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
   const handleExec = () => {
     try {
       // Handle validation of SQL statement per dialogueId
-      const isCorrectCommand = handleCommand(dialogueId, command);
+      let isCorrectCommand = false;
+      isCorrectCommand = handleCommand(dialogueId, command);
       // The sql is executed synchronously on the UI thread.
       // You may want to use a web worker here instead
       setResults(db.exec(command)); // an array of objects is returned
       setError(null);
-
       if (isCorrectCommand) {
         if (playerId){
           // Update the dialogue_id in the players table
@@ -80,6 +81,7 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
       // exec throws an error when the SQL statement is invalid
       setError(err as string);
       setResults([]);
+      setGotAnswer(false);
     }
   }
 
