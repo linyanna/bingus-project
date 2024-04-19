@@ -94,9 +94,13 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
     const str = command.toLowerCase();
     const regex = /([a-z0-9\*=]+)|(\"[a-z]+\")/g;
     const array = [...str.matchAll(regex)];
+    
+    const isSelectAllCommand = selectAllCheck2(array, ['suspects', 'inventory', 'supermarket']);
 
-    // console.log(crosscheck);
-
+    if (isSelectAllCommand) {
+      setGotAnswer(false);
+      return false;
+    } else {
     // Check that each component of array is correct (parsing)
     switch(crosscheck) {
       // case 1.0:
@@ -149,10 +153,12 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
         break;
       default:
         setGotAnswer(false);
-        selectAllCheck2(array, ['suspects', 'inventory', 'supermarket']);
+        // selectAllCheck2(array, ['suspects', 'inventory', 'supermarket']);
         return false;
     }
+  }
     return true;
+    
   }
 
   const selectAllCheck = (array: any, table: String) => {
@@ -163,13 +169,17 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
   }
 
   const selectAllCheck2 = (array: any, table: String[]) => {
-    if (array[0][0] != 'select') throw new Error("Hint: use the SELECT statement.");
-    if (array[1][0] != '*')      throw new Error("Hint: use the '*' character to select all.");
-    if (array[2][0] != 'from')   throw new Error("Hint: use the FROM statement when trying to grab data from a table");
-    for (let i = 0; i < table.length - 1; i++) {
-      if (array[3][0] == table[i]) continue;
-      if (i == table.length - 1) throw new Error("Incorrect");
+    let match = false;
+    if (array[0][0] == 'select' && array[1][0] == '*' && array[2][0] == 'from') {
+      console.log("table:", table);
+      for (let i = 0; i < table.length - 1; i++) {
+        if (array[3][0] == table[i]) {
+          match = true;
+          break;
+        }
+      }
     }
+    return match;
   }
 
   const filterCheck = (array: any, column: string, name: string, index: number) => {
