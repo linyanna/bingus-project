@@ -15,6 +15,7 @@ interface NavbarProps {
   setActiveTab: (tab: Tab) => void;
 }
 
+// Create a Navbar component that will render the tabs
 const Navbar: React.FC<NavbarProps> = ({ setActiveTab }) => {
   const handleTabClick = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -34,6 +35,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveTab }) => {
   return (
     <div className="navbar">
       <a
+
         href="#"
         className="tab font-bold text-gray-600"
         onClick={(e) => handleTabClick(e, Tab.BRIEF)}>

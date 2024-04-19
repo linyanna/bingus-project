@@ -4,28 +4,30 @@
  */
 function ResultsTable({ columns, values }: { columns: string[], values: any[][] }) {
   return (
-    <table>
-      <thead>
-        <tr>
-          {columns.map((columnName, i) => (
-            <td key={i}>{columnName}</td>
-          ))}
-        </tr>
-      </thead>
-
-      <tbody>
-        {
-          // values is an array of arrays representing the results of the query
-          values.map((row, i) => (
-            <tr key={i}>
-              {row.map((value, i) => (
-                <td key={i}>{value}</td>
+    <div>
+      <div style={{marginBottom:".5rem"}}><strong>Results Table</strong></div>
+      <table>
+        <thead>
+          <tr>
+              {columns.map((columnName, i) => (
+              <td key={i}><strong>{columnName}</strong></td>
               ))}
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            // values is an array of arrays representing the results of the query
+            values.map((row, i) => (
+              <tr key={i}>
+                {row.map((value, i) => (
+                  <td key={i}>{value}</td>
+                ))}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
   );
 }
 
