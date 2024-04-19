@@ -188,7 +188,7 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
   const selectAllCheck2 = (array: any, table: String[]) => {
     let match = false;
 
-    if (array.length > 4) {
+    if (array.length != 4) {
       return match;
     }
     if (array[0][0] == 'select' && array[1][0] == '*' && array[2][0] == 'from') {
