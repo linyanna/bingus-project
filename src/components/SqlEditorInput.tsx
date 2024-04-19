@@ -109,6 +109,10 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
       //   break;
       case "1.0.1":
         // SELECT Type FROM Inventory WHERE Type = "phone";
+        console.log("array:", array.length);
+        if (array.length < 8) {
+          throw new Error("Hint: missing clauses");
+        }
         if (array[0][0] != 'select')       throw new Error("Hint: use the SELECT statement.");
         if (array[1][0] != 'type')         throw new Error("Hint: we want to select a type from our inventory.");
         if (array[2][0] != 'from')         throw new Error("Hint: use the FROM clause when trying to grab data from a table");
@@ -118,6 +122,9 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
         break;
       case "1.4.1":
         // SELECT * FROM Inventory ORDER BY size DESC LIMIT 5;
+        if (array.length < 10) {
+          throw new Error("Hint: missing clauses");
+        }
         selectAllCheck(array, 'inventory');
         if (array[4][0] != 'order' && 
             array[5][0] != 'by')           throw new Error("Hint: we need to ORDER BY");
@@ -128,6 +135,9 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
         break;
       case "2.4.1":
         // SELECT * FROM suspects WHERE notes = "poptarts" OR notes = "rainbows";
+        if (array.length < 12) {
+          throw new Error("Hint: missing clauses");
+        }
         selectAllCheck(array, 'suspects');
         if (array[4][0] != 'where')        throw new Error("Hint: use the WHERE clause when trying to filter rows");
         filterCheck(array, 'notes', '\"poptarts\"', 5);
@@ -136,12 +146,18 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
         break;
       case "3.3.1":
         // SELECT * FROM suspects WHERE notes="meowfia";
+        if (array.length < 8) {
+          throw new Error("Hint: missing clauses");
+        }
         selectAllCheck(array, 'suspects');
         if (array[4][0] != 'where')        throw new Error("Hint: use the WHERE clause when trying to filter rows");
         filterCheck(array, 'notes', '\"meowfia\"', 5);
         break;
       case "4.6.1":
         // SELECT item, shipmentTime FROM supermarket WHERE item ="poptart";
+        if (array.length < 8) {
+          throw new Error("Hint: missing clauses");
+        }
         console.log("array:", array);
         if (array[0][0] != 'select')       throw new Error("Hint: use the SELECT statement.");
         if (array[1][0] != 'item')         throw new Error("Hint: we want to select an item and shipment time from the supermarket.");
@@ -168,8 +184,13 @@ const SqlEditorInput: React.FC<Props> = ({ supabase, db, dialogueId, setActiveTa
     if (array[3][0] != table)    throw new Error("Hint: we are trying to look through the " + table);
   }
 
+  // for assessing if query is a select * from [table name]
   const selectAllCheck2 = (array: any, table: String[]) => {
     let match = false;
+
+    if (array.length > 4) {
+      return match;
+    }
     if (array[0][0] == 'select' && array[1][0] == '*' && array[2][0] == 'from') {
       console.log("table:", table);
       for (let i = 0; i < table.length - 1; i++) {
