@@ -78,8 +78,9 @@ const Account: React.FC = () => {
           )}
 
 <div className="email">
-            <Label htmlFor="current_password">Email</Label>
+            <Label className="profile-label" htmlFor="email">Email</Label>
             <Input
+              id="email"
               type="email"
               placeholder={user.user.email}
               style={{ width: "600px" }}
@@ -93,7 +94,7 @@ const Account: React.FC = () => {
 
             <div className="space">
               <div>
-                <Label htmlFor="current_password">Current Password</Label>
+                <Label className="profile-label" htmlFor="current_password">Current Password</Label>
                 <PasswordInput
                   id="current_password"
                   value={currentPassword}
@@ -102,7 +103,7 @@ const Account: React.FC = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="new_password">New Password</Label>
+                <Label className="profile-label" htmlFor="new_password">New Password</Label>
                 <PasswordInput
                   id="new_password"
                   value={newPassword}
@@ -111,7 +112,7 @@ const Account: React.FC = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="password_confirmation">Confirm Password</Label>
+                <Label className="profile-label" htmlFor="password_confirmation">Confirm Password</Label>
                 <PasswordInput
                   id="password_confirmation"
                   value={passwordConfirmation}
