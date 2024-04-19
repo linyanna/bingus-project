@@ -21,7 +21,6 @@ const Profile: React.FC = () => {
   const navigate = useNavigate();
   const playerId = getPlayerId();
   const [user, setUser] = useState<any>();
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (playerId != null) {
@@ -30,7 +29,6 @@ const Profile: React.FC = () => {
   }, []);
 
   async function fetchUser() {
-    setLoading(true);
     try {
       const user = supabase.auth.getUser();
       if (user) {
@@ -39,7 +37,6 @@ const Profile: React.FC = () => {
     } catch (error) {
       console.error("Error fetching user:", error);
     }
-    setLoading(false);
   }
 
   const handleSignOut = async () => {
@@ -106,7 +103,7 @@ const Profile: React.FC = () => {
     }
   }
 
-  if (loading) {
+  if (!user) {
     return (
       <div className="profile-container">
         <div style={{display: "flex", flexDirection: "column", alignContent: "center"}}>
