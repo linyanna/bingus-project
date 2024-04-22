@@ -18,7 +18,7 @@
   {
     "id": "1.0",
     "character": "Narrator",
-    "text": "It's a beautiful day at the forest, where Ace Detective Bingus was writing his autobiography and reminiscing about all the cases he had over the long five years of his career. Suddenly, he receives a call on his banana cat phone.",
+    "text": "It's a beautiful day at the forest, where Ace Detective Bingus is writing his autobiography and reminiscing about all the cases he had over the long five years of his career. Suddenly, he receives a call on his banana cat phone.",
     "responseOptions": ["Can't a cat get some peace and quiet around here?", "Who could be calling me at this hour?", "I wonder who this could be?"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
@@ -35,22 +35,22 @@
     "id": "1.1",
     "character": "Mysterious voice",
     "text": "Greetings Detective Bingus.",
-    "responseOptions": ["Excuse me, I'm on PTO...", "Hello?", "Who is this?"],
+    "responseOptions": ["Don't bother, I'm on PTO...", "Hello?", "Who is this?"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": "1.2",
     "character": "Mysterious voice",
-    "text": "Only the best pawlice officer of all time, the great Officer Doge himself!",
-    "responseOptions": ["Wow, you're a real character.", "I see...", "What can I do for you?"],
+    "text": "Detective, it's me, the great Officer Doge himself!",
+    "responseOptions": ["Oh, Officer Doge.", "I see...", "What can I do for you?"],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
   },
   {
     "id": "1.4",
     "character": "Officer Doge",
-    "text": "Anyway I’m calling to let you know that we have a case that’s a little out of our hands–or should I say paws? So we need you to come down to the station. *Doge hangs up.*",
+    "text": "I’m calling to let you know that we have a case that’s a little out of our hands–or should I say paws? So we need you to come down to the station. *Doge hangs up.*",
     "responseOptions": ["That was entirely abrupt.", "I wonder what this case could be about?", "I better head to the pawlice station."],
     "newTableInfoFlag": false,
     "sqlEditorFlag": false
